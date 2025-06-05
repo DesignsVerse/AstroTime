@@ -8,7 +8,7 @@ const Hero: FC = () => {
   const frames = [
     {
       type: "background-image",
-      title: "Vedic Astrology Consultation",
+      title: "Astro Time Consultation",
       highlight: "Free Janam Kundli Analysis",
       description: "Get your complete birth chart analysis with planetary positions and life predictions from our expert astrologers.",
       image: "/ruby.png",

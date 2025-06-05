@@ -97,7 +97,7 @@ const Header: FC = () => {
                 isScrolled ? "text-[#1a1f3d]" : "text-white"
               }`}
             >
-              Suriya Jyotish
+              Astro Time
             </Link>
 
             {/* Mobile menu button */}
