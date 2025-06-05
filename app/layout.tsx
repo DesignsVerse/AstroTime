@@ -1,12 +1,24 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Merriweather, Open_Sans } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const merriweather = Merriweather({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-merriweather',
+});
+
+const openSans = Open_Sans({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-opensans',
+});
 
 export const metadata: Metadata = {
-  title: 'Novoflow',
-  description: 'Novoflow is a clinic management platform that helps clinics manage their patients, appointments, and more.',
+  title: 'Astro Time',
+  description: 'Your trusted source for astrological insights',
 };
 
 export default function RootLayout({
@@ -15,8 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${merriweather.variable} ${openSans.variable}`}>
+      <body className={`${openSans.className}`}>
+        {children}
+      </body>
     </html>
   );
 }

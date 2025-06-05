@@ -1,160 +1,176 @@
-'use client'
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Mail, X, Linkedin } from "lucide-react";
+"use client"
+import { Merriweather, Open_Sans } from 'next/font/google';
+import Image from 'next/image';
 
-export function Footer() {
-  const currentYear = new Date().getFullYear();
+// Configure fonts
+const merriweather = Merriweather({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
-  const footerLinks = {
-    company: [
-      { name: "Our Mission", href: "/about" },
-      { name: "Join Our Team", href: "/careers" },
-      { name: "Contact", href: "/contact" },
-    ],
-    legal: [
-      { name: "Terms & Conditions", href: "/terms" },
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Cookie Policy", href: "/cookies" },
-    ],
-    support: [
-      { name: "Support Center", href: "/help" },
-      { name: "FAQ", href: "/faq" },
-      { name: "Integration Guides", href: "/docs" },
-    ],
-  };
+const openSans = Open_Sans({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
-  const socialLinks = [
-    { name: "X", href: "https://x.com/novoflow", icon: X },
-    { name: "LinkedIn", href: "https://linkedin.com/company/novoflow", icon: Linkedin },
-    { name: "Email", href: "mailto:founders@novoflow.com", icon: Mail },
-  ];
-
+export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-gray-50 to-white border-t">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 gap-12 md:grid-cols-4"
-        >
-          {/* Brand Section */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-gray-900">Novoflow</h3>
-            <p className="text-gray-600 text-sm leading-6">
-              Streamlining patient communication with AI-powered clinic solutions.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-blue-600 transition-colors duration-300"
-                >
-                  <link.icon className="h-5 w-5" />
-                  <span className="sr-only">{link.name}</span>
-                </a>
-              ))}
-            </div>
+    <>
+      <div className={`${openSans.className} bg-[#272b4a] text-white`}>
+        <div className="max-w-[1920px] mx-auto px-6 sm:px-10 lg:px-20">
+          {/* Top social icons */}
+          <div className="flex justify-end pt-6 space-x-6">
+            <button
+              aria-label="Twitter"
+              className="w-8 h-8 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition"
+            >
+              <i className="fab fa-twitter text-[14px]"></i>
+            </button>
+            <button
+              aria-label="Facebook"
+              className="w-8 h-8 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition"
+            >
+              <i className="fab fa-facebook-f text-[14px]"></i>
+            </button>
+            <button
+              aria-label="Instagram"
+              className="w-8 h-8 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition"
+            >
+              <i className="fab fa-instagram text-[14px]"></i>
+            </button>
           </div>
-
-          {/* Company Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Legal</h4>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Support</h4>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
-
-        {/* Newsletter Signup */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-12 border-t border-gray-200 pt-8"
-        >
-          <div className="flex flex-col sm:flex-row justify-between items-center">
-            <div className="mb-4 sm:mb-0">
-              <h4 className="text-lg font-semibold text-gray-900">
-                Join Our Community
-              </h4>
-              <p className="text-sm text-gray-600 mt-1">
-                Get updates on Novoflow’s AI solutions and Founding Partners Program.
-              </p>
-            </div>
-            <div className="flex w-full sm:w-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="px-4 py-2 w-full sm:w-64 bg-white border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+          <hr className="border-t border-[#3f4163] my-6" />
+          {/* Main top section */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-6 md:space-y-0">
+            {/* Logo and text */}
+            <div className="flex items-center space-x-4">
+              <Image
+                alt="Sun icon with coral color representing Suriya logo"
+                className="w-10 h-10"
+                height={40}
+                src="/ruby.png"
+                width={40}
               />
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 transition-colors duration-300">
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Subscribe</span>
-              </button>
+              <h1 className={`${merriweather.className} text-white text-[28px] leading-[34px] tracking-wide select-none`}>
+                Suriya
+              </h1>
+            </div>
+            {/* Phone */}
+            <div className="flex items-center space-x-4">
+              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center">
+                <i className="fas fa-phone-alt text-[#f68a6a] text-[24px]"></i>
+              </div>
+              <div>
+                <p className="text-[#f68a6a] text-[14px] font-normal mb-1">Phone</p>
+                <p className={`${merriweather.className} text-white text-[24px] leading-[28px]`}>
+                  000 - 123456789
+                </p>
+              </div>
+            </div>
+            {/* Email */}
+            <div className="flex items-center space-x-4">
+              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center">
+                <i className="fas fa-envelope text-[#f68a6a] text-[24px]"></i>
+              </div>
+              <div>
+                <p className="text-[#f68a6a] text-[14px] font-normal mb-1">Email id</p>
+                <p className={`${merriweather.className} text-white text-[24px] leading-[28px] font-bold`}>
+                  info@example.com
+                </p>
+              </div>
             </div>
           </div>
-        </motion.div>
-
-        {/* Copyright */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 text-center"
-        >
-          <p className="text-sm text-gray-500">
-            © {currentYear} Demo Novoflow. Design By DesignsVerse.
-          </p>
-        </motion.div>
+          <hr className="border-t border-[#3f4163] my-6" />
+          {/* Middle section */}
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-[1100px] mx-auto text-white">
+            {/* Left text block */}
+            <div className="text-[15px] leading-6 font-normal max-w-[300px]">
+              Dui accumsan sit amet nulla facilisi morbi tempus. Fames ac turpis egestas sed. Tortor consequat id porta nibh venenatis cras sed. Nam libero justo laoreet sit amet cursus sit amet habitasse.
+            </div>
+            {/* Horoscopes */}
+            <div className={`${merriweather.className} text-[#f68a6a] text-[20px] leading-[28px] font-semibold select-none`}>
+              Horoscope
+            </div>
+            {/* Gemstones */}
+            <div className={`${merriweather.className} text-[#f68a6a] text-[20px] leading-[28px] font-semibold select-none`}>
+              Gemstones
+            </div>
+            {/* Subscribe */}
+            <div>
+              <h3 className={`${merriweather.className} text-[#f68a6a] text-[20px] leading-[28px] font-semibold mb-3 select-none`}>
+                Subscribe
+              </h3>
+              <div className="space-y-3 max-w-[320px]">
+                <input
+                  className="w-full bg-[#4a4f6e] rounded-lg py-3 px-4 placeholder:text-white placeholder:font-semibold placeholder:text-[16px] focus:outline-none"
+                  placeholder="Your Email"
+                  type="email"
+                />
+                <button
+                  className={`${merriweather.className} w-full bg-[#f68a6a] rounded-lg py-3 text-white text-[18px] leading-[28px] font-semibold hover:bg-[#e77a5a] transition`}
+                  type="button"
+                >
+                  Send Message
+                </button>
+              </div>
+              <p className="text-[13px] mt-2 max-w-[320px]">*Get your horoscope every day.</p>
+            </div>
+          </div>
+          <hr className="border-t border-[#3f4163] my-6" />
+          {/* Bottom bar */}
+          <div className="flex flex-col sm:flex-row justify-between items-center text-[14px] font-normal text-white pb-6">
+            <div className="mb-4 sm:mb-0 select-none">All Right Reserved © 2024 WeDesignTech.</div>
+            <div className="flex items-center space-x-4 select-none">
+              <span>Payment methods</span>
+              <Image
+                alt="Visa card logo"
+                className="h-7"
+                height={28}
+                src="ruby.png"
+                width={48}
+              />
+              <Image
+                alt="Mastercard logo"
+                className="h-7"
+                height={28}
+                src="ruby.png"
+                width={48}
+              />
+              <Image
+                alt="American Express card logo"
+                className="h-7"
+                height={28}
+                src="/ruby.png"
+                width={48}
+              />
+              <Image
+                alt="PayPal logo"
+                className="h-7"
+                height={28}
+                src="/ruby.png"
+                width={48}
+              />
+              <Image
+                alt="Discover card logo"
+                className="h-7"
+                height={28}
+                src="/ruby.png"
+                width={48}
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
+      <style jsx>{`
+        body {
+          font-family: ${openSans.style.fontFamily}, sans-serif;
+        }
+        .font-serif {
+          font-family: ${merriweather.style.fontFamily}, serif;
+        }
+      `}</style>
+    </>
   );
 }
