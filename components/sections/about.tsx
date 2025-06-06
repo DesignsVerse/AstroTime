@@ -1,343 +1,132 @@
-"use client";
-import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
-import { FaStar, FaRegStar, FaHandHoldingHeart } from 'react-icons/fa';
-import { GiCrystalBall, GiSpiralArrow } from 'react-icons/gi';
+'use client'; // This component uses client-side features like animations
 
-interface AstrologerCardProps {
-  imageSrc: string;
-  imageAlt: string;
-  name: string;
-  title: string;
-  description: string;
-  experience: number;
-  onContactClick: () => void;
-  onChatClick: () => void;
-}
+import React, { useEffect } from 'react';
+import Head from 'next/head';
 
-const AstrologerCard: React.FC<AstrologerCardProps> = ({
-  imageSrc,
-  imageAlt,
-  name,
-  title,
-  description,
-  experience,
-  onContactClick,
-  onChatClick,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [glowPosition, setGlowPosition] = useState({ x: 0, y: 0 });
-  const controls = useAnimation();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
+const AboutAstrologer = () => {
+  // This effect is to ensure animations work properly in Next.js
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [isInView, controls]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 100;
-    const y = ((e.clientY - top) / height) * 100;
-    setGlowPosition({ x, y });
-  };
-
-  const starVariants = {
-    hidden: { opacity: 0, scale: 0.5 },
-    visible: (i: number) => ({
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delay: i * 0.1,
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }),
-    hover: {
-      scale: 1.2,
-      rotate: 20,
-      transition: { duration: 0.3 }
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        when: "beforeChildren"
-      }
-    }
-  };
+    // You can add any client-side initialization here if needed
+  }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-[#1a1200] via-[#2a1a00] to-[#3a2200]">
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={controls}
-        variants={containerVariants}
-        className="max-w-7xl w-full mx-auto p-6 sm:p-8 lg:p-12"
-      >
-        <motion.div
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          className="relative bg-[#1a1408] rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:shadow-[0_15px_60px_rgba(255, 165, 0, 0.3)] border border-[#5a4a30]"
-          style={{
-            backgroundImage: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(255, 165, 0, 0.1), rgba(255, 165, 0, 0))`
-          }}
-          whileHover={{ scale: 1.01 }}
-        >
-          {/* Floating stars */}
-          {[...Array(10)].map((_, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={starVariants}
-              className="absolute text-yellow-300"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                fontSize: `${Math.random() * 0.5 + 0.5}rem`
-              }}
-              whileHover="hover"
-            >
-              {Math.random() > 0.5 ? <FaStar /> : <FaRegStar />}
-            </motion.div>
-          ))}
+    <>
+      <Head>
+        <title>Astrologer Section</title>
+      </Head>
+      
+      <div className="bg-white min-h-screen flex items-center justify-center relative overflow-hidden py-20">
+        {/* Background Stars */}
+        <div className="star" style={{ top: '10%', left: '15%', animationDelay: '0s' }}></div>
+        <div className="star" style={{ top: '20%', right: '10%', animationDelay: '1s' }}></div>
+        <div className="star" style={{ bottom: '15%', left: '25%', animationDelay: '0.5s' }}></div>
+        <div className="star" style={{ top: '30%', left: '80%', animationDelay: '1.5s' }}></div>
+        <div className="star" style={{ bottom: '25%', right: '20%', animationDelay: '2s' }}></div>
 
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 p-6 sm:p-8 lg:p-12">
-            {/* Image container with 3D effect */}
-            <motion.div 
-              className="relative flex-shrink-0 w-72 h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden group"
-              whileHover={{ rotateY: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <Image
-                src={'/ruby.png'}
-                alt={imageAlt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 288px, 320px"
-                priority
-                unoptimized
+        <section className="max-w-6xl mx-auto p-8 md:p-16 relative">
+          <div className="text-center mb-16">
+            <h1 className="text-3xl md:text-4xl font-light text-[#120B41] tracking-wide">
+              Meet & Talk With Our <br />
+              <span className="text-5xl md:text-6xl font-bold text-[#F88D72] inline-block typewriter">Astrologer</span>
+            </h1>
+          </div>
+          <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+            <div className="relative scale-in">
+              <div className="absolute -inset-6 border-2 border-dashed border-[#F88D72] rounded-full orbit-path"></div>
+              <img 
+                src="/astrologer-image.jpg" 
+                alt="Astrologer" 
+                className="w-72 h-72 md:w-96 md:h-96 rounded-full object-cover shadow-xl border-4 border-[#F88D72]/20"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(50,40,20,0.7)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <motion.div 
-                className="absolute -bottom-5 -right-5 text-6xl text-amber-300 opacity-70"
-                animate={{
-                  rotate: isHovered ? 360 : 0,
-                  scale: isHovered ? 1.2 : 1
-                }}
-                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              >
-                <GiCrystalBall />
-              </motion.div>
-            </motion.div>
-
-            {/* Text content */}
-            <div className="flex flex-col max-w-2xl relative">
-              {/* Mystical floating elements */}
-              <motion.div 
-                className="absolute -top-10 -left-10 text-4xl text-amber-300"
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 5, -5, 0]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <GiSpiralArrow />
-              </motion.div>
-
-              <motion.h2 
-                className="text-center lg:text-left text-2xl lg:text-3xl font-serif text-[#f0f0f0] mb-4 tracking-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                Connect with Our <span className="text-amber-300">Expert Astrologer</span>
-              </motion.h2>
-
-              <motion.h3 
-                className="font-semibold text-3xl lg:text-4xl font-serif mb-6 leading-tight bg-clip-text  bg-gradient-to-r from-amber-300 to-orange-400"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                Discover Solutions to Your Challenges
-              </motion.h3>
-
-              <motion.p 
-                className="text-[#e0e0e0] text-base leading-relaxed mb-8 max-w-md"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                {description}
-              </motion.p>
-
-              <motion.div 
-                className="flex flex-col sm:flex-row sm:items-center sm:gap-10 mb-10"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
-                <div>
-                  <p className="text-orange-300 font-semibold text-xl mb-1">{name}</p>
-                  <p className="text-[#d0d0d0] text-sm font-medium">{title}</p>
-                </div>
-
-                <div className="flex items-center gap-6 mt-6 sm:mt-0">
-                  <motion.div 
-                    className="relative w-16 h-16 rounded-full bg-[#2a200f] flex items-center justify-center text-white font-semibold text-xl border-2 border-amber-400"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {experience}
-                    <motion.svg
-                      aria-hidden="true"
-                      className="absolute -top-2 -right-3 w-10 h-10 stroke-orange-300 stroke-[1.5]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      animate={{
-                        rotate: isHovered ? 360 : 0
-                      }}
-                      transition={{ duration: 3 }}
-                    >
-                      <circle cx="12" cy="12" r="10"></circle>
-                    </motion.svg>
-                  </motion.div>
-                  <div className="flex flex-col text-orange-300 text-sm font-medium">
-                    <span>Years of</span>
-                    <span>Expertise</span>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 sm:gap-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-              >
-                <motion.button
-                  type="button"
-                  className="relative bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-full px-8 py-3 text-sm font-medium transition-all duration-300 group overflow-hidden"
-                  onClick={onContactClick}
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255, 165, 0, 0.6)" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <FaHandHoldingHeart /> Contact Us
-                  </span>
-                  <motion.div 
-                    className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </motion.button>
-                <motion.button
-                  type="button"
-                  className="relative bg-gradient-to-r from-amber-400 to-orange-400 text-white rounded-full px-8 py-3 text-sm font-medium transition-all duration-300 group overflow-hidden"
-                  onClick={onChatClick}
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255, 200, 0, 0.6)" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <GiCrystalBall /> Start a Chat
-                  </span>
-                  <motion.div 
-                    className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </motion.button>
-              </motion.div>
+            </div>
+            <div className="text-center md:text-left max-w-2xl">
+              <h2 className="text-4xl md:text-6xl font-bold text-[#120B41] mb-8 leading-tight fade-in" style={{ animationDelay: '0.3s' }}>
+                Every Problem Have A Solution Coco
+              </h2>
+              <p className="text-gray-600 text-lg md:text-xl mb-10 leading-relaxed fade-in" style={{ animationDelay: '0.6s' }}>
+                Lectus magna fringilla urna porttitor rhoncus dolor purus non. Convallis a cras semper auctor neque vitae tempus quam pellentesque. Tincidunt nunc pulvinar sapien et ligula ullamcorper.
+              </p>
+              <div className="mb-8 fade-in" style={{ animationDelay: '0.9s' }}>
+                <h3 className="text-3xl font-semibold text-[#120B41]">Holiya Zaikai</h3>
+                <p className="text-gray-500 text-lg">Writer, Numerologist, Palmist</p>
+              </div>
+              <div className="flex justify-center md:justify-start items-center gap-6 mb-10 fade-in" style={{ animationDelay: '1.2s' }}>
+                <span className="w-16 h-16 flex items-center justify-center rounded-full border-2 border-[#F88D72] text-[#F88D72] font-bold text-2xl pulse bg-[#F88D72]/10">25</span>
+                <span className="text-gray-600 text-lg">Years Experience</span>
+              </div>
+              <div className="flex justify-center md:justify-start gap-6 fade-in" style={{ animationDelay: '1.5s' }}>
+                <button className="bg-gradient-to-r from-[#F88D72] to-[#FF5733] text-white px-10 py-5 rounded-full font-medium text-xl hover:bg-gradient-to-r hover:from-[#F88D72]/90 hover:to-[#FF5733]/90 transition-all duration-300 glow-hover transform">Contact Us</button>
+                <button className="bg-gradient-to-r from-[#F88D72] to-[#FF5733] text-white px-10 py-5 rounded-full font-medium text-xl hover:bg-gradient-to-r hover:from-[#F88D72]/90 hover:to-[#FF5733]/90 transition-all duration-300 glow-hover transform">Let's Chat</button>
+              </div>
             </div>
           </div>
+          {/* Decorative Element */}
+          <div className="absolute top-0 left-0 w-40 h-40 bg-[#F88D72]/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#F88D72]/10 rounded-full translate-x-1/2 translate-y-1/2"></div>
+        </section>
 
-          {/* Animated cosmic background */}
-          <motion.div 
-            className="absolute inset-0 -z-10 opacity-20"
-            animate={{
-              backgroundPosition: ["0% 0%", "100% 100%"],
-            }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            style={{
-              backgroundImage: `radial-gradient(circle at center, #ffa500, #ff8c00, transparent 70%)`,
-              backgroundSize: "200% 200%"
-            }}
-          />
-        </motion.div>
-      </motion.div>
-    </section>
+        {/* CSS styles */}
+        <style jsx global>{`
+          .orbit-path {
+            animation: rotate 20s linear infinite;
+          }
+          @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          .star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #F88D72;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0.7;
+            animation: particle 5s infinite ease-in-out;
+          }
+          @keyframes particle {
+            0% { transform: translateY(0) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.7; }
+          }
+          .fade-in {
+            animation: fadeIn 1.5s ease-in-out forwards;
+          }
+          @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .scale-in {
+            animation: scaleIn 1s ease-out forwards;
+          }
+          @keyframes scaleIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .pulse {
+            animation: pulse 2s infinite;
+          }
+          @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+          }
+          .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(248, 141, 114, 0.5);
+            transform: translateY(-2px);
+          }
+          .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end) forwards;
+          }
+          @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+          }
+        `}</style>
+      </div>
+    </>
   );
 };
 
-export default function AstrologerSection() {
-  const handleContactClick = () => {
-    // Add your contact logic here
-    console.log('Contact button clicked!');
-  };
-
-  const handleChatClick = () => {
-    // Add your chat logic here
-    console.log('Chat button clicked!');
-  };
-
-  return (
-    <div className="relative overflow-hidden">
-      {/* Animated cosmic background for the entire section */}
-      <div className="fixed inset-0 -z-50">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              opacity: Math.random() * 0.5 + 0.1,
-              animation: `twinkle ${Math.random() * 5 + 3}s infinite alternate`
-            }}
-          />
-        ))}
-      </div>
-
-      <AstrologerCard
-        imageSrc="https://storage.googleapis.com/a1aa/image/a7223dca-076a-4806-e9db-a504608e98d9.jpg"
-        imageAlt="Portrait of an older woman astrologer sitting with candles around her, wearing a dark red cardigan and black top with a green pendant necklace"
-        name="Holiya Zaikai"
-        title="Writer, Numerologist, Palmist"
-        description="With decades of expertise, Holiya offers profound insights and guidance. Her holistic approach combines ancient wisdom with modern perspectives to address your unique challenges."
-        experience={25}
-        onContactClick={handleContactClick}
-        onChatClick={handleChatClick}
-      />
-
-      <style jsx global>{`
-        @keyframes twinkle {
-          0% { opacity: 0.1; }
-          100% { opacity: 0.8; }
-        }
-      `}</style>
-    </div>
-  );
-}
+export default AboutAstrologer;

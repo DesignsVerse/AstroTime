@@ -1,16 +1,19 @@
 "use client"
 import { Merriweather, Open_Sans } from 'next/font/google';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 // Configure fonts
 const merriweather = Merriweather({
-  weight: '400',
+  weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
 });
 
 const openSans = Open_Sans({
-  weight: '400',
+  weight: ['400', '600'],
   subsets: ['latin'],
   display: 'swap',
 });
@@ -21,148 +24,163 @@ export default function Footer() {
       <div className={`${openSans.className} bg-[#272b4a] text-white`}>
         <div className="max-w-[1920px] mx-auto px-6 sm:px-10 lg:px-20">
           {/* Top social icons */}
-          <div className="flex justify-end pt-6 space-x-6">
+          <div className="flex justify-end pt-8 space-x-4">
             <button
-              aria-label="Twitter"
-              className="w-8 h-8 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition"
+              aria-label="twitter"
+              className="w-10 h-10 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
             >
-              <i className="fab fa-twitter text-[14px]"></i>
+              <FontAwesomeIcon icon={faTwitter} className="text-[16px]" />
             </button>
             <button
-              aria-label="Facebook"
-              className="w-8 h-8 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition"
+              aria-label="facebook"
+              className="w-10 h-10 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
             >
-              <i className="fab fa-facebook-f text-[14px]"></i>
+              <FontAwesomeIcon icon={faFacebookF} className="text-[16px]" />
             </button>
             <button
-              aria-label="Instagram"
-              className="w-8 h-8 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition"
+              aria-label="instagram"
+              className="w-10 h-10 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
             >
-              <i className="fab fa-instagram text-[14px]"></i>
+              <FontAwesomeIcon icon={faInstagram} className="text-[16px]" />
             </button>
           </div>
-          <hr className="border-t border-[#3f4163] my-6" />
+          
+          <hr className="border-t border-[#3f4163] my-8" />
+          
           {/* Main top section */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-6 md:space-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-6">
             {/* Logo and text */}
             <div className="flex items-center space-x-4">
-              <Image
-                alt="Sun icon with coral color representing Suriya logo"
-                className="w-10 h-10"
-                height={40}
-                src="/ruby.png"
-                width={40}
-              />
-              <h1 className={`${merriweather.className} text-white text-[28px] leading-[34px] tracking-wide select-none`}>
-                Suriya
-              </h1>
-            </div>
-            {/* Phone */}
-            <div className="flex items-center space-x-4">
               <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center">
-                <i className="fas fa-phone-alt text-[#f68a6a] text-[24px]"></i>
+                <Image
+                  alt="Sun icon with coral color representing Suriya logo"
+                  className="w-8 h-8"
+                  height={32}
+                  src="/ruby.png"
+                  width={32}
+                />
               </div>
               <div>
-                <p className="text-[#f68a6a] text-[14px] font-normal mb-1">Phone</p>
-                <p className={`${merriweather.className} text-white text-[24px] leading-[28px]`}>
-                  000 - 123456789
+                <h1 className={`${merriweather.className} text-white text-3xl font-bold tracking-wide`}>
+                  Suriya
+                </h1>
+                <p className="text-[#a1a3b8] text-sm mt-1">Your cosmic guide to destiny</p>
+              </div>
+            </div>
+            
+            {/* Phone */}
+            <div className="flex items-center space-x-4">
+              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center hover:bg-[#f68a6a] group transition-colors duration-300">
+                <FontAwesomeIcon icon={faPhoneAlt} className="text-[#f68a6a] text-2xl group-hover:text-white" />
+              </div>
+              <div>
+                <p className="text-[#f68a6a] text-sm uppercase tracking-wider mb-1">Phone</p>
+                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#f68a6a] transition-colors duration-300`}>
+                  <a href="tel:000123456789">000 - 123456789</a>
                 </p>
               </div>
             </div>
+            
             {/* Email */}
             <div className="flex items-center space-x-4">
-              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center">
-                <i className="fas fa-envelope text-[#f68a6a] text-[24px]"></i>
+              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center hover:bg-[#f68a6a] group transition-colors duration-300">
+                <FontAwesomeIcon icon={faEnvelope} className="text-[#f68a6a] text-2xl group-hover:text-white" />
               </div>
               <div>
-                <p className="text-[#f68a6a] text-[14px] font-normal mb-1">Email id</p>
-                <p className={`${merriweather.className} text-white text-[24px] leading-[28px] font-bold`}>
-                  info@example.com
+                <p className="text-[#f68a6a] text-sm uppercase tracking-wider mb-1">Email id</p>
+                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#f68a6a] transition-colors duration-300`}>
+                  <a href="mailto:info@example.com">info@example.com</a>
                 </p>
               </div>
             </div>
           </div>
-          <hr className="border-t border-[#3f4163] my-6" />
+          
+          <hr className="border-t border-[#3f4163] my-8" />
+          
           {/* Middle section */}
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-[1100px] mx-auto text-white">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-[1100px] mx-auto py-8">
             {/* Left text block */}
-            <div className="text-[15px] leading-6 font-normal max-w-[300px]">
-              Dui accumsan sit amet nulla facilisi morbi tempus. Fames ac turpis egestas sed. Tortor consequat id porta nibh venenatis cras sed. Nam libero justo laoreet sit amet cursus sit amet habitasse.
+            <div className="space-y-4">
+              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>About Suriya</h3>
+              <p className="text-[#a1a3b8] leading-relaxed">
+                Dui accumsan sit amet nulla facilisi morbi tempus. Fames ac turpis egestas sed. Tortor consequat id porta nibh venenatis cras sed.
+              </p>
             </div>
-            {/* Horoscopes */}
-            <div className={`${merriweather.className} text-[#f68a6a] text-[20px] leading-[28px] font-semibold select-none`}>
-              Horoscope
+            
+            {/* Quick Links */}
+            <div className="space-y-4">
+              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>Horoscope</h3>
+              <ul className="space-y-2 text-[#a1a3b8]">
+                {['Daily', 'Weekly', 'Monthly', 'Yearly', 'Love', 'Career'].map((item) => (
+                  <li key={item} className="hover:text-[#f68a6a] transition-colors duration-300">
+                    <a href="#">{item} Horoscope</a>
+                  </li>
+                ))}
+              </ul>
             </div>
+            
             {/* Gemstones */}
-            <div className={`${merriweather.className} text-[#f68a6a] text-[20px] leading-[28px] font-semibold select-none`}>
-              Gemstones
+            <div className="space-y-4">
+              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>Gemstones</h3>
+              <ul className="space-y-2 text-[#a1a3b8]">
+                {['Ruby', 'Emerald', 'Sapphire', 'Diamond', 'Pearl', 'Topaz'].map((gem) => (
+                  <li key={gem} className="hover:text-[#f68a6a] transition-colors duration-300">
+                    <a href="#">{gem} Benefits</a>
+                  </li>
+                ))}
+              </ul>
             </div>
+            
             {/* Subscribe */}
-            <div>
-              <h3 className={`${merriweather.className} text-[#f68a6a] text-[20px] leading-[28px] font-semibold mb-3 select-none`}>
-                Subscribe
-              </h3>
-              <div className="space-y-3 max-w-[320px]">
+            <div className="space-y-4">
+              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>Subscribe</h3>
+              <p className="text-[#a1a3b8]">Get daily cosmic updates straight to your inbox</p>
+              <div className="space-y-3">
                 <input
-                  className="w-full bg-[#4a4f6e] rounded-lg py-3 px-4 placeholder:text-white placeholder:font-semibold placeholder:text-[16px] focus:outline-none"
+                  className="w-full bg-[#3f4163] border border-[#4a4f6e] rounded-lg py-3 px-4 placeholder:text-[#a1a3b8] focus:outline-none focus:ring-2 focus:ring-[#f68a6a] transition"
                   placeholder="Your Email"
                   type="email"
                 />
                 <button
-                  className={`${merriweather.className} w-full bg-[#f68a6a] rounded-lg py-3 text-white text-[18px] leading-[28px] font-semibold hover:bg-[#e77a5a] transition`}
+                  className={`${merriweather.className} w-full bg-[#f68a6a] hover:bg-[#e07a5a] rounded-lg py-3 text-white font-bold transition-colors duration-300 shadow-md hover:shadow-lg`}
                   type="button"
                 >
-                  Send Message
+                  Subscribe Now
                 </button>
               </div>
-              <p className="text-[13px] mt-2 max-w-[320px]">*Get your horoscope every day.</p>
+              <p className="text-[#a1a3b8] text-xs">*We'll never share your email with anyone</p>
             </div>
           </div>
-          <hr className="border-t border-[#3f4163] my-6" />
+          
+          <hr className="border-t border-[#3f4163] my-8" />
+          
           {/* Bottom bar */}
-          <div className="flex flex-col sm:flex-row justify-between items-center text-[14px] font-normal text-white pb-6">
-            <div className="mb-4 sm:mb-0 select-none">All Right Reserved © 2024 WeDesignTech.</div>
-            <div className="flex items-center space-x-4 select-none">
-              <span>Payment methods</span>
-              <Image
-                alt="Visa card logo"
-                className="h-7"
-                height={28}
-                src="ruby.png"
-                width={48}
-              />
-              <Image
-                alt="Mastercard logo"
-                className="h-7"
-                height={28}
-                src="ruby.png"
-                width={48}
-              />
-              <Image
-                alt="American Express card logo"
-                className="h-7"
-                height={28}
-                src="/ruby.png"
-                width={48}
-              />
-              <Image
-                alt="PayPal logo"
-                className="h-7"
-                height={28}
-                src="/ruby.png"
-                width={48}
-              />
-              <Image
-                alt="Discover card logo"
-                className="h-7"
-                height={28}
-                src="/ruby.png"
-                width={48}
-              />
+          <div className="flex flex-col md:flex-row justify-between items-center py-6">
+            <div className="text-[#a1a3b8] text-sm mb-4 md:mb-0">
+              © {new Date().getFullYear()} Suriya. All rights reserved.
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <span className="text-[#a1a3b8] text-sm mr-2">Secure payments:</span>
+              {['visa', 'mastercard', 'amex', 'paypal', 'discover'].map((card) => (
+                <div 
+                  key={card} 
+                  className="bg-white p-1 rounded-md hover:scale-110 transition-transform duration-300"
+                >
+                  <Image
+                    alt={`${card} card logo`}
+                    className="h-6 w-auto"
+                    height={24}
+                    src={`/ruby.png`}
+                    width={40}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+      
       <style jsx>{`
         body {
           font-family: ${openSans.style.fontFamily}, sans-serif;

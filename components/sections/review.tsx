@@ -1,77 +1,100 @@
-import React from 'react';
-import Image from 'next/image';
+"use client"
+import React, { useEffect } from 'react';
+import Swiper from 'swiper';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-const Review = () => {
+const testimonials = [
+  {
+    name: "Saara",
+    role: "Manager",
+    zodiac: "Leo",
+    image: "https://dt-suriya.myshopify.com/cdn/shop/files/testimonial.jpg?v=1683788419&width=550",
+    overlapImage: "/suriya-web.svg", // Add your overlap image URL here
+    rating: 3,
+    text: "Accumsan lacus vel facilisis volutpat est. Ornare suspendisse sed nisi lacus sed viverra tellus in. Lobortis scelerisque fermentum dui faucibus. Et odio pellentesque diam volutpat commodo. Odio morbi quis commodo odio aenean sed. Velit laoreet id donec ultrices tincidunt arcu non sodales. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Aliquet enim tortor at auctor."
+  },
+  // ... other testimonials
+];
+
+const Review: React.FC = () => {
+  // ... keep your existing useEffect and swiper configuration
+
   return (
-    <section className="max-w-7xl mx-auto px-6 sm:px-10 py-16">
-      <div className="flex flex-col items-center">
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="border-t border-[#f7f2ec] w-16"></div>
-          <div className="text-[#f28a73] text-2xl font-semibold">×</div>
-          <div className="border-t border-[#f7f2ec] w-16"></div>
+    <div className="max-w-6xl mx-auto px-4 py-16 relative"> {/* Increased container size */}
+      <div className="row">
+        <div className="text-center mb-12"> {/* Increased margin */}
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800"> {/* Larger heading */}
+            Our Customer Thoughts
+          </h2>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-serif text-[#1f2547] mb-3">
-          Our Customer Thoughts
-        </h2>
-        <div className="flex space-x-3 text-[#f28a73] text-sm mb-12">
-          <button
-            aria-label="Slide 1"
-            className="w-4 h-4 rounded-full border border-[#f28a73] bg-[#fce9e3]"
-          ></button>
-          <button
-            aria-label="Slide 2"
-            className="w-4 h-4 rounded-full border border-[#f28a73]"
-          ></button>
-          <button
-            aria-label="Slide 3"
-            className="w-4 h-4 rounded-full border border-[#f28a73]"
-          ></button>
-        </div>
-      </div>
-      <div className="relative bg-[#f9f9f9] rounded-2xl p-10 sm:p-16 flex flex-col sm:flex-row items-center sm:items-start gap-10 sm:gap-16">
-        <div className="relative flex-shrink-0">
-          <Image
-            alt="Portrait of a woman with curly black hair, wearing glasses and a brown turtleneck sweater, on a light gray circular background"
-            className="rounded-full w-48 h-48 object-cover relative z-10"
-            height={200}
-            src="/ruby.png"
-            width={200}
-          />
-          <Image
-            alt="Orange line art zodiac circle with astrology symbols and stars on a white background"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] pointer-events-none select-none"
-            height={320}
-            src="/ruby.png"
-            style={{ zIndex: 0 }}
-            width={320}
-          />
-        </div>
-        <div className="max-w-3xl relative z-10 flex flex-col justify-center">
-          <p className="text-base sm:text-lg leading-relaxed mb-6 max-w-xl">
-            Accumsan lacus vel facilisis volutpat est. Ornare suspendisse sed nisi lacus sed viverra tellus in. Lobortis scelerisque fermentum dui faucibus. Et odio pellentesque diam volutpat commodo. Odio morbi quis commodo odio aenean sed. Velit laoreet id donec ultrices tincidunt arcu non sodales. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Aliquet enim tortor at auctor.
-          </p>
-          <div className="flex items-center mb-4 space-x-1 text-yellow-400 text-lg">
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="far fa-star"></i>
+
+        <div className="swiper testimonialsSwiper" id="testimonial-slider">
+          <div className="swiper-wrapper">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="swiper-slide">
+                <div className="flex flex-col md:flex-row bg-white rounded-3xl shadow-xl overflow-hidden p-10 h-full"> {/* Larger box */}
+                  {/* Image Section - Made larger */}
+                  <div className="w-full md:w-2/5 pr-0 md:pr-10 mb-8 md:mb-0 relative flex items-center justify-center">
+                    {/* Background Pattern - Now properly visible */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <img
+                        loading="lazy"
+                        src={testimonial.overlapImage || testimonial.image}
+                        alt={`${testimonial.name} background`}
+                        className="h-[90%] w-[90%] object-contain opacity-30" // Proper sizing and visibility
+                      />
+                    </div>
+                    
+                    {/* Main Circular Image - Larger size */}
+                    <div className="relative w-56 h-56 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-white shadow-xl z-10"> {/* Added z-index */}
+                      <img
+                        loading="lazy"
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Content Section - Adjusted spacing */}
+                  <div className="w-full md:w-3/5 flex flex-col justify-center py-4">
+                    <blockquote className="space-y-6">
+                      <p className="text-gray-600 italic text-lg md:text-xl leading-relaxed">
+                        {testimonial.text}
+                      </p>
+                      <div className="dt-sc-rating">
+                        <div className="flex space-x-1">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                          ))}
+                          {[...Array(5 - testimonial.rating)].map((_, i) => (
+                            <svg key={i} className="w-10 h-10 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" opacity="0.5" />
+                            </svg>
+                          ))}
+                        </div>
+                      </div>
+                      <cite className="not-italic">
+                        <p className="font-bold text-gray-800 text-xl">{testimonial.name} - {testimonial.role}</p>
+                        <span className="text-gray-500 text-base">Zodiac - {testimonial.zodiac}</span>
+                      </cite>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <h3 className="text-[#f28a73] font-serif text-xl sm:text-2xl font-semibold mb-1">
-            Saara - Manager
-          </h3>
-          <p className="text-gray-600 text-sm sm:text-base">Zodiac - Leo</p>
+          <div className="swiper-pagination mt-10"></div>
+          <div className="swiper-button-prev"></div>
+          <div className="swiper-button-next"></div>
         </div>
-        <Image
-          alt="Orange line art quotation marks stacked vertically"
-          className="absolute right-10 top-1/2 -translate-y-1/2 w-20 h-40 pointer-events-none select-none hidden sm:block"
-          height={160}
-          src="/ruby.png"
-          style={{ zIndex: 0 }}
-          width={80}
-        />
       </div>
-    </section>
+    </div>
   );
 };
 

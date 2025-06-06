@@ -1,4 +1,4 @@
-import Header from '@/components/sections/nevbar';
+import Header from '@/components/sections/header';
 import Hero from '@/components/sections/hero';
 import AstrologerProfile from '@/components/sections/about';
 import RashiProductPage from '@/components/sections/Rashistone';
@@ -10,13 +10,14 @@ import Review from '@/components/sections/review';
 import Experts from '@/components/sections/astro';
 import Gems from '@/components/sections/gemstone';
 import Magic from '@/components/sections/magic';
+import AboutAstrologer from '@/components/sections/about';
 
 export default function Home() {
   return (
       <>
       <Header/>
       <Hero />
-      <AstrologerProfile/>
+      <AboutAstrologer/>
       <RashiProductPage/>
       <ComponentStore/>
       <Services/>

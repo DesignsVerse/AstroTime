@@ -17,7 +17,7 @@ const RashiProductPage: React.FC = () => {
     const zodiacSigns: ZodiacSign[] = [
         { 
           name: 'Aries', 
-          src: '/ruby.png',
+          src: '/rashi/1.webp',
           product: {
             title: 'Diamond',
             image: '/ruby.png',
@@ -27,7 +27,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Taurus', 
-          src: '/ruby.png',
+          src: '/rashi/2.webp',
           product: {
             title: 'Emerald',
             image: '/ruby.png',
@@ -37,7 +37,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Gemini', 
-          src: '/ruby.png',
+          src: '/rashi/3.webp',
           product: {
             title: 'Pearl',
             image: '/ruby.png',
@@ -47,7 +47,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Cancer', 
-          src: '/ruby.png',
+          src: '/rashi/4.webp',
           product: {
             title: 'Ruby',
             image: '/ruby.png',
@@ -57,7 +57,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Leo', 
-          src: '/ruby.png',
+          src: '/rashi/5.webp',
           product: {
             title: 'Peridot',
             image: '/ruby.png',
@@ -67,7 +67,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Virgo', 
-          src: '/ruby.png',
+          src: '/rashi/6.webp',
           product: {
             title: 'Sapphire',
             image: '/ruby.png',
@@ -77,7 +77,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Libra', 
-          src: '/ruby.png',
+          src: '/rashi/7.webp',
           product: {
             title: 'Opal',
             image: '/ruby.png',
@@ -87,7 +87,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Scorpio', 
-          src: '/ruby.png',
+          src: '/rashi/8.webp',
           product: {
             title: 'Topaz',
             image: '/ruby.png',
@@ -97,7 +97,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Sagittarius', 
-          src: '/ruby.png',
+          src: '/rashi/9.webp',
           product: {
             title: 'Turquoise',
             image: '/ruby.png',
@@ -107,7 +107,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Capricornus', 
-          src: '/ruby.png',
+          src: '/rashi/10.webp',
           product: {
             title: 'Garnet',
             image: '/ruby.png',
@@ -117,7 +117,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Aquarius', 
-          src: '/ruby.png',
+          src: '/rashi/11.webp',
           product: {
             title: 'Amethyst',
             image: '/ruby.png',
@@ -127,7 +127,7 @@ const RashiProductPage: React.FC = () => {
         },
         { 
           name: 'Pisces', 
-          src: '/ruby.png',
+          src: '/rashi/12.webp',
           product: {
             title: 'Aquamarine',
             image: '/ruby.png',
@@ -142,46 +142,54 @@ const RashiProductPage: React.FC = () => {
   const [hoveredSign, setHoveredSign] = useState<string | null>(null);
 
   return (
-    <>
-     
-      <div className="bg-white text-[#1a1a1a] font-serif" style={{ fontFamily: '"Times New Roman", serif' }}>
-        <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-12">
-          {/* Left side: Zodiac grid */}
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-6">
+    <div className="bg-gradient-to-b from-white to-gray-50 text-[#1a1a1a] font-serif min-h-screen" style={{ fontFamily: '"Times New Roman", serif' }}>
+      {/* Main Product Heading at the very top */}
+      <div className="text-center pt-12 mb-8">
+        <h2 className="text-3xl md:text-4xl font-light text-[#120B41] tracking-wide">
+          Explore Our <br />
+          <span className="text-5xl md:text-6xl font-bold text-[#F88D72] inline-block">Products</span>
+        </h2>
+      </div>
+
+      <div className="max-w-[1800px] mx-auto px-8 py-4 flex flex-col lg:flex-row gap-12">
+        {/* Left side: Zodiac grid - now at the bottom */}
+        <div className="lg:hidden w-full">
+          <h3 className="text-xl font-normal mb-4 text-gray-800">Select Your Zodiac Sign</h3>
+          <div className="grid grid-cols-3 gap-3">
             {zodiacSigns.map((sign) => (
               <div 
                 key={sign.name}
-                className="relative h-[120px]"
+                className="relative h-[200px] cursor-pointer group"
                 onMouseEnter={() => setHoveredSign(sign.name)}
                 onMouseLeave={() => setHoveredSign(null)}
                 onClick={() => setSelectedSign(sign)}
               >
                 {/* Zodiac Sign (animated on hover) */}
-                <div className={`absolute inset-0 flex flex-col items-center justify-center gap-3 border rounded-md p-6 transition-all duration-500 ease-in-out ${
-                  selectedSign.name === sign.name ? 'border-red-400 text-red-500' : 'border-gray-300'
+                <div className={`absolute inset-0 flex flex-col items-center justify-center gap-3 border-2 rounded-xl p-2 transition-all duration-500 ease-in-out ${
+                  selectedSign.name === sign.name ? 'border-red-400 text-red-500 bg-red-50 shadow-lg' : 'border-gray-200 hover:border-red-200 hover:shadow-md'
                 } ${
                   hoveredSign === sign.name ? 'opacity-0 -translate-y-6' : 'opacity-100 translate-y-0'
                 }`}>
                   <Image
                     alt={`${sign.name} zodiac symbol`}
-                    className="w-14 h-14"
+                    className="w-20 h-20 object-contain transform group-hover:scale-110 transition-transform duration-300"
                     src={sign.src}
-                    width={56}
-                    height={56}
+                    width={80}
+                    height={80}
                     unoptimized
                   />
-                  <span className="text-[11px] text-center font-light">
+                  <span className="text-sm text-center font-light">
                     {sign.name}
                   </span>
                 </div>
 
                 {/* Product Image (appears on hover) */}
-                <div className={`absolute inset-0 flex items-center justify-center border rounded-md transition-all duration-500 ease-in-out ${
-                  hoveredSign === sign.name ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                <div className={`absolute inset-0 flex items-center justify-center border-2 rounded-xl bg-white transition-all duration-500 ease-in-out ${
+                  hoveredSign === sign.name ? 'opacity-100 translate-y-0 shadow-lg' : 'opacity-0 translate-y-6'
                 }`}>
                   <Image
                     alt={`${sign.product.title} product`}
-                    className="w-full h-full object-contain p-4"
+                    className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-300"
                     src={sign.product.image}
                     width={80}
                     height={80}
@@ -191,36 +199,93 @@ const RashiProductPage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Right side: Product details */}
-          <div className="flex-1 max-w-lg flex flex-col items-start gap-6">
-            <div className="flex items-center gap-2 text-xs text-[#d2691e] cursor-pointer select-none font-light">
-              <span className="text-xs leading-none">×</span>
-              <span>Products</span>
-            </div>
-            <h2 className="text-lg text-[#1a1a1a] font-normal">{selectedSign.product.title}</h2>
+        {/* Right side: Product details - now on top for mobile */}
+        <div className="w-full lg:flex-1 flex flex-col items-center lg:items-start gap-12">
+          <div className="flex items-center gap-2 text-sm text-[#d2691e] cursor-pointer select-none font-light hover:text-[#b35a1a] transition-colors">
+            <span className="text-xs leading-none">×</span>
+            <span>Zodiac Gemstones</span>
+          </div>
+          
+          <div className="text-center lg:text-left w-full">
+            <h2 className="text-5xl font-normal mb-3 text-gray-800">{selectedSign.product.title}</h2>
+            <p className="text-xl text-gray-600">{selectedSign.product.month}</p>
+          </div>
+          
+          <div className="w-full max-w-[600px] h-[500px] bg-white rounded-2xl shadow-xl flex items-center justify-center p-12 transform hover:scale-[1.02] transition-transform duration-300">
             <Image
               alt={`${selectedSign.product.title} stone`}
-              className="w-full max-w-[350px] h-[230px] object-contain rounded-md shadow-md"
+              className="w-full h-full object-contain"
               src={selectedSign.product.image}
-              width={350}
-              height={230}
+              width={600}
+              height={500}
               unoptimized
             />
-            <div className="text-[11px] text-[#1a1a1a] font-light leading-relaxed">
-              <strong className="block text-[12px] mb-2 font-normal">{selectedSign.product.month}</strong>
-              {selectedSign.product.description}
-            </div>
-            <button
-              className="bg-[#ff7f50] text-[10px] text-white rounded-full px-5 py-2 mt-2 hover:bg-[#e76b3c] transition-colors duration-300"
-              type="button"
-            >
-              More Details
-            </button>
+          </div>
+          
+          <div className="text-lg text-[#1a1a1a] font-light leading-relaxed max-w-[600px]">
+            {selectedSign.product.description}
+          </div>
+          
+          <button
+            className="bg-[#ff7f50] text-lg text-white rounded-full px-10 py-4 hover:bg-[#e76b3c] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            type="button"
+          >
+            View Detailed Information
+          </button>
+        </div>
+
+        {/* Left side: Zodiac grid - now on the right for desktop */}
+        <div className="hidden lg:block lg:w-[800px]">
+          <h3 className="text-3xl font-normal mb-8 text-gray-800">Select Your Zodiac Sign</h3>
+          <div className="grid grid-cols-3 gap-6">
+            {zodiacSigns.map((sign) => (
+              <div 
+                key={sign.name}
+                className="relative h-[280px] cursor-pointer group"
+                onMouseEnter={() => setHoveredSign(sign.name)}
+                onMouseLeave={() => setHoveredSign(null)}
+                onClick={() => setSelectedSign(sign)}
+              >
+                {/* Zodiac Sign (animated on hover) */}
+                <div className={`absolute inset-0 flex flex-col items-center justify-center gap-5 border-2 rounded-xl p-8 transition-all duration-500 ease-in-out ${
+                  selectedSign.name === sign.name ? 'border-red-400 text-red-500 bg-red-50 shadow-lg' : 'border-gray-200 hover:border-red-200 hover:shadow-md'
+                } ${
+                  hoveredSign === sign.name ? 'opacity-0 -translate-y-6' : 'opacity-100 translate-y-0'
+                }`}>
+                  <Image
+                    alt={`${sign.name} zodiac symbol`}
+                    className="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300"
+                    src={sign.src}
+                    width={128}
+                    height={128}
+                    unoptimized
+                  />
+                  <span className="text-lg text-center font-light">
+                    {sign.name}
+                  </span>
+                </div>
+
+                {/* Product Image (appears on hover) */}
+                <div className={`absolute inset-0 flex items-center justify-center border-2 rounded-xl bg-white transition-all duration-500 ease-in-out ${
+                  hoveredSign === sign.name ? 'opacity-100 translate-y-0 shadow-lg' : 'opacity-0 translate-y-6'
+                }`}>
+                  <Image
+                    alt={`${sign.product.title} product`}
+                    className="w-full h-full object-contain p-8 transform group-hover:scale-105 transition-transform duration-300"
+                    src={sign.product.image}
+                    width={128}
+                    height={128}
+                    unoptimized
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
