@@ -45,7 +45,7 @@ export default function Experts() {
       <section className={`${merriweather.className} bg-[#f7f7f7] relative overflow-hidden py-16`}>
         {/* Animated background element */}
         <motion.div 
-          className="absolute top-0 left-0 w-full h-[180px] bg-gradient-to-r from-[#f28a6c] to-[#1a254f] opacity-10 -skew-y-[3deg] origin-top-left"
+          className="absolute top-0 left-0 w-full h-[180px] bg-gradient-to-r from-[#800000] to-[#1a254f] opacity-10 -skew-y-[3deg] origin-top-left"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.1 }}
           transition={{ duration: 1 }}
@@ -63,14 +63,14 @@ export default function Experts() {
           >
             <div>
               <h2 className="text-[#1a254f] text-3xl md:text-4xl font-bold leading-tight">
-                Talk With Our <span className="text-[#f28a6c]">Experts</span>
+                Talk With Our <span className="text-[#800000]">Experts</span>
               </h2>
               <p className="text-[#4a4a4a] mt-3 max-w-2xl">
                 Get personalized guidance from our team of experienced professionals.
               </p>
             </div>
             <button
-              className="text-[#f28a6c] border border-[#f28a6c] rounded-full px-6 py-2 text-sm font-medium leading-6 hover:bg-[#f28a6c] hover:text-white transition-all duration-300 hover:shadow-lg"
+              className="text-[#800000] border border-[#800000] rounded-full px-6 py-2 text-sm font-medium leading-6 hover:bg-[#800000] hover:text-white transition-all duration-300 hover:shadow-lg"
               type="button"
               aria-label="View all experts"
             >
@@ -83,7 +83,7 @@ export default function Experts() {
             {experts.map((expert, index) => (
               <motion.div
                 key={expert.name}
-                className="bg-white border border-[#fff0e9] rounded-xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 hover:shadow-lg transition-all duration-300 hover:border-[#f28a6c]/30"
+                className="bg-white border border-[#fff0e9] rounded-xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 hover:shadow-lg transition-all duration-300 hover:border-[#800000]/30"
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -99,7 +99,7 @@ export default function Experts() {
                     src={expert.image}
                     priority={index === 0}
                   />
-                  <div className="absolute -bottom-2 -right-2 bg-[#f28a6c] text-white text-xs font-bold px-2 py-1 rounded-full">
+                  <div className="absolute -bottom-2 -right-2 bg-[#800000] text-white text-xs font-bold px-2 py-1 rounded-full">
                     Online
                   </div>
                 </div>
@@ -119,7 +119,7 @@ export default function Experts() {
                     <span className="text-xs text-gray-500">(24)</span>
                   </div>
                   <button
-                    className="bg-gradient-to-r from-[#f28a6c] to-[#e06f4a] text-white rounded-full px-6 py-2 text-sm font-medium leading-6 hover:shadow-md transition-all duration-300 w-full sm:w-auto"
+                    className="bg-gradient-to-r from-[#800000] to-[#e06f4a] text-white rounded-full px-6 py-2 text-sm font-medium leading-6 hover:shadow-md transition-all duration-300 w-full sm:w-auto"
                     type="button"
                     aria-label={`Chat with ${expert.name}`}
                   >
@@ -138,9 +138,9 @@ export default function Experts() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-24 h-[1px] bg-gradient-to-r from-transparent to-[#f28a6c]"></div>
-            <div className="text-[#f28a6c] text-2xl leading-none select-none animate-pulse">✧</div>
-            <div className="w-24 h-[1px] bg-gradient-to-l from-transparent to-[#f28a6c]"></div>
+            <div className="w-24 h-[1px] bg-gradient-to-r from-transparent to-[#800000]"></div>
+            <div className="text-[#800000] text-2xl leading-none select-none animate-pulse">✧</div>
+            <div className="w-24 h-[1px] bg-gradient-to-l from-transparent to-[#800000]"></div>
           </motion.div>
         </div>
       </section>

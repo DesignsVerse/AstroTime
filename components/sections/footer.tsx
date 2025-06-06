@@ -27,19 +27,19 @@ export default function Footer() {
           <div className="flex justify-end pt-8 space-x-4">
             <button
               aria-label="twitter"
-              className="w-10 h-10 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 border border-[#800000] rounded-full flex items-center justify-center text-[#800000] hover:bg-[#800000] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
             >
               <FontAwesomeIcon icon={faTwitter} className="text-[16px]" />
             </button>
             <button
               aria-label="facebook"
-              className="w-10 h-10 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 border border-[#800000] rounded-full flex items-center justify-center text-[#800000] hover:bg-[#800000] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
             >
               <FontAwesomeIcon icon={faFacebookF} className="text-[16px]" />
             </button>
             <button
               aria-label="instagram"
-              className="w-10 h-10 border border-[#f68a6a] rounded-full flex items-center justify-center text-[#f68a6a] hover:bg-[#f68a6a] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 border border-[#800000] rounded-full flex items-center justify-center text-[#800000] hover:bg-[#800000] hover:text-[#272b4a] transition-all duration-300 hover:scale-110"
             >
               <FontAwesomeIcon icon={faInstagram} className="text-[16px]" />
             </button>
@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-6">
             {/* Logo and text */}
             <div className="flex items-center space-x-4">
-              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center">
+              <div className="border border-[#800000] rounded-full w-16 h-16 flex items-center justify-center">
                 <Image
                   alt="Sun icon with coral color representing Suriya logo"
                   className="w-8 h-8"
@@ -70,12 +70,12 @@ export default function Footer() {
             
             {/* Phone */}
             <div className="flex items-center space-x-4">
-              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center hover:bg-[#f68a6a] group transition-colors duration-300">
-                <FontAwesomeIcon icon={faPhoneAlt} className="text-[#f68a6a] text-2xl group-hover:text-white" />
+              <div className="border border-[#800000] rounded-full w-16 h-16 flex items-center justify-center hover:bg-[#800000] group transition-colors duration-300">
+                <FontAwesomeIcon icon={faPhoneAlt} className="text-[#800000] text-2xl group-hover:text-white" />
               </div>
               <div>
-                <p className="text-[#f68a6a] text-sm uppercase tracking-wider mb-1">Phone</p>
-                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#f68a6a] transition-colors duration-300`}>
+                <p className="text-[#800000] text-sm uppercase tracking-wider mb-1">Phone</p>
+                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#800000] transition-colors duration-300`}>
                   <a href="tel:000123456789">000 - 123456789</a>
                 </p>
               </div>
@@ -83,12 +83,12 @@ export default function Footer() {
             
             {/* Email */}
             <div className="flex items-center space-x-4">
-              <div className="border border-[#f68a6a] rounded-full w-16 h-16 flex items-center justify-center hover:bg-[#f68a6a] group transition-colors duration-300">
-                <FontAwesomeIcon icon={faEnvelope} className="text-[#f68a6a] text-2xl group-hover:text-white" />
+              <div className="border border-[#800000] rounded-full w-16 h-16 flex items-center justify-center hover:bg-[#800000] group transition-colors duration-300">
+                <FontAwesomeIcon icon={faEnvelope} className="text-[#800000] text-2xl group-hover:text-white" />
               </div>
               <div>
-                <p className="text-[#f68a6a] text-sm uppercase tracking-wider mb-1">Email id</p>
-                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#f68a6a] transition-colors duration-300`}>
+                <p className="text-[#800000] text-sm uppercase tracking-wider mb-1">Email id</p>
+                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#800000] transition-colors duration-300`}>
                   <a href="mailto:info@example.com">info@example.com</a>
                 </p>
               </div>
@@ -101,7 +101,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-[1100px] mx-auto py-8">
             {/* Left text block */}
             <div className="space-y-4">
-              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>About Suriya</h3>
+              <h3 className={`${merriweather.className} text-[#800000] text-xl font-bold`}>About Suriya</h3>
               <p className="text-[#a1a3b8] leading-relaxed">
                 Dui accumsan sit amet nulla facilisi morbi tempus. Fames ac turpis egestas sed. Tortor consequat id porta nibh venenatis cras sed.
               </p>
@@ -109,10 +109,10 @@ export default function Footer() {
             
             {/* Quick Links */}
             <div className="space-y-4">
-              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>Horoscope</h3>
+              <h3 className={`${merriweather.className} text-[#800000] text-xl font-bold`}>Horoscope</h3>
               <ul className="space-y-2 text-[#a1a3b8]">
                 {['Daily', 'Weekly', 'Monthly', 'Yearly', 'Love', 'Career'].map((item) => (
-                  <li key={item} className="hover:text-[#f68a6a] transition-colors duration-300">
+                  <li key={item} className="hover:text-[#800000] transition-colors duration-300">
                     <a href="#">{item} Horoscope</a>
                   </li>
                 ))}
@@ -121,10 +121,10 @@ export default function Footer() {
             
             {/* Gemstones */}
             <div className="space-y-4">
-              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>Gemstones</h3>
+              <h3 className={`${merriweather.className} text-[#800000] text-xl font-bold`}>Gemstones</h3>
               <ul className="space-y-2 text-[#a1a3b8]">
                 {['Ruby', 'Emerald', 'Sapphire', 'Diamond', 'Pearl', 'Topaz'].map((gem) => (
-                  <li key={gem} className="hover:text-[#f68a6a] transition-colors duration-300">
+                  <li key={gem} className="hover:text-[#800000] transition-colors duration-300">
                     <a href="#">{gem} Benefits</a>
                   </li>
                 ))}
@@ -133,16 +133,16 @@ export default function Footer() {
             
             {/* Subscribe */}
             <div className="space-y-4">
-              <h3 className={`${merriweather.className} text-[#f68a6a] text-xl font-bold`}>Subscribe</h3>
+              <h3 className={`${merriweather.className} text-[#800000] text-xl font-bold`}>Subscribe</h3>
               <p className="text-[#a1a3b8]">Get daily cosmic updates straight to your inbox</p>
               <div className="space-y-3">
                 <input
-                  className="w-full bg-[#3f4163] border border-[#4a4f6e] rounded-lg py-3 px-4 placeholder:text-[#a1a3b8] focus:outline-none focus:ring-2 focus:ring-[#f68a6a] transition"
+                  className="w-full bg-[#3f4163] border border-[#4a4f6e] rounded-lg py-3 px-4 placeholder:text-[#a1a3b8] focus:outline-none focus:ring-2 focus:ring-[#800000] transition"
                   placeholder="Your Email"
                   type="email"
                 />
                 <button
-                  className={`${merriweather.className} w-full bg-[#f68a6a] hover:bg-[#e07a5a] rounded-lg py-3 text-white font-bold transition-colors duration-300 shadow-md hover:shadow-lg`}
+                  className={`${merriweather.className} w-full bg-[#800000] hover:bg-[#e07a5a] rounded-lg py-3 text-white font-bold transition-colors duration-300 shadow-md hover:shadow-lg`}
                   type="button"
                 >
                   Subscribe Now

@@ -1,212 +1,142 @@
-'use client';
+import React from 'react';
+import Head from 'next/head';
 
-import { Merriweather } from 'next/font/google';
-import { useState } from 'react';
-import { FaStar, FaHeart, FaBriefcase, FaUsers, FaSun } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-
-// Configure Merriweather font
-const merriweather = Merriweather({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const serviceVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }),
-  hover: {
-    y: -10,
-    transition: { duration: 0.3 }
-  }
-};
-
-export default function Services() {
-  const [hoveredService, setHoveredService] = useState<number | null>(null);
-
+const Service = () => {
   const services = [
     {
-      id: 1,
-      title: "Birth Chart Readings",
-      description: "Unlock the secrets of your natal chart with our comprehensive astrological analysis.",
-      icon: <FaStar className="w-8 h-8 text-white" />,
-      bgImage: "/service/1.avif"
+      title: 'Lal Kitab Report',
+      description: 'Unlock success, prosperity, and positivity with tailored Lal Kitab remedies.',
+      icon: 'https://storage.googleapis.com/a1aa/image/d381bd19-4717-46df-3b07-2fa45ecba3c2.jpg',
     },
     {
-      id: 2,
-      title: "Compatibility Assessments",
-      description: "Discover your cosmic connection with partners, friends, or colleagues.",
-      icon: <FaHeart className="w-8 h-8 text-white" />,
-      bgImage: "/service/2.webp"
+      title: 'Book Consultation Call',
+      description: 'Receive personalized guidance on life, love, career, business, and finances.',
+      icon: 'https://storage.googleapis.com/a1aa/image/d5a6a90d-5fe4-4789-277f-cb4324ad6115.jpg',
     },
     {
-      id: 3,
-      title: "Career Guidance",
-      description: "Align your professional path with your astrological strengths and potentials.",
-      icon: <FaBriefcase className="w-8 h-8 text-white" />,
-      bgImage: "/service/3.webp"
+      title: 'Couple Kundali',
+      description: 'Ensure marital harmony with precise Kundali Milan horoscope matching.',
+      icon: 'https://storage.googleapis.com/a1aa/image/2f9b05b5-ae7d-4fe4-6572-c1f82cd1aa60.jpg',
     },
     {
-      id: 4,
-      title: "Relationship Advice",
-      description: "Navigate your relationships with celestial wisdom and understanding.",
-      icon: <FaUsers className="w-8 h-8 text-white" />,
-      bgImage: "/service/4.webp"
+      title: 'Personalized Kundali',
+      description: 'Comprehensive 10+ year predictions for career, health, love, and marriage.',
+      icon: 'https://storage.googleapis.com/a1aa/image/cea2cb3e-5330-4158-7de2-52f2a15b0584.jpg',
     },
     {
-      id: 5,
-      title: "Sun Signs Consultation",
-      description: "Personalized insights based on your zodiac sign's current transits.",
-      icon: <FaSun className="w-8 h-8 text-white" />,
-      bgImage: "/service/5.webp"
-    }
+      title: 'Mega Numerology Webinar',
+      description: 'Join our 2-day live numerology webinar on Zoom for deep insights.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
+    {
+      title: 'Lal Kitab Webinar',
+      description: 'Explore Lal Kitab astrology in our live Zoom webinar.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
+    {
+      title: 'Kaal Sarp & Manglik Dosh Report',
+      description: 'Balance your life with remedies for Kaal Sarp and Manglik Dosh.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
+    {
+      title: 'Fortune Report',
+      description: 'Align with cosmic energies to attract success, wealth, and positivity.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
+    {
+      title: 'Baby Name Report',
+      description: 'Discover numerologically aligned name suggestions for your child.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
+    {
+      title: 'Buy Gemstones',
+      description: 'Browse our curated collection of astrological gemstones.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
+    {
+      title: 'Our Courses',
+      description: 'Master Astrology, Numerology, and Vastu with our online courses.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
+    {
+      title: 'Buy Rudraksha',
+      description: 'Explore our authentic Rudraksha collection for spiritual growth.',
+      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+    },
   ];
 
   return (
-    <section className={`${merriweather.className} bg-gradient-to-b from-gray-50 to-white py-32 px-4`}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-5xl font-bold mb-6 text-[#1a1f3d]"
-          >
-            Our Astrological Services
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl max-w-2xl mx-auto text-gray-600 leading-relaxed"
-          >
-            Harness the power of the cosmos with our expert astrological guidance and personalized celestial insights.
-          </motion.p>
-        </div>
+    <React.Fragment>
+      <Head>
+        <title>Our Services - Premium Astrology Solutions</title>
+        <meta
+          name="description"
+          content="Explore our premium astrology services including Kundali, Lal Kitab, Numerology, and more for personal growth and success."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+      </Head>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              custom={index}
-              initial="hidden"
-              animate="visible"
-              whileHover="hover"
-              variants={serviceVariants}
-              className="relative group"
-            >
-              <div 
-                className="service-card h-[420px] w-full rounded-2xl overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg"
-                onMouseEnter={() => setHoveredService(service.id)}
-                onMouseLeave={() => setHoveredService(null)}
+      <div className="relative min-h-screen bg-gradient-to-b from-[#fdf6f0] to-[#f8e1e1] py-16 overflow-hidden">
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#5a0808] font-merriweather mb-4 tracking-tight">
+              Our Premium Services
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto font-montserrat leading-relaxed">
+              Discover our expertly crafted astrology services, designed to bring clarity, balance, and transformation to your life.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden group"
               >
-                {/* Background image that appears on hover */}
-                <div 
-                  className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${hoveredService === service.id ? 'opacity-20 scale-110' : 'opacity-0 scale-100'}`}
-                  style={{ 
-                    backgroundImage: `url(${service.bgImage})`,
-                    filter: 'blur(1px)'
-                  }}
-                />
-                
-                <div className="relative z-10 h-full flex flex-col items-center justify-between p-8">
-                  <div className="text-center">
-                    <div className="icon-bg mb-8 mx-auto">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-[#1a1f3d] leading-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#5a0808]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div className="relative p-6 flex flex-col items-center text-center h-full">
+                  <div className="bg-[#f8e1e1] rounded-full w-20 h-20 flex items-center justify-center mb-6 shadow-md">
+                    {service.icon ? (
+                      <img
+                        alt={`Icon for ${service.title}`}
+                        className="w-12 h-12 object-contain"
+                        src={service.icon}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="text-[#5a0808] text-2xl">
+                        <i className="fas fa-star"></i>
+                      </div>
+                    )}
                   </div>
-                  
-                  {/* Read More button that appears on hover */}
-                  <motion.button
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ 
-                      opacity: hoveredService === service.id ? 1 : 0,
-                      y: hoveredService === service.id ? 0 : 20
-                    }}
-                    className="w-full px-3 py-3 bg-gradient-to-r from-[#f9a8d4] to-[#fcd5b2] text-white rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:from-[#f88ec9] hover:to-[#facaa5]"
-                  >
-                    Explore Service
-                  </motion.button>
+                  <h3 className="text-[#5a0808] font-bold text-xl font-merriweather mb-3 tracking-wide">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm font-montserrat leading-relaxed flex-grow px-4">
+                    {service.description}
+                  </p>
+                  <button className="mt-4 bg-gradient-to-r from-[#5a0808] to-[#8b1e1e] hover:from-[#3a0505] hover:to-[#6b1515] text-white font-semibold rounded-lg px-6 py-2 transition-all duration-300 transform hover:scale-105 w-full max-w-[180px] shadow-md">
+                    Learn More
+                  </button>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="text-center mt-16"
-        >
-          <button className="px-8 py-3 border-2 border-[#1a1f3d] text-[#1a1f3d] rounded-full font-semibold hover:bg-[#1a1f3d] hover:text-white transition-colors duration-300">
-            View All Services
-          </button>
-        </motion.div>
       </div>
-
-      <style jsx>{`
-        .icon-bg {
-          background: linear-gradient(135deg, #fcd5b2 0%, #f9a8d4 100%);
-          border-radius: 9999px;
-          width: 80px;
-          height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 10px 15px -3px rgb(249 168 212 / 0.3),
-            0 4px 6px -4px rgb(252 213 178 / 0.4);
-          transition: all 0.3s ease;
-        }
-
-        .service-card {
-          position: relative;
-          overflow: hidden;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .service-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #f9a8d4, #fcd5b2);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover::before {
-          opacity: 1;
-        }
-
-        .service-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15);
-        }
-
-        .icon-bg:hover {
-          transform: scale(1.1) rotate(5deg);
-          box-shadow: 0 15px 25px -5px rgb(249 168 212 / 0.4),
-            0 10px 10px -5px rgb(252 213 178 / 0.3);
-        }
-      `}</style>
-    </section>
+    </React.Fragment>
   );
-}
+};
+
+export default Service;
