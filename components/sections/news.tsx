@@ -25,9 +25,9 @@ export default function News() {
       <section className={`${merriweather.className} bg-white text-[#1a2238] max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20`}>
         <div className="flex flex-col items-center mb-16">
           <div className="flex justify-center items-center space-x-3 mb-6">
-            <div className="w-14 h-[1.5px] bg-[#f0e6db]"></div>
+            <div className="w-14 h-[1.5px] bg-white"></div>
             <div className="text-[#800000] text-2xl select-none cursor-default">×</div>
-            <div className="w-14 h-[1.5px] bg-[#f0e6db]"></div>
+            <div className="w-14 h-[1.5px] bg-white"></div>
           </div>
           <h2 className="text-center text-4xl font-semibold mb-4">Recently Updated News</h2>
           <p className="text-[#6b6b7b] max-w-2xl text-center">Stay updated with our latest news and articles about astrology and destiny</p>

@@ -79,7 +79,7 @@ export default function Gems() {
         <meta name="description" content="Premium quality crystals and gemstones for healing and spiritual growth" />
       </Head>
       
-      <div className={`${merriweather.className} bg-[#faf8f5] relative min-h-screen overflow-hidden`}>
+      <div className={`${merriweather.className} bg-white relative min-h-screen overflow-hidden`}>
         {/* Animated background elements */}
         <motion.div 
           initial={{ opacity: 0 }}

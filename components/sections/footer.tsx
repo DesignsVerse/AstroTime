@@ -21,7 +21,7 @@ const openSans = Open_Sans({
 export default function Footer() {
   return (
     <>
-      <div className={`${openSans.className} bg-[#272b4a] text-white`}>
+      <div className={`${openSans.className} bg-white text-black`}>
         <div className="max-w-[1920px] mx-auto px-6 sm:px-10 lg:px-20">
           {/* Top social icons */}
           <div className="flex justify-end pt-8 space-x-4">
@@ -61,8 +61,8 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <h1 className={`${merriweather.className} text-white text-3xl font-bold tracking-wide`}>
-                  Suriya
+                <h1 className={`${merriweather.className} text-black text-3xl font-bold tracking-wide`}>
+                  Astro Time
                 </h1>
                 <p className="text-[#a1a3b8] text-sm mt-1">Your cosmic guide to destiny</p>
               </div>
@@ -75,7 +75,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-[#800000] text-sm uppercase tracking-wider mb-1">Phone</p>
-                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#800000] transition-colors duration-300`}>
+                <p className={`${merriweather.className} text-black text-2xl font-bold hover:text-[#800000] transition-colors duration-300`}>
                   <a href="tel:000123456789">000 - 123456789</a>
                 </p>
               </div>
@@ -88,7 +88,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-[#800000] text-sm uppercase tracking-wider mb-1">Email id</p>
-                <p className={`${merriweather.className} text-white text-2xl font-bold hover:text-[#800000] transition-colors duration-300`}>
+                <p className={`${merriweather.className} text-balck text-2xl font-bold hover:text-[#800000] transition-colors duration-300`}>
                   <a href="mailto:info@example.com">info@example.com</a>
                 </p>
               </div>

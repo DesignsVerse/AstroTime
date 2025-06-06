@@ -8,6 +8,7 @@ const Header: FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const contactBarRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Handle scroll behavior
   useEffect(() => {
@@ -22,6 +23,11 @@ const Header: FC = () => {
       // Update scroll state for header
       setIsScrolled(currentScrollY > 10);
       
+      // Close mobile menu on scroll
+      if (currentScrollY !== lastScrollY && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+      
       lastScrollY = currentScrollY;
       ticking = false;
     };
@@ -35,7 +41,27 @@ const Header: FC = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMobileMenuOpen]);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current && 
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        isMobileMenuOpen &&
+        // Check if the click is not on the menu button
+        !(event.target as HTMLElement).closest('button[aria-label="Toggle menu"]')
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -132,22 +158,9 @@ const Header: FC = () => {
           <div className="flex items-center justify-between px-2 sm:px-3">
             <Link
               href="/"
-              className={`font-playfair select-none flex items-center text-black space-x-2 hover:text-[#800000] transition-colors duration-200 text-2xl text-white`}
+              className={`font-playfair select-none flex items-center text-black space-x-2 hover:text-[#800000] transition-colors duration-200 text-2xl `}
             >
-              <svg
-                className="w-6 h-6 text-black"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
-              <span className="tracking-wide">Suriya</span>
+              <span className="tracking-wide">Astro Time</span>
             </Link>
 
             {/* Mobile menu button */}
@@ -194,27 +207,97 @@ const Header: FC = () => {
           </ul>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Overlay and Side Drawer */}
         <div
-          className={`md:hidden py-2 px-4 mt-2 transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen ? "block" : "hidden"
-          } ${isScrolled ? "bg-[#1C1C1C] shadow-md rounded-lg" : "bg-[#1C1C1C] rounded-lg"}`}
+          className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
+          style={{
+            pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
+          }}
         >
-          <ul className="space-y-3 text-white">
-            {navItems.map((item) => (
-              <li key={item.name}>
+          {/* Overlay */}
+          <div 
+            className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+              isMobileMenuOpen ? "opacity-50" : "opacity-0"
+            }`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          
+          {/* Side Drawer */}
+          <div
+            ref={mobileMenuRef}
+            className={`absolute top-0 left-0 h-full w-4/5 max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+              isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <div className="h-full overflow-y-auto">
+              <div className="flex justify-between items-center p-4 border-b border-gray-700">
                 <Link
-                  href={item.href}
-                  className={`block py-2 px-2 rounded-md ${
-                    item.name === "Call Consultation" ? "bg-[#800000]/10 text-[#800000]" : ""
-                  } font-medium hover:text-[#800000] hover:bg-gray-800 transition-colors duration-200`}
+                  href="/"
+                  className="font-playfair text-black text-xl"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {item.name}
+                  Astro Time
                 </Link>
-              </li>
-            ))}
-          </ul>
+                <button
+                  onClick={toggleMobileMenu}
+                  className="text-black focus:outline-none"
+                  aria-label="Close menu"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              
+              <ul className="py-4 px-2 space-y-2">
+                {navItems.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className={`block py-3 px-4 rounded-md ${
+                        item.name === "Call Consultation" 
+                          ? "bg-white text-[#800000]" 
+                          : "text-black hover:bg-gray-800"
+                      } font-medium transition-colors duration-200`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Contact Info in Mobile Menu */}
+              <div className="p-4 border-t border-gray-700 mt-auto">
+                <div className="text-black text-sm space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <span>Call:</span>
+                    <Link href="tel:+000123456789" className="hover:underline">
+                      +000 123 456789
+                    </Link>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span>Email:</span>
+                    <Link href="mailto:info@example.com" className="hover:underline">
+                      info@example.com
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
     </header>
