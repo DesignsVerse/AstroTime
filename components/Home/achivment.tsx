@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, easeOut } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const Achievements = () => {
@@ -62,7 +62,7 @@ const Achievements = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
+        ease: easeOut
       }
     }
   };
