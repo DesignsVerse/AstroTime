@@ -4,13 +4,14 @@ import ComponentStore from '@/components/Home/stone';
 import Services from '@/components/Home/services';
 import Footer from '@/components/Home/footer';
 import News from '@/components/Home/blog';
-import Review from '@/public/hero/testimonial';
+import Review from '@/components/Home/testimonial';
 import Experts from '@/components/Home/astro';  
 import AboutAstrologer from '@/components/Home/about';
-import Rashi from '@/components/Home/Rashistone';
+import Rashi from '@/components/Home/zodiacSign';
 import Achievements from '@/components/Home/achivment';
 import Blog from '@/components/Home/blog';
 import FAQ from '@/components/Home/FAQ';
+import NemurologySection from '@/components/Home/nemurology';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Achievements/>
 
       <Rashi/>
+      <NemurologySection/>
       {/* <ComponentStore/> */}
       {/* <Gems/> */}
       {/* <Magic/> */}

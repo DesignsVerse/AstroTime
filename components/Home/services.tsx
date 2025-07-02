@@ -1,68 +1,82 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { 
+  FaBook, 
+  FaPhoneAlt, 
+  FaHeart, 
+  FaUserAlt, 
+  FaVideo, 
+  FaStar, 
+  FaBalanceScale,
+  FaGem,
+  FaBaby,
+  FaGraduationCap,
+  FaPrayingHands,
+  FaChartLine
+} from 'react-icons/fa';
 
 const Service = () => {
   const services = [
     {
       title: 'Lal Kitab Report',
       description: 'Unlock success, prosperity, and positivity with tailored Lal Kitab remedies.',
-      icon: 'https://storage.googleapis.com/a1aa/image/d381bd19-4717-46df-3b07-2fa45ecba3c2.jpg',
+      icon: <FaBook className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Book Consultation Call',
       description: 'Receive personalized guidance on life, love, career, business, and finances.',
-      icon: 'https://storage.googleapis.com/a1aa/image/d5a6a90d-5fe4-4789-277f-cb4324ad6115.jpg',
+      icon: <FaPhoneAlt className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Couple Kundali',
       description: 'Ensure marital harmony with precise Kundali Milan horoscope matching.',
-      icon: 'https://storage.googleapis.com/a1aa/image/2f9b05b5-ae7d-4fe4-6572-c1f82cd1aa60.jpg',
+      icon: <FaHeart className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Personalized Kundali',
       description: 'Comprehensive 10+ year predictions for career, health, love, and marriage.',
-      icon: 'https://storage.googleapis.com/a1aa/image/cea2cb3e-5330-4158-7de2-52f2a15b0584.jpg',
+      icon: <FaUserAlt className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Mega Numerology Webinar',
       description: 'Join our 2-day live numerology webinar on Zoom for deep insights.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaVideo className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Lal Kitab Webinar',
       description: 'Explore Lal Kitab astrology in our live Zoom webinar.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaStar className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Kaal Sarp & Manglik Dosh Report',
       description: 'Balance your life with remedies for Kaal Sarp and Manglik Dosh.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaBalanceScale className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Fortune Report',
       description: 'Align with cosmic energies to attract success, wealth, and positivity.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaChartLine className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Baby Name Report',
       description: 'Discover numerologically aligned name suggestions for your child.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaBaby className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Buy Gemstones',
       description: 'Browse our curated collection of astrological gemstones.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaGem className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Our Courses',
       description: 'Master Astrology, Numerology, and Vastu with our online courses.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaGraduationCap className="text-3xl text-[#5a0808]" />,
     },
     {
       title: 'Buy Rudraksha',
       description: 'Explore our authentic Rudraksha collection for spiritual growth.',
-      icon: 'https://storage.googleapis.com/a1aa/image/placeholder-icon.jpg',
+      icon: <FaPrayingHands className="text-3xl text-[#5a0808]" />,
     },
   ];
 
@@ -78,10 +92,6 @@ const Service = () => {
         <link
           href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;600;700&display=swap"
           rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         />
       </Head>
 
@@ -120,18 +130,9 @@ const Service = () => {
                     <div className="relative mb-6">
                       <div className="absolute inset-0 rounded-full bg-[#8b1e1e] blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
                       <div className="relative bg-[#f8e1e1] rounded-full w-20 h-20 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-300">
-                        {service.icon ? (
-                          <img
-                            alt={`Icon for ${service.title}`}
-                            className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110"
-                            src={service.icon}
-                            loading="lazy"
-                          />
-                        ) : (
-                          <div className="text-[#5a0808] text-2xl">
-                            <i className="fas fa-star"></i>
-                          </div>
-                        )}
+                        <div className="text-[#5a0808] transition-transform duration-300 group-hover:scale-110">
+                          {service.icon}
+                        </div>
                       </div>
                     </div>
 

@@ -31,12 +31,12 @@ export default function Blog() {
         <meta name="description" content="Explore our collection of in-depth astrology articles, spiritual insights, and cosmic wisdom from our expert astrologers" />
       </Head>
 
-      <div className="bg-[#FAFAFA]">
+      <div className="bg-[#FAFAFB]">
         {/* Premium Contact Bar */}
        
 
         {/* Premium News Section */}
-        <section className={`${merriweather.className} relative bg-white text-[#1a2238] max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24`}>
+        <section className={`${merriweather.className} relative  text-[#1a2238] max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24`}>
           {/* Decorative elements */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#800000]/5 rounded-full filter blur-3xl"></div>

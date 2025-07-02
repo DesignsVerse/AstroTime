@@ -6,25 +6,26 @@ interface ZodiacSign {
   name: string;
   src: string;
   month: string;
+  color: string;
 }
 
 const Rashi: React.FC = () => {
   const zodiacSigns: ZodiacSign[] = [
-    { name: "Aries", src: "/rashi/1.webp", month: "April" },
-    { name: "Taurus", src: "/rashi/2.webp", month: "May" },
-    { name: "Gemini", src: "/rashi/3.webp", month: "June" },
-    { name: "Cancer", src: "/rashi/4.webp", month: "July" },
-    { name: "Leo", src: "/rashi/5.webp", month: "August" },
-    { name: "Virgo", src: "/rashi/6.webp", month: "September" },
-    { name: "Libra", src: "/rashi/7.webp", month: "October" },
-    { name: "Scorpio", src: "/rashi/8.webp", month: "November" },
-    { name: "Sagittarius", src: "/rashi/9.webp", month: "December" },
-    { name: "Capricornus", src: "/rashi/10.webp", month: "January" },
-    { name: "Aquarius", src: "/rashi/11.webp", month: "February" },
-    { name: "Pisces", src: "/rashi/12.webp", month: "March" },
+    { name: "Aries", src: "/rashi/1.webp", month: "April", color: "#FCFAF8" },
+    { name: "Taurus", src: "/rashi/2.webp", month: "May", color: "#FCFAF8" },
+    { name: "Gemini", src: "/rashi/3.webp", month: "June", color: "#FCFAF8" },
+    { name: "Cancer", src: "/rashi/4.webp", month: "July", color: "#FCFAF8" },
+    { name: "Leo", src: "/rashi/5.webp", month: "August", color: "#FCFAF8" },
+    { name: "Virgo", src: "/rashi/6.webp", month: "September", color: "#FCFAF8" },
+    { name: "Libra", src: "/rashi/7.webp", month: "October", color: "#FCFAF8" },
+    { name: "Scorpio", src: "/rashi/8.webp", month: "November", color: "#FCFAF8" },
+    { name: "Sagittarius", src: "/rashi/9.webp", month: "December", color: "#FCFAF8" },
+    { name: "Capricornus", src: "/rashi/10.webp", month: "January", color: "#FCFAF8" },
+    { name: "Aquarius", src: "/rashi/11.webp", month: "February", color: "#FCFAF8" },
+    { name: "Pisces", src: "/rashi/12.webp", month: "March", color: "#FCFAF8" },
   ];
 
-  const [selectedSign, setSelectedSign] = useState<ZodiacSign>(zodiacSigns[0]);
+  const [selectedSign, setSelectedSign] = useState<ZodiacSign | null>(null);
 
   return (
     <div
@@ -48,11 +49,8 @@ const Rashi: React.FC = () => {
           {zodiacSigns.map((sign) => (
             <div
               key={sign.name}
-              className={`flex flex-col items-center justify-center gap-3 border-2 rounded-xl p-3 sm:p-5 transition-all duration-300 cursor-pointer ${
-                selectedSign.name === sign.name
-                  ? "border-gray-400 text-gray-700 bg-gray-50 shadow-lg"
-                  : "border-gray-200"
-              }`}
+              className="flex flex-col items-center justify-center gap-3 border-2 rounded-xl p-3 sm:p-5 transition-all duration-300 cursor-pointer border-gray-200 hover:border-gray-400 hover:shadow-lg"
+              style={{ backgroundColor: sign.color }}
               onClick={() => setSelectedSign(sign)}
             >
               <Image

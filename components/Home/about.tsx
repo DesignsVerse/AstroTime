@@ -3,6 +3,20 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import { 
+  FaAward,
+  FaStarAndCrescent,
+  FaHeart,
+  FaBriefcase,
+  FaGem,
+  FaHandHoldingHeart,
+  FaGlobeAsia,
+  FaCalendarAlt,
+  FaEnvelope,
+  FaBookOpen,
+  FaChalkboardTeacher,
+  FaPrayingHands
+} from 'react-icons/fa';
 
 const AboutAstrologer = () => {
   useEffect(() => {
@@ -21,10 +35,6 @@ const AboutAstrologer = () => {
         <link
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap"
           rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
       </Head>
 
@@ -61,7 +71,7 @@ const AboutAstrologer = () => {
                       whileHover={{ scale: 1.05 }}
                       className="bg-[#8b1e1e] inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-3"
                     >
-                      <i className="fas fa-award mr-1"></i> EST. 1998
+                      <FaAward className="mr-1" /> EST. 1998
                     </motion.div>
                     <h1 className="text-2xl lg:text-3xl font-bold mt-3 font-['Playfair_Display'] tracking-wide">
                       Pandit Holiya Zaikai
@@ -91,12 +101,13 @@ const AboutAstrologer = () => {
                   </h3>
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                     {[
-                      { icon: 'fas fa-star-and-crescent', name: 'Vedic Astrology', desc: 'Birth chart & predictions' },
-                      { icon: 'fas fa-heart', name: 'Relationships', desc: 'Compatibility guidance' },
-                      { icon: 'fas fa-briefcase', name: 'Career', desc: 'Path & timing' },
-                      { icon: 'fas fa-gem', name: 'Gemology', desc: 'Gem recommendations' },
-                      { icon: 'fas fa-hand-holding-heart', name: 'Remedies', desc: 'Spiritual solutions' },
-                      { icon: 'fas fa-globe', name: 'Muhurta', desc: 'Auspicious timing' },
+                      { icon: <FaStarAndCrescent className="text-[#8b1e1e]" />, name: 'Vedic Astrology', desc: 'Birth chart & predictions' },
+                      { icon: <FaHeart className="text-[#8b1e1e]" />, name: 'Relationships', desc: 'Compatibility guidance' },
+                      { icon: <FaBriefcase className="text-[#8b1e1e]" />, name: 'Career', desc: 'Path & timing' },
+                      { icon: <FaGem className="text-[#8b1e1e]" />, name: 'Gemology', desc: 'Gem recommendations' },
+                      { icon: <FaHandHoldingHeart className="text-[#8b1e1e]" />, name: 'Remedies', desc: 'Spiritual solutions' },
+                      { icon: <FaGlobeAsia className="text-[#8b1e1e]" />, name: 'Muhurta', desc: 'Auspicious timing' },
+                      
                     ].map((item, index) => (
                       <motion.div
                         key={index}
@@ -105,7 +116,7 @@ const AboutAstrologer = () => {
                       >
                         <div className="flex items-start">
                           <div className="bg-[#8b1e1e]/10 p-2 rounded-full mr-3">
-                            <i className={`${item.icon} text-[#8b1e1e] text-sm`}></i>
+                            {item.icon}
                           </div>
                           <div>
                             <h4 className="text-sm font-medium text-[#2a0a0a] mb-1 font-['Poppins']">{item.name}</h4>
@@ -117,21 +128,20 @@ const AboutAstrologer = () => {
                   </div>
                 </div>
 
-
                 <div className="flex flex-col sm:flex-row gap-4">
                   <motion.button 
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     className="flex-1 bg-[#8b1e1e] text-white px-6 py-3 rounded-lg font-['Poppins'] font-medium hover:bg-[#7a1919] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-sm"
                   >
-                    <i className="fas fa-calendar-check"></i> Schedule Consultation
+                    <FaCalendarAlt /> Schedule Consultation
                   </motion.button>
                   <motion.button 
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     className="flex-1 bg-white border border-[#8b1e1e] text-[#8b1e1e] px-6 py-3 rounded-lg font-['Poppins'] font-medium hover:bg-[#f8f4ef] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-sm"
                   >
-                    <i className="fas fa-envelope"></i> Send Inquiry
+                    <FaEnvelope /> Send Inquiry
                   </motion.button>
                 </div>
               </div>

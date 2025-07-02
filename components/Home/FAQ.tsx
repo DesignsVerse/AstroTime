@@ -54,6 +54,41 @@ const FAQ = () => {
       question: "Can I integrate AstroTime with other applications?",
       answer: "Yes, we provide a comprehensive API for developers. Our documentation includes code samples for JavaScript, Python, and Ruby to help you integrate astronomical data into your applications.",
       category: "technical"
+    },
+    {
+      question: "What data sources does AstroTime use?",
+      answer: "AstroTime uses multiple authoritative sources including NASA's JPL ephemeris, the International Astronomical Union (IAU) databases, and real-time satellite tracking data. We also incorporate data from major observatories and space agencies worldwide.",
+      category: "technical"
+    },
+    {
+      question: "How do I create an account and get started?",
+      answer: "Creating an account is simple! Just click the 'Sign Up' button, provide your email and create a password. You can start using basic features immediately, and upgrade to premium plans anytime for advanced functionality.",
+      category: "general"
+    },
+    {
+      question: "Can I export astronomical data for my research?",
+      answer: "Yes, premium users can export data in various formats including CSV, JSON, and PDF. You can export planetary positions, celestial events, and custom calculations for research, education, or personal use.",
+      category: "features"
+    },
+    {
+      question: "What if I encounter technical issues?",
+      answer: "We provide comprehensive troubleshooting guides in our help center. For immediate assistance, you can contact our support team via email or live chat. Most issues are resolved within 24 hours.",
+      category: "support"
+    },
+    {
+      question: "Does AstroTime support multiple languages?",
+      answer: "Currently, AstroTime is available in English, Spanish, French, and German. We're continuously adding more languages based on user demand. All astronomical data and calculations remain consistent across languages.",
+      category: "platform"
+    },
+    {
+      question: "Can I use AstroTime offline?",
+      answer: "Basic features are available offline once you've loaded the data. However, real-time updates and live tracking require an internet connection. Premium users can download data for offline use.",
+      category: "features"
+    },
+    {
+      question: "How often is the astronomical data updated?",
+      answer: "Real-time data updates every minute, while planetary positions and celestial events are calculated using the latest ephemeris data. Historical data is updated quarterly, and we maintain data going back to 1900.",
+      category: "technical"
     }
   ];
 
@@ -63,12 +98,13 @@ const FAQ = () => {
     { id: 'technical', name: 'Technical' },
     { id: 'features', name: 'Features' },
     { id: 'platform', name: 'Platform' },
-    { id: 'legal', name: 'Legal' }
+    { id: 'legal', name: 'Legal' },
+    { id: 'support', name: 'Support' }
   ];
 
   const filteredItems = activeCategory === 'all' 
-    ? faqItems 
-    : faqItems.filter(item => item.category === activeCategory);
+    ? faqItems.slice(0, 5)
+    : faqItems.filter(item => item.category === activeCategory).slice(0, 5);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
