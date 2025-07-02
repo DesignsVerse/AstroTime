@@ -11,13 +11,13 @@ const Hero: FC = () => {
 
   const slides = [
     { 
-      image: "/hero/banner1.webp"
+      image: "/hero/banner.png"
     },
     { 
-      image: "/hero/banner2.webp"
+      image: "/hero/banner.png"
     },
     { 
-      image: "/hero/banner3.webp"
+      image: "/hero/banner.png"
     },
   ];
 
@@ -68,7 +68,11 @@ const Hero: FC = () => {
 
   return (
     <section 
-      className="relative w-full h-[calc(100vh-80px)] mt-[80px] overflow-hidden bg-[#1C1C1C]"
+      className="relative w-full overflow-hidden bg-[#1C1C1C]"
+      style={{ 
+        height: 'calc(100vh - 120px)', // Adjust height to account for header
+        marginTop: '120px' // Push content below header
+      }}
       onMouseEnter={() => {
         setIsHovered(true);
         if (intervalRef.current) clearInterval(intervalRef.current);
@@ -78,14 +82,17 @@ const Hero: FC = () => {
         resetInterval();
       }}
     >
-      {/* Slider container with smooth transition */}
+      {/* Slider container - make it full height minus the header */}
       <div
         ref={sliderRef}
         className="relative w-full h-full flex transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {slides.map((slide, index) => (
-          <div key={index} className="w-full h-full flex-shrink-0 relative">
+          <div 
+            key={index} 
+            className="w-full h-full flex-shrink-0 relative"
+          >
             {/* Background image with parallax effect */}
             <div className="absolute inset-0 overflow-hidden">
               <img
@@ -101,13 +108,14 @@ const Hero: FC = () => {
             {/* Slide content */}
             <div className={`absolute inset-0 flex flex-col justify-center items-center text-center px-4 transition-opacity duration-500 ${isContentVisible ? 'opacity-100' : 'opacity-0'}`}>
               <div className="max-w-4xl mx-auto px-4 transform transition-all duration-700 ease-out">
+                {/* Your content here */}
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Navigation arrows with hover effects */}
+      {/* Navigation arrows */}
       <button
         onClick={goToPrevSlide}
         className={`absolute left-4 top-1/2 -translate-y-1/2 bg-[#800000]/90 text-white p-3 rounded-full hover:bg-[#800000] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white z-10 ${
@@ -127,7 +135,7 @@ const Hero: FC = () => {
         <FaChevronRight className="text-xl group-hover:scale-125 transition-transform" />
       </button>
 
-      {/* Slide indicators with improved design */}
+      {/* Slide indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
         {slides.map((_, index) => (
           <button

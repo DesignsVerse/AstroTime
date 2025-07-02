@@ -51,15 +51,47 @@ const AboutAstrologer = () => {
                   transition={{ duration: 0.8 }}
                   className="relative h-[580px] lg:min-h-[300px]"
                 >
+                  {/* Background Image */}
                   <motion.img
                     src="/service/service-bg.jpg"
-                    alt="Pandit Holiya Zaikai"
+                    alt="Background"
                     className="w-full h-full min-h-[200px] lg:min-h-[300px] object-cover object-center"
                     loading="eager"
                     initial={{ opacity: 0.8 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                   />
+                   <motion.div
+                    className="absolute inset-0 flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                  >
+                    <motion.img
+                      src="/bg.webp" // astro background image 1
+                      alt="Pandit Holiya Zaikai"
+                      className="w-3/4 h-auto object-contain rounded-full border-4 border-[#8b1e1e] shadow-xl"
+                      style={{ maxHeight: '70%' }}
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 60, ease: 'linear' }}
+                    />
+                  </motion.div>
+                  {/* Overlay Image (Astrologer) */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                  >
+                    <img
+                      src="/name.jpg" // Replace with your astrologer image path
+                      alt="Pandit Holiya Zaikai"
+                      className="w-3/4 h-auto object-contain rounded-full border-4 border-[#8b1e1e] shadow-xl"
+                      style={{ maxHeight: '70%' }}
+                    />
+                  </motion.div>
+                 
+                  
                   <div className="absolute inset-0 bg-gradient-to-t from-[#2a0a0a]/80 via-transparent to-transparent"></div>
                   <motion.div 
                     initial={{ y: 20, opacity: 0 }}
@@ -74,7 +106,7 @@ const AboutAstrologer = () => {
                       <FaAward className="mr-1" /> EST. 1998
                     </motion.div>
                     <h1 className="text-2xl lg:text-3xl font-bold mt-3 font-['Playfair_Display'] tracking-wide">
-                      Pandit Holiya Zaikai
+                      Pandit Deepak Goutam
                     </h1>
                     <p className="text-sm opacity-90 mt-2 font-['Poppins'] font-light">
                       Vedic Astrologer | Spiritual Guide
@@ -83,7 +115,7 @@ const AboutAstrologer = () => {
                 </motion.div>
               </div>
 
-              {/* Astrologer Content Section */}
+              {/* Rest of your existing content remains the same */}
               <div className="lg:w-3/5 p-6 lg:p-8">
                 <div className="mb-8">
                   <h2 className="text-2xl lg:text-3xl font-bold text-[#2a0a0a] font-['Playfair_Display'] mb-4">
@@ -91,7 +123,7 @@ const AboutAstrologer = () => {
                   </h2>
                   <div className="h-1 w-16 bg-[#8b1e1e] mb-5"></div>
                   <p className="text-gray-700 text-base lg:text-lg font-['Poppins'] font-light leading-relaxed">
-                    Pandit Holiya Zaikai, with 25+ years of experience, offers precise Vedic astrology insights from his Varanasi lineage, guiding clients globally with clarity and purpose. His profound knowledge of planetary movements and ancient scriptures provides transformative guidance for life's challenges.
+                    Pandit Deepak Goutam, with 25+ years of experience, offers precise Vedic astrology insights from his Varanasi lineage, guiding clients globally with clarity and purpose. His profound knowledge of planetary movements and ancient scriptures provides transformative guidance for life's challenges.
                   </p>
                 </div>
 

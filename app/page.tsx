@@ -12,6 +12,7 @@ import Achievements from '@/components/Home/achivment';
 import Blog from '@/components/Home/blog';
 import FAQ from '@/components/Home/FAQ';
 import NemurologySection from '@/components/Home/nemurology';
+import NumberSelector from '@/components/Home/NumerologyNo';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
 
       <Rashi/>
       <NemurologySection/>
+      <NumberSelector/>
       {/* <ComponentStore/> */}
       {/* <Gems/> */}
       {/* <Magic/> */}

@@ -32,9 +32,6 @@ export default function Blog() {
       </Head>
 
       <div className="bg-[#FAFAFB]">
-        {/* Premium Contact Bar */}
-       
-
         {/* Premium News Section */}
         <section className={`${merriweather.className} relative  text-[#1a2238] max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24`}>
           {/* Decorative elements */}
@@ -67,7 +64,7 @@ export default function Blog() {
                   alt="Person meditating with crystals"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   fill
-                  src="/ruby.png"
+                  src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                   quality={100}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
@@ -108,7 +105,7 @@ export default function Blog() {
                   alt="Crystals and tarot cards"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   fill
-                  src="/ruby.png"
+                  src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                   quality={100}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
@@ -149,7 +146,7 @@ export default function Blog() {
                   alt="Moon phases chart"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   fill
-                  src="/ruby.png"
+                  src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1494&q=80"
                   quality={100}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
