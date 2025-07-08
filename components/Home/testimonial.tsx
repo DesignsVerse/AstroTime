@@ -139,7 +139,7 @@ const Review: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-[#FAFAFB] py-12 px-4 sm:px-6 lg:py-16 lg:px-8 relative overflow-hidden">
+    <section className="w-full bg-[#FCFAF8] py-12 px-4 sm:px-6 lg:py-16 lg:px-8 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Main box container with chamfered corners and cream color */}
         <div className="bg-white p-6 lg:p-8" style={{

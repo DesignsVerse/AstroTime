@@ -57,13 +57,13 @@ const Header: FC = () => {
     { name: "Call Consultation", href: "/call-consultation", highlight: true },
     { name: "Gemstone", href: "/gemstone" },
     { name: "Free Calculator", href: "/free-calculator" },
-    { name: "Panchang", href: "/panchang" },
+    { name: "Services", href: "/services" },
     { name: "Horoscope", href: "/horoscope" },
     { name: "Rudraksha", href: "/rudraksha" },
     { name: "Online Puja", href: "/online-puja" },
     { name: "Collaborations", href: "/collaborations" },
     { name: "About", href: "/about" },
-    { name: "Support", href: "/customer-support" },
+    { name: "Support", href: "/support" },
   ];
 
   return (

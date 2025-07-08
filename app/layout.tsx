@@ -1,6 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Merriweather, Open_Sans } from 'next/font/google';
+import Header from '@/components/Home/header';
+import Footer from '@/components/Home/footer';
 
 const merriweather = Merriweather({
   weight: '400',
@@ -29,7 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${merriweather.variable} ${openSans.variable}`}>
       <body className={`${openSans.className}`}>
-        {children}
+        <Header />
+        <main className="pt-24">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

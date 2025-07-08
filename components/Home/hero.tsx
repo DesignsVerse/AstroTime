@@ -10,14 +10,17 @@ const Hero: FC = () => {
   const animationRef = useRef<number>();
 
   const slides = [
+    // { 
+    //   image: "/hero/1.png"
+    // },
     { 
-      image: "/hero/banner.png"
+      image: "/hero/2.png"
     },
     { 
-      image: "/hero/banner.png"
+      image: "/hero/3.png"
     },
     { 
-      image: "/hero/banner.png"
+      image: "/hero/4.png"
     },
   ];
 
@@ -68,11 +71,8 @@ const Hero: FC = () => {
 
   return (
     <section 
-      className="relative w-full overflow-hidden bg-[#1C1C1C]"
-      style={{ 
-        height: 'calc(100vh - 120px)', // Adjust height to account for header
-        marginTop: '120px' // Push content below header
-      }}
+      className="relative w-full overflow-hidden bg-[#1C1C1C] mt-8  rounded-2xl shadow-lg"
+      style={{ height: '90vh' }}
       onMouseEnter={() => {
         setIsHovered(true);
         if (intervalRef.current) clearInterval(intervalRef.current);
@@ -82,7 +82,7 @@ const Hero: FC = () => {
         resetInterval();
       }}
     >
-      {/* Slider container - make it full height minus the header */}
+      {/* Slider container - make it full height */}
       <div
         ref={sliderRef}
         className="relative w-full h-full flex transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]"
@@ -98,8 +98,9 @@ const Hero: FC = () => {
               <img
                 src={slide.image}
                 alt={`Banner ${index + 1}`}
-                className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-10000 ease-linear"
+                className="w-full h-full object-cover object-center"
                 loading={index === 0 ? "eager" : "lazy"}
+                style={{ objectPosition: 'center top' }}
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
