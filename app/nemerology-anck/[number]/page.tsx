@@ -44,7 +44,7 @@ const NumberDetailPage = ({ params }: { params: { number: string } }) => {
             <hr className="border-[#e2b76a] border-t-2 my-6 max-w-2xl mx-auto" />
           </header>
 
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="flex  flex-col lg:flex-row gap-8 items-start">
             <article 
               className="bg-[#fff7e2] rounded-xl p-8 shadow-[2px_2px_6px_rgba(194,141,72,0.3)] flex-1"
               aria-labelledby="number-title"

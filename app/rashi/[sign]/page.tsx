@@ -118,9 +118,9 @@ const ZodiacSignPage = ({ params }: { params: { sign: string } }) => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-[#5a0808] to-[#8b1e1e] text-white py-12 sm:py-16">
+      <div className="bg-gradient-to-r md:mt-0 mt-10 from-[#5a0808] to-[#8b1e1e] text-white py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             <div className="bg-white rounded-full p-5 backdrop-blur-sm">
               <div className="text-white">
                 <img 
@@ -130,7 +130,7 @@ const ZodiacSignPage = ({ params }: { params: { sign: string } }) => {
                 />
               </div>
             </div>
-            <div>
+            <div className="text-center md:text-left">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif mb-3">
                 {signData.name} Daily Horoscope
               </h1>

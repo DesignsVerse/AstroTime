@@ -51,19 +51,19 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-[#5a0808] to-[#8b1e1e] text-white py-12 sm:py-16">
+      <div className="bg-gradient-to-r mt-10 from-[#5a0808] to-[#8b1e1e] text-white py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-8">
             <div className="bg-white/20 rounded-full p-5 backdrop-blur-sm">
               <div className="text-white">
                 {iconComponents[service.icon]}
               </div>
             </div>
-            <div>
+            <div className="text-center md:text-left">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif mb-3">
                 {service.title}
               </h1>
-              <p className="text-lg sm:text-xl text-white/90 max-w-3xl">
+              <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto md:mx-0">
                 {service.description}
               </p>
             </div>

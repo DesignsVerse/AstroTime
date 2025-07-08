@@ -7,7 +7,7 @@ import { zodiacSigns } from "@/data/rashi";
 const Rashi: React.FC = () => {
   return (
     <div
-      className="bg-gradient-to-b from-white to-gray-50 text-[#1a1a1a] font-serif min-h-screen flex flex-col items-center justify-center w-full"
+      className="bg-[#FCFAF8] text-[#1a1a1a] font-serif min-h-screen flex flex-col items-center justify-center w-full"
       style={{ fontFamily: '"Times New Roman", serif' }}
     >
       <div className="text-center pt-12 mb-8">

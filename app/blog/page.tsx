@@ -1,9 +1,11 @@
+"use client"
 import { Merriweather, Montserrat } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { blogData } from '@/data/blogData';
-import { FiClock, FiArrowRight } from 'react-icons/fi';
+import { FiClock, FiArrowRight, FiSearch, FiStar } from 'react-icons/fi';
+import { useState } from 'react';
 
 const merriweather = Merriweather({
   weight: ['400', '700'],
@@ -18,6 +20,25 @@ const montserrat = Montserrat({
 });
 
 export default function Blog() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  // Get unique categories
+  const categories = ['All', ...Array.from(new Set(blogData.map(post => post.category)))]
+
+  // Filter posts based on search and category
+  const filteredPosts = blogData.filter(post => {
+    const matchesSearch = 
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    
+    const matchesCategory = 
+      selectedCategory === 'All' || post.category === selectedCategory;
+    
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <>
       <Head>
@@ -48,9 +69,100 @@ export default function Blog() {
             </p>
           </div>
 
+          {/* Search and Filter */}
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <FiSearch className="text-gray-400" />
+              </div>
+              <input
+                type="text"
+                className={`${montserrat.className} block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#800000] focus:border-transparent`}
+                placeholder="Search articles..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-wrap gap-2 items-center justify-end">
+              {categories.map(category => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`${montserrat.className} px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedCategory === category ? 'bg-[#800000] text-white' : 'bg-white text-[#800000] border border-[#800000] hover:bg-[#800000]/10'}`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Featured Post */}
+          {blogData.some(post => post.featured) && (
+            <div className="mb-16">
+              <h3 className={`${montserrat.className} flex items-center text-xl font-bold mb-6 text-[#800000]`}>
+                <FiStar className="mr-2" /> Featured Article
+              </h3>
+              {blogData.filter(post => post.featured).map(featuredPost => (
+                <div key={featuredPost.id} className="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <div className="md:flex">
+                    <div className="md:w-1/2 relative h-64 md:h-auto">
+                      <Image
+                        alt={featuredPost.title}
+                        className="w-full h-full object-cover"
+                        fill
+                        src={featuredPost.image}
+                        quality={90}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute top-4 left-4 flex items-center">
+                        <span className="text-white px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: featuredPost.categoryColor }}>
+                          {featuredPost.category}
+                        </span>
+                        <span className="ml-2 text-white text-sm bg-black/30 px-2 py-1 rounded">{featuredPost.readTime}</span>
+                      </div>
+                    </div>
+                    <div className="md:w-1/2 p-6 md:p-8">
+                      <div className="flex items-center mb-4">
+                        <div className="flex-shrink-0 mr-3">
+                          <Image
+                            className="h-10 w-10 rounded-full object-cover"
+                            src={featuredPost.author.avatar}
+                            alt={featuredPost.author.name}
+                            width={40}
+                            height={40}
+                          />
+                        </div>
+                        <div>
+                          <p className={`${montserrat.className} text-sm font-medium text-gray-900`}>{featuredPost.author.name}</p>
+                          <p className="text-xs text-gray-500">{featuredPost.date}</p>
+                        </div>
+                      </div>
+                      <h3 className={`${montserrat.className} text-2xl font-bold mb-3`}>{featuredPost.title}</h3>
+                      <p className="text-gray-600 mb-6">{featuredPost.excerpt}</p>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {featuredPost.tags?.map(tag => (
+                          <span key={tag} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                      <Link 
+                        href={`/blog/${featuredPost.slug}`}
+                        className="inline-flex items-center text-[#800000] border border-[#800000] hover:bg-[#800000] hover:text-white px-4 py-2 rounded-full text-sm transition-all duration-300"
+                      >
+                        Read Featured Article
+                        <FiArrowRight className="ml-2" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {blogData.map((post) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map((post) => (
               <article 
                 key={post.id} 
                 className="group relative bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1"
@@ -63,8 +175,6 @@ export default function Blog() {
                     src={post.image}
                     quality={90}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    placeholder="blur"
-                    blurDataURL="/placeholder-image.jpg"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                     <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
@@ -80,13 +190,27 @@ export default function Blog() {
                       </Link>
                     </div>
                   </div>
-                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4" style={{ backgroundColor: post.categoryColor }}>
-                    <span className="text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold">
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+                    <span className="text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold" style={{ backgroundColor: post.categoryColor }}>
                       {post.category}
                     </span>
                   </div>
                 </div>
                 <div className="p-4 sm:p-6">
+                  <div className="flex items-center mb-3">
+                    <div className="flex-shrink-0 mr-2">
+                      <Image
+                        className="h-8 w-8 rounded-full object-cover"
+                        src={post.author.avatar}
+                        alt={post.author.name}
+                        width={32}
+                        height={32}
+                      />
+                    </div>
+                    <div>
+                      <p className={`${montserrat.className} text-xs font-medium text-gray-900`}>{post.author.name}</p>
+                    </div>
+                  </div>
                   <h3 className={`${montserrat.className} text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-[#800000] transition-colors duration-300`}>
                     {post.title}
                   </h3>
@@ -111,15 +235,22 @@ export default function Blog() {
             ))}
           </div>
 
-          {/* Back Button (only shown on mobile) */}
-          <div className="mt-12 md:hidden flex justify-center">
-            <Link 
-              href="/" 
-              className={`${montserrat.className} text-[#800000] font-semibold hover:underline flex items-center gap-2 text-sm`}
-            >
-              Back to Home
-            </Link>
-          </div>
+          {/* Empty State */}
+          {filteredPosts.length === 0 && (
+            <div className="text-center py-16">
+              <h3 className={`${montserrat.className} text-xl font-bold text-[#800000] mb-4`}>No articles found</h3>
+              <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+              <button 
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedCategory('All');
+                }}
+                className="mt-4 px-4 py-2 bg-[#800000] text-white rounded-lg hover:bg-[#600000] transition-colors"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
         </section>
       </div>
     </>
