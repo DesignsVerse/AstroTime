@@ -26,51 +26,68 @@ export default function Blog() {
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout>();
 
-  // Calculate number of slides based on screen size
-  const getSlidesPerView = () => 1;
+  // Responsive slides per view
+  const getSlidesPerView = () => {
+    if (typeof window === 'undefined') return 3;
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  };
 
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView());
+  const [slidesToScroll, setSlidesToScroll] = useState(1);
 
   useEffect(() => {
     const handleResize = () => {
-      setSlidesPerView(getSlidesPerView());
-      // Reset index to prevent empty spaces
-      setCurrentIndex(0);
+      const newSlidesPerView = getSlidesPerView();
+      setSlidesPerView(newSlidesPerView);
+      setSlidesToScroll(Math.min(1, newSlidesPerView)); // Scroll 1 at a time on mobile
+      // Adjust current index to prevent empty space
+      setCurrentIndex(prev => Math.min(prev, Math.ceil(blogData.length / newSlidesPerView) - 1));
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Auto-scroll functionality
+  // Auto-scroll functionality with proper cleanup
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    
-    if (isAutoScrolling && !isHovering) {
-      interval = setInterval(() => {
+    const startAutoScroll = () => {
+      intervalRef.current = setInterval(() => {
         setCurrentIndex(prev => 
-          prev === Math.ceil(blogData.length / slidesPerView) - 1 ? 0 : prev + 1
+          prev >= Math.ceil(blogData.length / slidesPerView) - 1 ? 0 : prev + slidesToScroll
         );
       }, 5000);
+    };
+
+    if (isAutoScrolling && !isHovering) {
+      startAutoScroll();
     }
-    
-    return () => clearInterval(interval);
-  }, [isAutoScrolling, isHovering, slidesPerView]);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isAutoScrolling, isHovering, slidesPerView, slidesToScroll]);
 
   const handlePrev = () => {
     setIsAutoScrolling(false);
     setCurrentIndex(prev => 
-      prev === 0 ? Math.ceil(blogData.length / slidesPerView) - 1 : prev - 1
+      prev <= 0 ? Math.ceil(blogData.length / slidesPerView) - 1 : prev - slidesToScroll
     );
+    // Restart auto-scroll after 10 seconds
     setTimeout(() => setIsAutoScrolling(true), 10000);
   };
 
   const handleNext = () => {
     setIsAutoScrolling(false);
     setCurrentIndex(prev => 
-      prev === Math.ceil(blogData.length / slidesPerView) - 1 ? 0 : prev + 1
+      prev >= Math.ceil(blogData.length / slidesPerView) - 1 ? 0 : prev + slidesToScroll
     );
+    // Restart auto-scroll after 10 seconds
     setTimeout(() => setIsAutoScrolling(true), 10000);
   };
 
@@ -91,14 +108,13 @@ export default function Blog() {
     }
   };
 
-  // Remove grouping logic
-  // const groupedData = [];
-  // for (let i = 0; i < blogData.length; i += slidesPerView) {
-  //   groupedData.push(blogData.slice(i, i + slidesPerView));
-  // }
-
-  // Calculate max index for scrolling
-  const maxIndex = blogData.length - slidesPerView;
+  // Calculate visible items based on current index
+  const visibleItems = blogData.slice(currentIndex, currentIndex + slidesPerView);
+  // If we're at the end and need to loop items
+  const remainingItems = slidesPerView - visibleItems.length;
+  if (remainingItems > 0) {
+    visibleItems.push(...blogData.slice(0, remainingItems));
+  }
 
   return (
     <>
@@ -142,36 +158,35 @@ export default function Blog() {
             onTouchEnd={handleTouchEnd}
             ref={carouselRef}
           >
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Always visible but more subtle on mobile */}
             <button 
               onClick={handlePrev}
               aria-label="Previous articles"
-              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 lg:-translate-x-12 z-10 bg-white/90 hover:bg-white text-[#800000] w-10 h-10 lg:w-12 lg:h-12 rounded-full shadow-lg items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
             >
-              <FiChevronLeft className="text-lg lg:text-xl" />
+              <FiChevronLeft className="text-base sm:text-lg lg:text-xl" />
             </button>
             
             <button 
               onClick={handleNext}
               aria-label="Next articles"
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 lg:translate-x-12 z-10 bg-white/90 hover:bg-white text-[#800000] w-10 h-10 lg:w-12 lg:h-12 rounded-full shadow-lg items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
             >
-              <FiChevronRight className="text-lg lg:text-xl" />
+              <FiChevronRight className="text-base sm:text-lg lg:text-xl" />
             </button>
 
-            {/* Blog Grid */}
-            <div className="overflow-hidden relative w-full">
+            {/* Blog Grid - Improved layout with proper gap */}
+            <div className="overflow-hidden relative w-full px-8 sm:px-10 lg:px-12">
               <div
-                className="flex transition-transform duration-500 ease-in-out"
+                className="grid grid-flow-col auto-cols-[minmax(0,1fr)] sm:auto-cols-[minmax(0,calc(50%-12px))] lg:auto-cols-[minmax(0,calc(33.333%-16px))] gap-4 sm:gap-6 lg:gap-8 transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)`,
-                  width: `${(blogData.length * 100) / slidesPerView}%`,
+                  transform: `translateX(calc(-${currentIndex * (100 / slidesPerView)}% - ${currentIndex * 1}rem))`,
                 }}
               >
-                {blogData.map((post) => (
+                {visibleItems.map((post) => (
                   <div
                     key={post.id}
-                    className="shrink-0 w-full max-w-md mx-auto px-0"
+                    className="col-span-1"
                   >
                     <article 
                       className="group relative bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 h-full flex flex-col"
@@ -207,14 +222,14 @@ export default function Blog() {
                           </span>
                         </div>
                       </div>
-                      <div className="p-4 sm:p-6">
+                      <div className="p-4 sm:p-6 flex-grow flex flex-col">
                         <h3 className={`${montserrat.className} text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-[#800000] transition-colors duration-300`}>
                           {post.title}
                         </h3>
-                        <p className="text-[#6b6b7b] text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed line-clamp-3">
+                        <p className="text-[#6b6b7b] text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed line-clamp-3 flex-grow">
                           {post.excerpt}
                         </p>
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-between items-center mt-auto">
                           <Link 
                             href={`/blog/${post.slug}`} 
                             className="text-[#800000] text-sm sm:text-base font-semibold hover:underline flex items-center gap-1 sm:gap-2 group"

@@ -62,7 +62,7 @@ export default function ServicesPage() {
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="relative bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 min-h-[270px] sm:min-h-[320px] flex flex-col"
+                  className="relative bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 min-h-[220px] sm:min-h-[260px] flex flex-col"
                 >
                   {/* Card background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white to-[#f8e1e1]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -70,7 +70,7 @@ export default function ServicesPage() {
                   {/* Card content */}
                   <div className="relative p-3 sm:p-5 flex flex-col items-center text-center h-full">
                     {/* Icon with glow effect */}
-                    <div className="relative mb-3 sm:mb-5">
+                    <div className="relative mb-3 sm:mb-4">
                       <div className="absolute inset-0 rounded-full bg-[#8b1e1e] blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
                       <div className="relative bg-[#f8e1e1] rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-300">
                         {iconComponents[service.icon]}
@@ -78,23 +78,15 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Title and description */}
-                    <h2 className="text-base sm:text-lg font-bold text-[#5a0808] font-serif mb-2 sm:mb-3">
+                    <h2 className="text-base sm:text-lg font-bold text-[#5a0808] font-serif mb-1 sm:mb-2">
                       {service.title}
                     </h2>
-                    <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-5 line-clamp-2">
+                    <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2">
                       {service.description}
                     </p>
 
-                    {/* Price and duration */}
-                    <div className="mb-3 sm:mb-5 w-full">
-                      <div className="flex justify-center items-center gap-1 sm:gap-2">
-                        <span className="text-[#8b1e1e] font-bold text-sm sm:text-base">₹{service.price.toLocaleString('en-IN')}</span>
-                        <span className="text-gray-500 text-xs sm:text-sm">| {service.duration}</span>
-                      </div>
-                    </div>
-
                     {/* Action button */}
-                    <div className="mt-auto w-full">
+                    <div className="mt-auto w-full pt-2">
                       <a
                         href={`/services/${service.slug}`}
                         className="block bg-gradient-to-r from-[#5a0808] to-[#8b1e1e] hover:from-[#8b1e1e] hover:to-[#5a0808] text-white font-medium py-1.5 px-3 sm:py-2 sm:px-4 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md text-xs sm:text-base text-center"

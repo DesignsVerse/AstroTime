@@ -5,6 +5,26 @@ import Link from "next/link";
 import { zodiacSigns } from "@/data/rashi";
 
 const Rashi: React.FC = () => {
+  // Function to track zodiac sign clicks
+  const trackZodiacClick = async (signName: string) => {
+    try {
+      // Send data to your analytics endpoint
+      await fetch('/api/track-click', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sign: signName,
+          timestamp: new Date().toISOString(),
+          // You can add more data like user IP, device info, etc.
+        }),
+      });
+    } catch (error) {
+      console.error('Error tracking click:', error);
+    }
+  };
+
   return (
     <div
       className="bg-[#FCFAF8] text-[#1a1a1a] font-serif min-h-screen flex flex-col items-center justify-center w-full"
@@ -25,24 +45,29 @@ const Rashi: React.FC = () => {
         </h3>
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8 w-full">
           {zodiacSigns.map((sign: any) => (
-            <Link 
-              href={`/rashi/${sign.name.toLowerCase()}`} 
+            <div 
               key={sign.name}
               className="flex flex-col items-center justify-center gap-3 border-2 rounded-xl p-3 sm:p-5 transition-all duration-300 cursor-pointer border-gray-200 hover:border-gray-400 hover:shadow-lg"
-              style={{ backgroundColor: sign.color }}
+              style={{ backgroundColor: "#fff" }}
+              onClick={() => trackZodiacClick(sign.name)}
             >
-              <Image
-                alt={`${sign.name} zodiac symbol`}
-                className="w-20 h-20 sm:w-24 sm:h-24 object-contain"
-                src={sign.src}
-                width={96}
-                height={96}
-                unoptimized
-              />
-              <span className="text-sm sm:text-base text-center font-light">
-                {sign.name}
-              </span>
-            </Link>
+              <Link 
+                href={`/rashi/${sign.name.toLowerCase()}`}
+                className="flex flex-col items-center"
+              >
+                <Image
+                  alt={`${sign.name} zodiac symbol`}
+                  className="w-20 h-20 sm:w-24 sm:h-24 object-contain"
+                  src={sign.src}
+                  width={96}
+                  height={96}
+                  unoptimized
+                />
+                <span className="text-sm sm:text-base text-center font-light">
+                  {sign.name}
+                </span>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
