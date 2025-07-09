@@ -14,6 +14,12 @@ const Hero: FC = () => {
     //   image: "/hero/1.png"
     // },
     { 
+      image: "/hero/5.png"
+    },
+    { 
+      image: "/hero/6.png"
+    },
+    { 
       image: "/hero/2.png"
     },
     { 

@@ -96,70 +96,7 @@ export default function Blog() {
             </div>
           </div>
 
-          {/* Featured Post */}
-          {blogData.some(post => post.featured) && (
-            <div className="mb-16">
-              <h3 className={`${montserrat.className} flex items-center text-xl font-bold mb-6 text-[#800000]`}>
-                <FiStar className="mr-2" /> Featured Article
-              </h3>
-              {blogData.filter(post => post.featured).map(featuredPost => (
-                <div key={featuredPost.id} className="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <div className="md:flex">
-                    <div className="md:w-1/2 relative h-64 md:h-auto">
-                      <Image
-                        alt={featuredPost.title}
-                        className="w-full h-full object-cover"
-                        fill
-                        src={featuredPost.image}
-                        quality={90}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                      <div className="absolute top-4 left-4 flex items-center">
-                        <span className="text-white px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: featuredPost.categoryColor }}>
-                          {featuredPost.category}
-                        </span>
-                        <span className="ml-2 text-white text-sm bg-black/30 px-2 py-1 rounded">{featuredPost.readTime}</span>
-                      </div>
-                    </div>
-                    <div className="md:w-1/2 p-6 md:p-8">
-                      <div className="flex items-center mb-4">
-                        <div className="flex-shrink-0 mr-3">
-                          <Image
-                            className="h-10 w-10 rounded-full object-cover"
-                            src={featuredPost.author.avatar}
-                            alt={featuredPost.author.name}
-                            width={40}
-                            height={40}
-                          />
-                        </div>
-                        <div>
-                          <p className={`${montserrat.className} text-sm font-medium text-gray-900`}>{featuredPost.author.name}</p>
-                          <p className="text-xs text-gray-500">{featuredPost.date}</p>
-                        </div>
-                      </div>
-                      <h3 className={`${montserrat.className} text-2xl font-bold mb-3`}>{featuredPost.title}</h3>
-                      <p className="text-gray-600 mb-6">{featuredPost.excerpt}</p>
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {featuredPost.tags?.map(tag => (
-                          <span key={tag} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                      <Link 
-                        href={`/blog/${featuredPost.slug}`}
-                        className="inline-flex items-center text-[#800000] border border-[#800000] hover:bg-[#800000] hover:text-white px-4 py-2 rounded-full text-sm transition-all duration-300"
-                      >
-                        Read Featured Article
-                        <FiArrowRight className="ml-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
+  
           {/* Blog Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
