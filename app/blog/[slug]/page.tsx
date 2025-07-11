@@ -144,7 +144,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                   Unlock the secrets of your birth chart with a personalized consultation from our expert astrologers.
                 </p>
                 <Link
-                  href="/consultations"
+                  href="/call-consultation"
                   className={`${montserrat.className} inline-block bg-white text-[#800000] font-bold px-8 py-3 rounded-full hover:bg-[#f8e1e1] transition-colors`}
                 >
                   Book a Consultation

@@ -7,7 +7,16 @@ import {
   FaGem,
   FaStar,
   FaHandHoldingHeart,
-  FaClock
+  FaClock,
+  FaHeartbeat,
+  FaBaby,
+  FaRing,
+  FaBriefcase,
+  FaBuilding,
+  FaPlane,
+  FaRupeeSign,
+  FaCrown,
+  FaHome
 } from 'react-icons/fa';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -17,7 +26,16 @@ const iconComponents: Record<string, JSX.Element> = {
   FaUserAlt: <FaUserAlt className="text-2xl sm:text-3xl text-[#5a0808]" />,
   FaGraduationCap: <FaGraduationCap className="text-2xl sm:text-3xl text-[#5a0808]" />,
   FaChartLine: <FaChartLine className="text-2xl sm:text-3xl text-[#5a0808]" />,
-  FaGem: <FaGem className="text-2xl sm:text-3xl text-[#5a0808]" />
+  FaGem: <FaGem className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaHeartbeat: <FaHeartbeat className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaBaby: <FaBaby className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaRing: <FaRing className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaBriefcase: <FaBriefcase className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaBuilding: <FaBuilding className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaPlane: <FaPlane className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaRupeeSign: <FaRupeeSign className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaCrown: <FaCrown className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaHome: <FaHome className="text-2xl sm:text-3xl text-[#5a0808]" />
 };
 
 export default function Consultations() {

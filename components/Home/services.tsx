@@ -1,6 +1,4 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+
 import { 
   FaBook, 
   FaPhoneAlt, 
@@ -13,25 +11,46 @@ import {
   FaBaby,
   FaGraduationCap,
   FaPrayingHands,
-  FaChartLine
+  FaChartLine,
+  FaHome,
+  FaQuestionCircle,
+  FaClock,
+  FaFire,         // For Manglik (Mars)
+  FaGlobeAsia,    // For Kaalsarp (snake around globe)
+  FaHashtag,      // For Numerology
+  FaMoon,         // For Sadesati (Saturn)
+  FaHandHoldingHeart // For Kundli Milan
 } from 'react-icons/fa';
-import { services } from '../../data/services';
+import { services } from '@/data/services';
+import type { Service } from '@/data/services';
 
 const iconComponents: Record<string, JSX.Element> = {
-  FaBook: <FaBook className="text-2xl sm:text-3xl text-[#5a0808]" />, // icon size smaller on mobile
-  FaPhoneAlt: <FaPhoneAlt className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaHeart: <FaHeart className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaUserAlt: <FaUserAlt className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaVideo: <FaVideo className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaStar: <FaStar className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaBalanceScale: <FaBalanceScale className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaGem: <FaGem className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaBaby: <FaBaby className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaGraduationCap: <FaGraduationCap className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaPrayingHands: <FaPrayingHands className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaChartLine: <FaChartLine className="text-2xl sm:text-3xl text-[#5a0808]" />
+  // Basic Icons
+  FaBook: <FaBook className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaPhoneAlt: <FaPhoneAlt className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaHeart: <FaHeart className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaUserAlt: <FaUserAlt className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaVideo: <FaVideo className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaStar: <FaStar className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaBalanceScale: <FaBalanceScale className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaGem: <FaGem className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaBaby: <FaBaby className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaGraduationCap: <FaGraduationCap className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaPrayingHands: <FaPrayingHands className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  
+  // Astrology Specific Icons
+  FaChartLine: <FaChartLine className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Janm Patrika
+  FaHome: <FaHome className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Vastu
+  FaQuestionCircle: <FaQuestionCircle className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Prashn Kundli
+  FaClock: <FaClock className="text-2xl sm:text-3xl text-[#5a0808]" />, // For KP Astrology
+  FaFire: <FaFire className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Manglik Dosha (represents Mars)
+  FaGlobeAsia: <FaGlobeAsia className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Kaalsarp Dosha (snake around globe)
+  FaHashtag: <FaHashtag className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Numerology
+  FaMoon: <FaMoon className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Sadesati (Saturn)
+  FaHandHoldingHeart: <FaHandHoldingHeart className="text-2xl sm:text-3xl text-[#5a0808]" /> // For Kundli Milan
 };
-
+import Head from 'next/head';
+import React from 'react';
 const Service = () => {
   // Remove the hardcoded services array
 
@@ -99,7 +118,7 @@ const Service = () => {
                 </div>
               </div>
               {/* Dynamic cards except the first */}
-              {services.slice(0).map((service) => (
+              {services.slice(0).map((service: Service) => (
                 <div
                   key={service.id}
                   className="relative bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 min-h-[220px] sm:min-h-[260px] flex flex-col"

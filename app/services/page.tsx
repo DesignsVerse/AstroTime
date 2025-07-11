@@ -1,4 +1,3 @@
-import { services } from '@/data/services';
 import { 
   FaBook, 
   FaPhoneAlt, 
@@ -11,23 +10,44 @@ import {
   FaBaby,
   FaGraduationCap,
   FaPrayingHands,
-  FaChartLine
+  FaChartLine,
+  FaHome,
+  FaQuestionCircle,
+  FaClock,
+  FaFire,         // For Manglik (Mars)
+  FaGlobeAsia,    // For Kaalsarp (snake around globe)
+  FaHashtag,      // For Numerology
+  FaMoon,         // For Sadesati (Saturn)
+  FaHandHoldingHeart // For Kundli Milan
 } from 'react-icons/fa';
 import Head from 'next/head';
-
+import Image from 'next/image';
+import {services} from '@/data/services';
+import CallConsultation from '@/components/call-for-probem/consultation-call';
 const iconComponents: Record<string, JSX.Element> = {
+  // Basic Icons
   FaBook: <FaBook className="text-2xl sm:text-3xl text-[#5a0808]" />,
-  FaPhoneAlt: <FaPhoneAlt className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaHeart: <FaHeart className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaUserAlt: <FaUserAlt className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaVideo: <FaVideo className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaStar: <FaStar className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaBalanceScale: <FaBalanceScale className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaGem: <FaGem className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaBaby: <FaBaby className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaGraduationCap: <FaGraduationCap className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaPrayingHands: <FaPrayingHands className="text-2xl sm:text-3xl text-[#5a0808]" />, 
-  FaChartLine: <FaChartLine className="text-2xl sm:text-3xl text-[#5a0808]" />
+  FaPhoneAlt: <FaPhoneAlt className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaHeart: <FaHeart className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaUserAlt: <FaUserAlt className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaVideo: <FaVideo className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaStar: <FaStar className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaBalanceScale: <FaBalanceScale className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaGem: <FaGem className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaBaby: <FaBaby className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaGraduationCap: <FaGraduationCap className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  FaPrayingHands: <FaPrayingHands className="text-2xl sm:text-3xl text-[#5a0808]" />,
+  
+  // Astrology Specific Icons
+  FaChartLine: <FaChartLine className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Janm Patrika
+  FaHome: <FaHome className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Vastu
+  FaQuestionCircle: <FaQuestionCircle className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Prashn Kundli
+  FaClock: <FaClock className="text-2xl sm:text-3xl text-[#5a0808]" />, // For KP Astrology
+  FaFire: <FaFire className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Manglik Dosha (represents Mars)
+  FaGlobeAsia: <FaGlobeAsia className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Kaalsarp Dosha (snake around globe)
+  FaHashtag: <FaHashtag className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Numerology
+  FaMoon: <FaMoon className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Sadesati (Saturn)
+  FaHandHoldingHeart: <FaHandHoldingHeart className="text-2xl sm:text-3xl text-[#5a0808]" /> // For Kundli Milan
 };
 
 export default function ServicesPage() {
@@ -45,11 +65,58 @@ export default function ServicesPage() {
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#5a0808]/10 to-transparent -z-10"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Banner Section */}
+          <div className="bg-gradient-to-r from-[#f8e1e1] to-[#faf5f5] rounded-2xl overflow-hidden shadow-lg mb-12 sm:mb-16">
+            <div className="flex flex-col lg:flex-row">
+              {/* Left Content */}
+              <div className="p-8 sm:p-10 lg:w-1/2 flex flex-col justify-center">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a0808] font-serif mb-4">
+                  Premium <span className="text-[#8b1e1e]">Astrology Services</span>
+                </h1>
+                <div className="w-20 sm:w-24 h-1 bg-[#8b1e1e] mb-6"></div>
+                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  Discover our comprehensive range of astrology services designed to bring clarity, balance, and transformation to your life journey.
+                </p>
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center">
+                    <FaStar className="text-[#8b1e1e] mr-3" />
+                    <span>Expert Vedic Astrology Analysis</span>
+                  </div>
+                  <div className="flex items-center">
+                    <FaHandHoldingHeart className="text-[#8b1e1e] mr-3" />
+                    <span>Personalized Remedies & Solutions</span>
+                  </div>
+                  <div className="flex items-center">
+                    <FaClock className="text-[#8b1e1e] mr-3" />
+                    <span>Ancient Wisdom, Modern Approach</span>
+                  </div>
+                </div>
+                <a
+                  href="#services"
+                  className="bg-[#5a0808] hover:bg-[#8b1e1e] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 inline-block w-fit"
+                >
+                  Explore Services
+                </a>
+              </div>
+              
+              {/* Right Image */}
+              <div className="rounded-2xl overflow-hidden w-[24rem] h-[20rem] sm:w-[28rem] sm:h-[26rem] md:w-[36rem] md:h-[30rem] relative mx-auto">
+                <Image 
+                  src="/service/service-banner.png" 
+                  alt="Astrology Services"
+                  fill
+                  className="object-contain object-center rounded-2xl"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Page Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a0808] font-serif mb-4">
+          <div id="services" className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a0808] font-serif mb-4">
               Our <span className="text-[#8b1e1e]">Premium</span> Services
-            </h1>
+            </h2>
             <div className="w-20 sm:w-24 h-1 bg-[#8b1e1e] mx-auto mb-4 sm:mb-6"></div>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto font-sans leading-relaxed">
               Discover our expertly crafted astrology services, designed to bring clarity, balance, and transformation to your life.
@@ -125,6 +192,8 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
+
+       
 
           {/* New Additional Sections Below CTA */}
 

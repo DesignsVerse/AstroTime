@@ -6,7 +6,16 @@ import {
   FaChartLine,
   FaGem,
   FaCheck,
-  FaPhoneAlt
+  FaPhoneAlt,
+  FaHeartbeat,
+  FaBaby,
+  FaRing,
+  FaBriefcase,
+  FaBuilding,
+  FaPlane,
+  FaRupeeSign,
+  FaCrown,
+  FaHome
 } from 'react-icons/fa';
 import Head from 'next/head';
 
@@ -15,7 +24,16 @@ const iconComponents: Record<string, JSX.Element> = {
   FaUserAlt: <FaUserAlt className="text-2xl text-[#5a0808]" />,
   FaGraduationCap: <FaGraduationCap className="text-2xl text-[#5a0808]" />,
   FaChartLine: <FaChartLine className="text-2xl text-[#5a0808]" />,
-  FaGem: <FaGem className="text-2xl text-[#5a0808]" />
+  FaGem: <FaGem className="text-2xl text-[#5a0808]" />,
+  FaHeartbeat: <FaHeartbeat className="text-2xl text-[#5a0808]" />,
+  FaBaby: <FaBaby className="text-2xl text-[#5a0808]" />,
+  FaRing: <FaRing className="text-2xl text-[#5a0808]" />,
+  FaBriefcase: <FaBriefcase className="text-2xl text-[#5a0808]" />,
+  FaBuilding: <FaBuilding className="text-2xl text-[#5a0808]" />,
+  FaPlane: <FaPlane className="text-2xl text-[#5a0808]" />,
+  FaRupeeSign: <FaRupeeSign className="text-2xl text-[#5a0808]" />,
+  FaCrown: <FaCrown className="text-2xl text-[#5a0808]" />,
+  FaHome: <FaHome className="text-2xl text-[#5a0808]" />
 };
 
 export default function ConsultationDetail({ params }: { params: { slug: string } }) {
@@ -26,7 +44,7 @@ export default function ConsultationDetail({ params }: { params: { slug: string 
     return <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
         <h1 className="text-2xl font-bold text-[#5a0808]">Consultation not found</h1>
-        <a href="/consultations" className="mt-4 inline-block text-[#8b1e1e] hover:underline">
+        <a href="/call-consultation" className="mt-4 inline-block text-[#8b1e1e] hover:underline">
           Browse all consultations
         </a>
       </div>
@@ -56,7 +74,7 @@ export default function ConsultationDetail({ params }: { params: { slug: string 
               <li>
                 <div className="flex items-center">
                   <span className="mx-2 text-gray-400">/</span>
-                  <a href="/consultations" className="text-sm font-medium text-gray-700 hover:text-[#5a0808]">
+                  <a href="/call-consultation" className="text-sm font-medium text-gray-700 hover:text-[#5a0808]">
                     Consultations
                   </a>
                 </div>

@@ -1,9 +1,10 @@
+
 "use client"
 import { Merriweather, Montserrat } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { blogData } from '@/data/blogData';
 import { FiChevronLeft, FiChevronRight, FiClock, FiArrowRight } from 'react-icons/fi';
 
@@ -25,95 +26,107 @@ export default function Blog() {
   const [isHovering, setIsHovering] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<NodeJS.Timeout>();
+  const carouselRef = useRef(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Responsive slides per view
-  const getSlidesPerView = () => {
-    if (typeof window === 'undefined') return 3;
+  const getSlidesPerView = useCallback(() => {
+    if (typeof window === 'undefined') return 1;
     if (window.innerWidth < 640) return 1;
     if (window.innerWidth < 1024) return 2;
     return 3;
-  };
+  }, []);
 
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView());
   const [slidesToScroll, setSlidesToScroll] = useState(1);
 
+  // Handle resize for responsive layout
   useEffect(() => {
     const handleResize = () => {
       const newSlidesPerView = getSlidesPerView();
       setSlidesPerView(newSlidesPerView);
-      setSlidesToScroll(Math.min(1, newSlidesPerView)); // Scroll 1 at a time on mobile
-      // Adjust current index to prevent empty space
+      setSlidesToScroll(1); // Always scroll 1 at a time for smoother experience
       setCurrentIndex(prev => Math.min(prev, Math.ceil(blogData.length / newSlidesPerView) - 1));
     };
 
+    handleResize(); // Initial call
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [getSlidesPerView]);
 
   // Auto-scroll functionality with proper cleanup
   useEffect(() => {
-    const startAutoScroll = () => {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => 
-          prev >= Math.ceil(blogData.length / slidesPerView) - 1 ? 0 : prev + slidesToScroll
-        );
-      }, 5000);
-    };
-
     if (isAutoScrolling && !isHovering) {
-      startAutoScroll();
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prev => {
+          const maxIndex = Math.ceil(blogData.length / slidesPerView) - 1;
+          return prev >= maxIndex ? 0 : prev + slidesToScroll;
+        });
+      }, 5000);
     }
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     };
   }, [isAutoScrolling, isHovering, slidesPerView, slidesToScroll]);
 
-  const handlePrev = () => {
+  const stopAutoScroll = useCallback(() => {
     setIsAutoScrolling(false);
-    setCurrentIndex(prev => 
-      prev <= 0 ? Math.ceil(blogData.length / slidesPerView) - 1 : prev - slidesToScroll
-    );
-    // Restart auto-scroll after 10 seconds
-    setTimeout(() => setIsAutoScrolling(true), 10000);
-  };
-
-  const handleNext = () => {
-    setIsAutoScrolling(false);
-    setCurrentIndex(prev => 
-      prev >= Math.ceil(blogData.length / slidesPerView) - 1 ? 0 : prev + slidesToScroll
-    );
-    // Restart auto-scroll after 10 seconds
-    setTimeout(() => setIsAutoScrolling(true), 10000);
-  };
-
-  // Touch handling for mobile
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEndX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 50) {
-      handleNext();
-    } else if (touchStartX - touchEndX < -50) {
-      handlePrev();
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-  };
+    // Restart auto-scroll after 10 seconds
+    setTimeout(() => setIsAutoScrolling(true), 10000);
+  }, []);
 
-  // Calculate visible items based on current index
-  const visibleItems = blogData.slice(currentIndex, currentIndex + slidesPerView);
-  // If we're at the end and need to loop items
-  const remainingItems = slidesPerView - visibleItems.length;
-  if (remainingItems > 0) {
-    visibleItems.push(...blogData.slice(0, remainingItems));
+  const handlePrev = useCallback(() => {
+    stopAutoScroll();
+    setCurrentIndex(prev => {
+      const maxIndex = Math.ceil(blogData.length / slidesPerView) - 1;
+      return prev <= 0 ? maxIndex : prev - slidesToScroll;
+    });
+  }, [slidesPerView, slidesToScroll, stopAutoScroll]);
+
+  const handleNext = useCallback(() => {
+    stopAutoScroll();
+    setCurrentIndex(prev => {
+      const maxIndex = Math.ceil(blogData.length / slidesPerView) - 1;
+      return prev >= maxIndex ? 0 : prev + slidesToScroll;
+    });
+  }, [slidesPerView, slidesToScroll, stopAutoScroll]);
+
+  // Enhanced touch handling
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    stopAutoScroll();
+    setTouchStartX(e.touches[0].clientX);
+  }, [stopAutoScroll]);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    setTouchEndX(e.touches[0].clientX);
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    const swipeDistance = touchStartX - touchEndX;
+    if (Math.abs(swipeDistance) > 50) {
+      if (swipeDistance > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    setTouchStartX(0);
+    setTouchEndX(0);
+  }, [touchStartX, touchEndX, handleNext, handlePrev]);
+
+  // Calculate visible items
+  const startIndex = currentIndex * slidesToScroll;
+  const visibleItems = blogData.slice(startIndex, startIndex + slidesPerView);
+  if (visibleItems.length < slidesPerView) {
+    visibleItems.push(...blogData.slice(0, slidesPerView - visibleItems.length));
   }
 
   return (
@@ -158,11 +171,11 @@ export default function Blog() {
             onTouchEnd={handleTouchEnd}
             ref={carouselRef}
           >
-            {/* Navigation Arrows - Always visible but more subtle on mobile */}
+            {/* Navigation Arrows - Hidden on mobile, visible on hover for desktop */}
             <button 
               onClick={handlePrev}
               aria-label="Previous articles"
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hidden sm:flex"
             >
               <FiChevronLeft className="text-base sm:text-lg lg:text-xl" />
             </button>
@@ -170,17 +183,17 @@ export default function Blog() {
             <button 
               onClick={handleNext}
               aria-label="Next articles"
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hidden sm:flex"
             >
               <FiChevronRight className="text-base sm:text-lg lg:text-xl" />
             </button>
 
-            {/* Blog Grid - Improved layout with proper gap */}
-            <div className="overflow-hidden relative w-full px-8 sm:px-10 lg:px-12">
+            {/* Blog Grid */}
+            <div className="overflow-hidden relative w-full px-4 sm:px-8 lg:px-12">
               <div
-                className="grid grid-flow-col auto-cols-[minmax(0,1fr)] sm:auto-cols-[minmax(0,calc(50%-12px))] lg:auto-cols-[minmax(0,calc(33.333%-16px))] gap-4 sm:gap-6 lg:gap-8 transition-transform duration-500 ease-in-out"
+                className="grid grid-flow-col auto-cols-[minmax(0,100%)] sm:auto-cols-[minmax(0,calc(50%-12px))] lg:auto-cols-[minmax(0,calc(33.333%-16px))] gap-4 sm:gap-6 lg:gap-8 transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: `translateX(calc(-${currentIndex * (100 / slidesPerView)}% - ${currentIndex * 1}rem))`,
+                  transform: `translateX(-${(currentIndex * 100) / slidesPerView}%)`,
                 }}
               >
                 {visibleItems.map((post) => (
@@ -202,8 +215,8 @@ export default function Blog() {
                           placeholder="blur"
                           blurDataURL="/placeholder-image.jpg"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
-                          <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                          <div className="translate-y-8 sm:group-hover:translate-y-0 transition-transform duration-300">
                             <p className="text-[#FFD700] font-semibold text-sm sm:text-base mb-2">{post.date}</p>
                             <h3 className="text-white text-lg sm:text-xl font-bold mb-3">{post.title}</h3>
                             <Link 
@@ -248,13 +261,34 @@ export default function Blog() {
                 ))}
               </div>
             </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center mt-8 md:mt-12">
+              <div className="flex space-x-2 md:space-x-3">
+                {blogData.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      stopAutoScroll();
+                      setCurrentIndex(index);
+                    }}
+                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                      index === currentIndex 
+                        ? 'bg-[#800000] scale-125' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to blog ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* View All Button */}
           <div className="flex justify-center mt-12 md:mt-20">
             <Link 
               href="/blog" 
-              className={`${montserrat.className} bg-gradient-to-r from-[#800000] to-[#A53838] text-white px-8 py-3 sm:px-10 sm:py-4 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:from-[#A53838] hover:to-[#800000] group inline-flex items-center text-sm sm:text-base`}
+              className={`${montserrat.className} bg-gradient-to-r from-[#800000] to-[#A53838] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:from-[#A53838] hover:to-[#800000] group inline-flex items-center text-sm sm:text-base`}
               aria-label="Explore all articles"
             >
               Explore All Articles

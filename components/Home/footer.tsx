@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelope, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faFacebookF, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
@@ -25,19 +25,23 @@ export default function Footer() {
           className="flex justify-end pt-8 space-x-4"
         >
           {[
-            { icon: faTwitter, label: "twitter" },
-            { icon: faFacebookF, label: "facebook" },
-            { icon: faInstagram, label: "instagram" }
+            { icon: faWhatsapp, label: "whatsapp", href: "https://wa.me/919876543210" },
+            { icon: faFacebookF, label: "facebook", href: "https://facebook.com/astrotimelive" },
+            { icon: faInstagram, label: "instagram", href: "https://instagram.com/astrotimelive" },
+            { icon: faTwitter, label: "twitter", href: "https://twitter.com/astrotimelive" }
           ].map((social, index) => (
-            <motion.button
+            <motion.a
               key={index}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label={social.label}
               className="w-10 h-10 border border-white rounded-full flex items-center justify-center text-white hover:bg-white hover:text-[#800000] transition-all duration-300"
             >
               <FontAwesomeIcon icon={social.icon} className="text-[16px]" />
-            </motion.button>
+            </motion.a>
           ))}
         </motion.div>
         
@@ -68,7 +72,7 @@ export default function Footer() {
               <h1 className="font-sans text-white text-3xl font-bold tracking-wide">
                 Astro Time
               </h1>
-              <p className="text-white/70 text-sm mt-1">Your cosmic guide to destiny</p>
+              <p className="text-white/70 text-sm mt-1">Your trusted guide to cosmic wisdom</p>
             </div>
           </div>
           
@@ -77,14 +81,14 @@ export default function Footer() {
             { 
               icon: faPhoneAlt, 
               label: "Phone", 
-              value: "000 - 123456789", 
-              href: "tel:000123456789" 
+              value: "+91 98765 43210", 
+              href: "tel:+919876543210" 
             },
             { 
               icon: faEnvelope, 
-              label: "Email id", 
-              value: "info@example.com", 
-              href: "mailto:info@example.com" 
+              label: "Email", 
+              value: "info@astrotimelive.com", 
+              href: "mailto:info@astrotimelive.com" 
             }
           ].map((contact, index) => (
             <div key={index} className="flex items-center space-x-4">
@@ -120,43 +124,57 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-sans text-white text-xl font-bold">About Astro Time</h3>
             <p className="text-white/70 leading-relaxed">
-              We provide accurate astrological predictions and guidance to help you navigate life's challenges and opportunities with cosmic wisdom.
+              We provide authentic Vedic astrology services including Janm Patrika analysis, gemstone recommendations, dosha remedies, and personalized consultations to guide your life's journey.
             </p>
           </div>
           
-          {/* Quick Links */}
+          {/* Astrology Services */}
           <div className="space-y-4">
-            <h3 className="font-sans text-white text-xl font-bold">Horoscope</h3>
+            <h3 className="font-sans text-white text-xl font-bold">Astrology Services</h3>
             <ul className="space-y-2 text-white/70">
-              {['Daily', 'Weekly', 'Monthly', 'Yearly', 'Love', 'Career'].map((item, index) => (
+              {[
+                { name: 'Janm Patrika Analysis', href: '/services/janm-patrika-analysis' },
+                { name: 'Falit Jyotish Consultation', href: '/services/falit-jyotish-consultation' },
+                { name: 'Gemstone Astrology', href: '/services/gemstone-astrology' },
+                { name: 'Dosha & Yoga Analysis', href: '/services/dosha-yoga-analysis' },
+                { name: 'Vastu & Palmistry', href: '/services/vastu-palmistry' },
+                { name: 'Call Consultation', href: '/call-consultation' }
+              ].map((service, index) => (
                 <motion.li 
-                  key={item}
+                  key={service.name}
                   initial={{ x: -10 }}
                   whileInView={{ x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className="hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2" />
-                  <a href="#">{item} Horoscope</a>
+                  <a href={service.href}>{service.name}</a>
                 </motion.li>
               ))}
             </ul>
           </div>
           
-          {/* Gemstones */}
+          {/* Zodiac & Numerology */}
           <div className="space-y-4">
-            <h3 className="font-sans text-white text-xl font-bold">Gemstones</h3>
+            <h3 className="font-sans text-white text-xl font-bold">Zodiac & Numerology</h3>
             <ul className="space-y-2 text-white/70">
-              {['Ruby', 'Emerald', 'Sapphire', 'Diamond', 'Pearl', 'Topaz'].map((gem, index) => (
+              {[
+                { name: 'Daily Horoscope', href: '/rashi' },
+                { name: 'Weekly Horoscope', href: '/rashi' },
+                { name: 'Monthly Horoscope', href: '/rashi' },
+                { name: 'Numerology Analysis', href: '/nemerology-anck' },
+                { name: 'Birth Number', href: '/nemerology-anck' },
+                { name: 'Life Path Number', href: '/nemerology-anck' }
+              ].map((item, index) => (
                 <motion.li 
-                  key={gem}
+                  key={item.name}
                   initial={{ x: -10 }}
                   whileInView={{ x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className="hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2" />
-                  <a href="#">{gem} Benefits</a>
+                  <a href={item.href}>{item.name}</a>
                 </motion.li>
               ))}
             </ul>
@@ -164,13 +182,13 @@ export default function Footer() {
           
           {/* Subscribe */}
           <div className="space-y-4">
-            <h3 className="font-sans text-white text-xl font-bold">Subscribe</h3>
-            <p className="text-white/70">Get daily cosmic updates straight to your inbox</p>
+            <h3 className="font-sans text-white text-xl font-bold">Daily Updates</h3>
+            <p className="text-white/70">Get daily horoscope and cosmic insights delivered to your inbox</p>
             <div className="space-y-3">
               <motion.input
                 whileFocus={{ scale: 1.02 }}
                 className="w-full bg-white/10 border border-white/20 rounded-lg py-3 px-4 placeholder:text-white/50 text-white focus:outline-none focus:ring-2 focus:ring-white transition"
-                placeholder="Your Email"
+                placeholder="Your Email Address"
                 type="email"
               />
               <motion.button
@@ -182,7 +200,7 @@ export default function Footer() {
                 Subscribe Now
               </motion.button>
             </div>
-            <p className="text-white/50 text-xs">*We'll never share your email with anyone</p>
+            <p className="text-white/50 text-xs">*Get free daily horoscope and cosmic insights</p>
           </div>
         </motion.div>
         
@@ -196,19 +214,19 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center py-6"
         >
           <div className="text-white/70 text-sm mb-4 md:mb-0">
-            © {currentYear} Astro Time. All rights reserved.
+            © {currentYear} Astro Time. All rights reserved. | Vedic Astrology Services
           </div>
           
           <div className="flex items-center space-x-2">
             <span className="text-white/70 text-sm mr-2">Secure payments:</span>
-            {['visa', 'mastercard', 'amex', 'paypal', 'discover'].map((card, index) => (
+            {['visa', 'mastercard', 'amex', 'paypal', 'upi'].map((card, index) => (
               <motion.div 
                 key={card}
                 whileHover={{ y: -5 }}
                 className="bg-white/10 p-1 rounded-md hover:bg-white/20 transition-all duration-300"
               >
                 <Image
-                  alt={`${card} card logo`}
+                  alt={`${card} payment logo`}
                   className="h-6 w-auto"
                   height={24}
                   src={`/ruby.png`}

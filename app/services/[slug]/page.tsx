@@ -17,7 +17,13 @@ import {
   FaRupeeSign,
   FaClock,
   FaShippingFast,
-  FaQuestionCircle
+  FaQuestionCircle,
+  FaHome,
+  FaHandHoldingHeart,
+  FaMoon,
+  FaFire,
+  FaGlobeAsia,
+  FaHashtag
 } from 'react-icons/fa';
 
 const iconComponents: Record<string, JSX.Element> = {
@@ -32,7 +38,13 @@ const iconComponents: Record<string, JSX.Element> = {
   FaBaby: <FaBaby className="text-4xl" />,
   FaGraduationCap: <FaGraduationCap className="text-4xl" />,
   FaPrayingHands: <FaPrayingHands className="text-4xl" />,
-  FaChartLine: <FaChartLine className="text-4xl" />
+  FaChartLine: <FaChartLine className="text-4xl" />,
+  FaHome: <FaHome className="text-4xl" />,
+  FaHandHoldingHeart: <FaHandHoldingHeart className="text-4xl" />,
+  FaMoon: <FaMoon className="text-4xl" />,
+  FaFire: <FaFire className="text-4xl" />,
+  FaGlobeAsia: <FaGlobeAsia className="text-4xl" />,
+  FaHashtag: <FaHashtag className="text-4xl" />
 };
 
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
@@ -158,7 +170,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
           {/* Right Column - Sidebar */}
           <div className="lg:w-1/3">
-            <div className="bg-white rounded-xl shadow-md sticky top-8 overflow-hidden border border-[#f8e1e1]">
+            <div className="bg-white rounded-xl shadow-md sticky top-24 overflow-hidden border border-[#f8e1e1]">
               {/* Pricing Box */}
               <div className="p-6 border-b border-[#f8e1e1]">
                 <h3 className="text-xl font-bold text-[#5a0808] font-serif mb-4">

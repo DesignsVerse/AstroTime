@@ -21,7 +21,7 @@ const consultations = [
         "30-minute consultation",
         "Follow-up guidance"
       ],
-      price: 1500,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book your slot",
@@ -42,7 +42,7 @@ const consultations = [
       id: "2",
       title: "Child Consultation",
       slug: "child",
-      icon: "FaChild",
+      icon: "FaBaby",
       shortDescription: "Guidance for child-related matters and parenthood",
       description: "This consultation provides insights into your child's future, parenting challenges, and remedies for child-related planetary influences.",
       benefits: [
@@ -59,7 +59,7 @@ const consultations = [
         "30-minute consultation",
         "Follow-up support"
       ],
-      price: 1800,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book consultation",
@@ -96,7 +96,7 @@ const consultations = [
         "30-minute consultation",
         "Personalized guidance"
       ],
-      price: 1200,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book slot",
@@ -133,8 +133,8 @@ const consultations = [
         "Compatibility report",
         "30-minute consultation"
       ],
-      price: 2000,
-      duration: "45 minutes",
+      price: 1100,
+      duration: "30 minutes",
       process: [
         "Book consultation",
         "Share birth details",
@@ -171,7 +171,7 @@ const consultations = [
         "30-minute consultation",
         "Remedies report"
       ],
-      price: 1800,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book session",
@@ -209,7 +209,7 @@ const consultations = [
         "30-minute one-on-one phone consultation",
         "Follow-up remedies via email"
       ],
-      price: 1500,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book your consultation slot",
@@ -234,7 +234,7 @@ const consultations = [
       id: "7",
       title: "Business Consultation",
       slug: "business",
-      icon: "FaChartLine",
+      icon: "FaBuilding",
       shortDescription: "Astrological guidance for business success",
       description: "Analysis of business prospects, timing for ventures, and remedies for business growth and stability.",
       benefits: [
@@ -248,11 +248,11 @@ const consultations = [
         "10th and 11th house analysis",
         "Business horoscope",
         "Remedies for success",
-        "45-minute consultation",
+        "30-minute consultation",
         "Detailed report"
       ],
-      price: 2500,
-      duration: "45 minutes",
+      price: 1100,
+      duration: "30 minutes",
       process: [
         "Book consultation",
         "Provide details",
@@ -289,7 +289,7 @@ const consultations = [
         "30-minute consultation",
         "Personalized guidance"
       ],
-      price: 1200,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book session",
@@ -326,7 +326,7 @@ const consultations = [
         "30-minute consultation",
         "Personalized report"
       ],
-      price: 1800,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book consultation",
@@ -346,7 +346,7 @@ const consultations = [
       id: "10",
       title: "Politic/Rajyog Consultation",
       slug: "politic-rajyog",
-      icon: "FaLandmark",
+      icon: "FaCrown",
       shortDescription: "Analysis of political career and raj yogas",
       description: "Identification of raj yogas in your chart and guidance for political or leadership success.",
       benefits: [
@@ -360,11 +360,11 @@ const consultations = [
         "Full chart analysis",
         "Raj yoga report",
         "Remedies for success",
-        "45-minute consultation",
+        "30-minute consultation",
         "Detailed guidance"
       ],
-      price: 3000,
-      duration: "45 minutes",
+      price: 3100,
+      duration: "30 minutes",
       process: [
         "Book session",
         "Provide details",
@@ -401,7 +401,7 @@ const consultations = [
         "30-minute consultation",
         "Guidance report"
       ],
-      price: 1500,
+      price: 1100,
       duration: "30 minutes",
       process: [
         "Book consultation",
