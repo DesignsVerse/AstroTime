@@ -56,12 +56,11 @@ const Header: FC = () => {
   const navItems = [
     { name: "Call Consultation", href: "/call-consultation", highlight: true },
     { name: "Gemstone", href: "https://www.bestrudraksha.com/shop-filter/gemstones" },
-    { name: "Free Calculator", href: "/free-calculator" },
     { name: "Services", href: "/services" },
-    { name: "Horoscope", href: "/horoscope" },
+    { name: "Pancahng", href: "/panchnag" },
     { name: "Rudraksha", href: "https://www.bestrudraksha.com/shop" },
-    { name: "Online Puja", href: "/online-puja" },
-    { name: "Collaborations", href: "/collaborations" },
+    { name: "Online Puja", href: "https://www.ujjainkalsarp.com/" },
+    { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
     { name: "Support", href: "/support" },
   ];

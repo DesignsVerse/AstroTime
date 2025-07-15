@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import Swiper from 'swiper';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { motion } from 'framer-motion';
@@ -17,7 +17,7 @@ const Testimonial: React.FC = () => {
 
   useEffect(() => {
     swiperRef.current = new Swiper('#testimonial-slider', {
-      modules: [Autoplay, Pagination],
+      modules: [Autoplay],
       slidesPerView: 1,
       spaceBetween: 30,
       loop: true,
@@ -26,27 +26,22 @@ const Testimonial: React.FC = () => {
         disableOnInteraction: false,
       },
       speed: 1000,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        renderBullet: (index, className) => {
-          return `<span class="${className} bg-[#5a0808] opacity-20 w-3 h-3 mx-1 rounded-full transition-all duration-300 hover:opacity-100 hover:scale-125"></span>`;
-        },
-      },
       breakpoints: {
         640: {
           slidesPerView: 1,
-          spaceBetween: 30,
+          spaceBetween: 20,
         },
         768: {
           slidesPerView: 2,
-          spaceBetween: 30,
+          spaceBetween: 20,
         },
         1024: {
           slidesPerView: 3,
-          spaceBetween: 30,
+          spaceBetween: 20,
         }
       },
+      slidesOffsetBefore: 32, // Add left offset so first card is visible (matches px-8)
+      slidesOffsetAfter: 64, // Increased right offset to help last card be visible with loop
       on: {
         slideChange: (swiper) => {
           setActiveIndex(swiper.realIndex);
@@ -71,7 +66,7 @@ const Testimonial: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-[#FCFAF8] py-16 px-4 sm:px-6 lg:py-20 lg:px-8 relative overflow-hidden">
+    <section className="w-full bg-[#FCFAF8] py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Cosmic background elements */}
       <div className="absolute inset-0 opacity-10 overflow-hidden">
         {[...Array(12)].map((_, i) => (
@@ -149,34 +144,30 @@ const Testimonial: React.FC = () => {
 
         {/* Testimonial slider */}
         <div className="relative">
-          <div className="swiper !pb-12" id="testimonial-slider">
+          <div className="swiper !overflow-visible" id="testimonial-slider">
             <div className="swiper-wrapper">
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={testimonial.id} 
-                  className="swiper-slide"
+                  className="swiper-slide flex items-stretch"
                   style={{
-                    width: '100%',
-                    maxWidth: '380px',
+                    height: '320px',
                   }}
                 >
                   <motion.div 
-                    className={`relative bg-white rounded-xl border border-[#e8e0d7] p-8 h-full flex flex-col shadow-sm transition-all duration-300 hover:shadow-lg ${activeIndex === index ? 'scale-100' : 'scale-95'}`}
-                    style={{ minHeight: '370px', maxWidth: '380px', width: '100%' }}
+                    className={`relative bg-white rounded-xl border border-[#e8e0d7] p-8 flex flex-col h-full shadow-sm transition-all duration-300 hover:shadow-lg items-stretch ${activeIndex === index ? 'scale-100' : 'scale-95'}`}
+                    style={{ height: '100%' }}
                     whileHover={{ 
                       scale: 1.02,
                       boxShadow: '0 20px 25px -5px rgba(139, 30, 30, 0.1), 0 10px 10px -5px rgba(139, 30, 30, 0.04)'
                     }}
                   >
-                    
-                    <FaQuoteLeft className="text-[#8b1e1e] opacity-20 text-3xl mb-4 absolute top-6 left-6" />
-                    
-                    <div className="flex-grow pt-8">
-                      <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    <FaQuoteLeft className="text-[#8b1e1e] opacity-20 text-3xl mb-4" />
+                    <div className="flex-grow">
+                      <p className="text-gray-700 text-lg leading-relaxed mb-6 line-clamp-5">
                         "{testimonial.text}"
                       </p>
                     </div>
-                    
                     <div className="flex items-center mt-auto">
                       <div 
                         className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-md"
@@ -201,30 +192,7 @@ const Testimonial: React.FC = () => {
                 </div>
               ))}
             </div>
-            
-            {/* Pagination */}
-            <div className="swiper-pagination !bottom-0 mt-8"></div>
           </div>
-        </div>
-
-        {/* Navigation arrows */}
-        <div className="flex justify-center mt-8 space-x-4">
-          <motion.button 
-            className="testimonial-prev p-3 rounded-full bg-white border border-[#e8e0d7] text-[#8b1e1e] hover:bg-[#8b1e1e] hover:text-white transition-all shadow-md hover:shadow-lg"
-            aria-label="Previous testimonial"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FiChevronLeft className="w-5 h-5" />
-          </motion.button>
-          <motion.button 
-            className="testimonial-next p-3 rounded-full bg-white border border-[#e8e0d7] text-[#8b1e1e] hover:bg-[#8b1e1e] hover:text-white transition-all shadow-md hover:shadow-lg"
-            aria-label="Next testimonial"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FiChevronRight className="w-5 h-5" />
-          </motion.button>
         </div>
       </div>
     </section>

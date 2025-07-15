@@ -166,14 +166,14 @@ const AboutAstrologer = () => {
                     whileTap={{ scale: 0.98 }}
                     className="flex-1 bg-[#8b1e1e] text-white px-6 py-3 rounded-lg font-['Poppins'] font-medium hover:bg-[#7a1919] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-sm"
                   >
-                    <FaCalendarAlt /> Schedule Consultation
+                    Whatsapp
                   </motion.button>
                   <motion.button 
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     className="flex-1 bg-white border border-[#8b1e1e] text-[#8b1e1e] px-6 py-3 rounded-lg font-['Poppins'] font-medium hover:bg-[#f8f4ef] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-sm"
                   >
-                    <FaEnvelope /> Send Inquiry
+                    Call Now
                   </motion.button>
                 </div>
               </div>

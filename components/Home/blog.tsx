@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 import { Merriweather, Montserrat } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -45,11 +44,11 @@ export default function Blog() {
     const handleResize = () => {
       const newSlidesPerView = getSlidesPerView();
       setSlidesPerView(newSlidesPerView);
-      setSlidesToScroll(1); // Always scroll 1 at a time for smoother experience
+      setSlidesToScroll(1);
       setCurrentIndex(prev => Math.min(prev, Math.ceil(blogData.length / newSlidesPerView) - 1));
     };
 
-    handleResize(); // Initial call
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [getSlidesPerView]);
@@ -79,7 +78,6 @@ export default function Blog() {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-    // Restart auto-scroll after 10 seconds
     setTimeout(() => setIsAutoScrolling(true), 10000);
   }, []);
 
@@ -171,7 +169,7 @@ export default function Blog() {
             onTouchEnd={handleTouchEnd}
             ref={carouselRef}
           >
-            {/* Navigation Arrows - Hidden on mobile, visible on hover for desktop */}
+            {/* Navigation Arrows */}
             <button 
               onClick={handlePrev}
               aria-label="Previous articles"
@@ -204,7 +202,7 @@ export default function Blog() {
                     <article 
                       className="group relative bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 h-full flex flex-col"
                     >
-                      <div className="relative h-60 sm:h-72 overflow-hidden">
+                      <div className="relative h-48 sm:h-56 overflow-hidden">
                         <Image
                           alt={post.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -215,20 +213,6 @@ export default function Blog() {
                           placeholder="blur"
                           blurDataURL="/placeholder-image.jpg"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
-                          <div className="translate-y-8 sm:group-hover:translate-y-0 transition-transform duration-300">
-                            <p className="text-[#FFD700] font-semibold text-sm sm:text-base mb-2">{post.date}</p>
-                            <h3 className="text-white text-lg sm:text-xl font-bold mb-3">{post.title}</h3>
-                            <Link 
-                              href={`/blog/${post.slug}`}
-                              className="inline-flex items-center text-white border border-white/50 hover:border-[#FFD700] hover:text-[#FFD700] px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all duration-300"
-                              aria-label={`Read more about ${post.title}`}
-                            >
-                              Read Article
-                              <FiArrowRight className="ml-1" />
-                            </Link>
-                          </div>
-                        </div>
                         <div className="absolute top-3 right-3 sm:top-4 sm:right-4" style={{ backgroundColor: post.categoryColor }}>
                           <span className="text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold">
                             {post.category}

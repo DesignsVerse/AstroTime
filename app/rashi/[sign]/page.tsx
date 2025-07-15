@@ -116,7 +116,7 @@ const ZodiacSignPage = ({ params }: { params: { sign: string } }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen mt-10 bg-gray-50">
       {/* Hero Section */}
       <div className="bg-gradient-to-r md:mt-0 mt-10 from-[#5a0808] to-[#8b1e1e] text-white py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

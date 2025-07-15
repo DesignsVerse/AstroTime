@@ -10,6 +10,7 @@ import Blog from '@/components/Home/blog';
 import FAQ from '@/components/Home/FAQ';
 import NemurologySection from '@/components/Home/nemurology';
 import NumberSelector from '@/components/Home/NumerologyNo';
+import RamayanaBanner from '@/components/Home/ram-ravan';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       
       <Hero />
       <Services/>
+      <RamayanaBanner/>
       <AboutAstrologer/>
       <Achievements/> 
       <Rashi/>

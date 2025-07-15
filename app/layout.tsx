@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${merriweather.variable} ${openSans.variable}`}>
       <body className={`${openSans.className}`}>
         <Header />
-        <main className="pt-24">
+        <main className="pt-16">
           {children}
         </main>
         <Footer />
