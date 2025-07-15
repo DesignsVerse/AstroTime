@@ -44,7 +44,7 @@ export default function RamayanaBanner() {
             
             <motion.div 
               whileHover={{ scale: 1.03 }}
-              className="absolute -right-2 sm:-right-4 md:-right-6 top-1/2 transform -translate-y-1/2 bg-white/95 p-1.5 sm:p-2 rounded-md shadow-lg w-[160px] sm:w-[200px] md:w-[260px] z-10 cursor-pointer transition-all duration-300 hover:shadow-xl"
+              className="absolute -right-2 sm:-right-4 md:-right-6 top-1/2  bg-white/95 p-1.5 sm:p-2 rounded-md shadow-lg w-[160px] sm:w-[200px] md:w-[260px] z-10 cursor-pointer transition-all duration-300 hover:shadow-xl"
             >
               <Link href="/kundli/ram">
                 <img 
@@ -107,7 +107,7 @@ export default function RamayanaBanner() {
             
             <motion.div 
               whileHover={{ scale: 1.03 }}
-              className="absolute -left-2 sm:-left-4 md:-left-6 top-1/2 transform -translate-y-1/2 bg-white/95 p-1.5 sm:p-2 rounded-md shadow-lg w-[160px] sm:w-[200px] md:w-[260px] z-10 cursor-pointer transition-all duration-300 hover:shadow-xl"
+              className="absolute -left-2 sm:-left-4 md:-left-6 top-1/2  bg-white/95 p-1.5 sm:p-2 rounded-md shadow-lg w-[160px] sm:w-[200px] md:w-[260px] z-10 cursor-pointer transition-all duration-300 hover:shadow-xl"
             >
               <Link href="/kundli/ravan">
                 <img 

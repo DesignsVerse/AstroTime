@@ -3,6 +3,7 @@ import { FaChartLine, FaStar, FaHandsHelping, FaGlobe } from 'react-icons/fa';
 import { MdOutlineSelfImprovement } from 'react-icons/md';
 import { GiSpellBook, GiCrystalBall } from 'react-icons/gi';
 import { motion, easeOut } from 'framer-motion';
+import Link from 'next/link';
 
 const features = [
   { text: 'Numerology Reports', icon: <FaChartLine className="text-xl" /> },
@@ -146,10 +147,12 @@ export default function NumerologySection() {
         </motion.div>
         
         <motion.div variants={itemVariants} className="flex justify-center md:justify-start">
-          <button className="mt-6 md:mt-8 bg-gradient-to-r from-[#5a0808] to-[#8b1e1e] hover:from-[#8b1e1e] hover:to-[#5a0808] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full text-sm md:text-base font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105 relative overflow-hidden group">
-            <span className="relative z-10">Discover Your Numbers</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-[#8b1e1e] to-[#5a0808] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          </button>
+          <Link href="/services/numerology-analysis">
+            <button className="mt-6 md:mt-8 bg-gradient-to-r from-[#5a0808] to-[#8b1e1e] hover:from-[#8b1e1e] hover:to-[#5a0808] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full text-sm md:text-base font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105 relative overflow-hidden group">
+              <span className="relative z-10">Discover Your Numbers</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-[#8b1e1e] to-[#5a0808] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            </button>
+          </Link>
         </motion.div>
       </motion.div>
 

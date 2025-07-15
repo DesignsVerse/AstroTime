@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelope, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebookF, faInstagram, faWhatsapp, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { motion } from 'framer-motion';
+import { services } from '@/data/services';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,33 +18,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-[1920px] mx-auto px-6 sm:px-10 lg:px-20 relative">
-        {/* Top social icons */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-end pt-8 space-x-4"
-        >
-          {[
-            { icon: faWhatsapp, label: "whatsapp", href: "https://wa.me/919876543210" },
-            { icon: faFacebookF, label: "facebook", href: "https://facebook.com/astrotimelive" },
-            { icon: faInstagram, label: "instagram", href: "https://instagram.com/astrotimelive" },
-            { icon: faTwitter, label: "twitter", href: "https://twitter.com/astrotimelive" }
-          ].map((social, index) => (
-            <motion.a
-              key={index}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label={social.label}
-              className="w-10 h-10 border border-white rounded-full flex items-center justify-center text-white hover:bg-white hover:text-[#800000] transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={social.icon} className="text-[16px]" />
-            </motion.a>
-          ))}
-        </motion.div>
+        
         
         <hr className="border-t border-white/30 my-8" />
         
@@ -127,44 +102,38 @@ export default function Footer() {
               We provide authentic Vedic astrology services including Janm Patrika analysis, gemstone recommendations, dosha remedies, and personalized consultations to guide your life's journey.
             </p>
           </div>
-          
-          {/* Astrology Services */}
+          {/* Services Column */}
           <div className="space-y-4">
-            <h3 className="font-sans text-white text-xl font-bold">Astrology Services</h3>
+            <h3 className="font-sans text-white text-xl font-bold">Our Services</h3>
             <ul className="space-y-2 text-white/70">
-              {[
-                { name: 'Janm Patrika Analysis', href: '/services/janm-patrika-analysis' },
-                { name: 'Falit Jyotish Consultation', href: '/services/falit-jyotish-consultation' },
-                { name: 'Gemstone Astrology', href: '/services/gemstone-astrology' },
-                { name: 'Dosha & Yoga Analysis', href: '/services/dosha-yoga-analysis' },
-                { name: 'Vastu & Palmistry', href: '/services/vastu-palmistry' },
-                { name: 'Call Consultation', href: '/services/call-consultation' }
-              ].map((service, index) => (
+              {services.map((service, index) => (
                 <motion.li 
-                  key={service.name}
+                  key={service.slug}
                   initial={{ x: -10 }}
                   whileInView={{ x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className="hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2" />
-                  <a href={service.href}>{service.name}</a>
+                  <a href={`/services/${service.slug}`}>{service.title}</a>
                 </motion.li>
               ))}
             </ul>
           </div>
-          
-          {/* Zodiac & Numerology */}
+          {/* Header Section Column */}
           <div className="space-y-4">
-            <h3 className="font-sans text-white text-xl font-bold">Zodiac & Numerology</h3>
+            <h3 className="font-sans text-white text-xl font-bold">Quick Links</h3>
             <ul className="space-y-2 text-white/70">
               {[
-                { name: 'Daily Horoscope', href: '/rashi' },
-                { name: 'Weekly Horoscope', href: '/rashi' },
-                { name: 'Monthly Horoscope', href: '/rashi' },
-                { name: 'Numerology Analysis', href: '/numerology-ank' },
-                { name: 'Birth Number', href: '/numerology-ank' },
-                { name: 'Life Path Number', href: '/numerology-ank' }
+                { name: "Call Consultation", href: "/call-consultation" },
+                { name: "Gemstone", href: "https://www.bestrudraksha.com/shop-filter/gemstones" },
+                { name: "Services", href: "/services" },
+                { name: "Pancahng", href: "/panchnag" },
+                { name: "Rudraksha", href: "https://www.bestrudraksha.com/shop" },
+                { name: "Online Puja", href: "https://www.ujjainkalsarp.com/" },
+                { name: "Blog", href: "/blog" },
+                { name: "About", href: "/about" },
+                { name: "Support", href: "/support" }
               ].map((item, index) => (
                 <motion.li 
                   key={item.name}
@@ -174,12 +143,11 @@ export default function Footer() {
                   className="hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2" />
-                  <a href={item.href}>{item.name}</a>
+                  <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}>{item.name}</a>
                 </motion.li>
               ))}
             </ul>
           </div>
-          
           {/* Subscribe */}
           <div className="space-y-4">
             <h3 className="font-sans text-white text-xl font-bold">Daily Updates</h3>
