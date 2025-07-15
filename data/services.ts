@@ -193,8 +193,50 @@ export const services: Service[] = [
   },
   {
     id: '5',
-    title: 'Vastu and Palmistry',
-    slug: 'vastu-palmistry',
+    title: 'Vastu',
+    slug: 'vastu',
+    description: 'Optimize your space and destiny with Vastu and palmistry.',
+    longDescription: 'Combine the power of Vastu Shastra and palmistry to align your living space and understand your destiny. Our experts provide Vastu recommendations for your home and palmistry insights based on your hand lines.',
+    icon: 'FaHome',
+    benefits: [
+      'Harmonize living spaces',
+      'Understand life path',
+      'Improve prosperity',
+      'Enhance relationships',
+      'Personalized advice'
+    ],
+    features: [
+      'Vastu layout suggestions',
+      'Palmistry report',
+      '30-minute consultation',
+      'Follow-up support',
+      'Detailed PDF report'
+    ],
+    price: 2999,
+    duration: 'Lifetime guidance',
+    deliveryTime: '5 working days',
+    process: [
+      'Submit property details/hand photos',
+      'Expert analysis',
+      'Prepare recommendations',
+      'Video consultation',
+      'Deliver final report'
+    ],
+    faqs: [
+      {
+        question: 'Can Vastu changes be made in rented homes?',
+        answer: 'Yes, we provide non-invasive Vastu solutions perfect for rented spaces.'
+      },
+      {
+        question: 'Which hand should I send for palmistry?',
+        answer: 'For men - right hand, for women - left hand (both if possible).'
+      }
+    ]
+  },
+  {
+    id: '5',
+    title: 'Palmistry',
+    slug: 'vastu',
     description: 'Optimize your space and destiny with Vastu and palmistry.',
     longDescription: 'Combine the power of Vastu Shastra and palmistry to align your living space and understand your destiny. Our experts provide Vastu recommendations for your home and palmistry insights based on your hand lines.',
     icon: 'FaHome',

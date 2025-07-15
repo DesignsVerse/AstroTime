@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelope, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebookF, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faFacebookF, faInstagram, faWhatsapp, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
@@ -138,7 +138,7 @@ export default function Footer() {
                 { name: 'Gemstone Astrology', href: '/services/gemstone-astrology' },
                 { name: 'Dosha & Yoga Analysis', href: '/services/dosha-yoga-analysis' },
                 { name: 'Vastu & Palmistry', href: '/services/vastu-palmistry' },
-                { name: 'Call Consultation', href: '/call-consultation' }
+                { name: 'Call Consultation', href: '/services/call-consultation' }
               ].map((service, index) => (
                 <motion.li 
                   key={service.name}
@@ -162,9 +162,9 @@ export default function Footer() {
                 { name: 'Daily Horoscope', href: '/rashi' },
                 { name: 'Weekly Horoscope', href: '/rashi' },
                 { name: 'Monthly Horoscope', href: '/rashi' },
-                { name: 'Numerology Analysis', href: '/nemerology-anck' },
-                { name: 'Birth Number', href: '/nemerology-anck' },
-                { name: 'Life Path Number', href: '/nemerology-anck' }
+                { name: 'Numerology Analysis', href: '/numerology-ank' },
+                { name: 'Birth Number', href: '/numerology-ank' },
+                { name: 'Life Path Number', href: '/numerology-ank' }
               ].map((item, index) => (
                 <motion.li 
                   key={item.name}
@@ -217,22 +217,25 @@ export default function Footer() {
             © {currentYear} Astro Time. All rights reserved. | Vedic Astrology Services
           </div>
           
-          <div className="flex items-center space-x-2">
-            <span className="text-white/70 text-sm mr-2">Secure payments:</span>
-            {['visa', 'mastercard', 'amex', 'paypal', 'upi'].map((card, index) => (
-              <motion.div 
-                key={card}
-                whileHover={{ y: -5 }}
-                className="bg-white/10 p-1 rounded-md hover:bg-white/20 transition-all duration-300"
+          <div className="flex items-center space-x-4">
+            {[
+              { icon: faFacebookF, label: "facebook", href: "https://www.facebook.com/astrodeepakgoutamm/" },
+              { icon: faInstagram, label: "instagram", href: "https://www.instagram.com/astrodeepakgoutam/" },
+              { icon: faYoutube, label: "youtube", href: "https://youtube.com/astrotimelive" },
+              { icon: faWhatsapp, label: "whatsapp", href: "https://wa.me/919876543210" }
+            ].map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label={social.label}
+                className="w-10 h-10 border border-white rounded-full flex items-center justify-center text-white hover:bg-white hover:text-[#800000] transition-all duration-300"
               >
-                <Image
-                  alt={`${card} payment logo`}
-                  className="h-6 w-auto"
-                  height={24}
-                  src={`/ruby.png`}
-                  width={40}
-                />
-              </motion.div>
+                <FontAwesomeIcon icon={social.icon} className="text-[16px]" />
+              </motion.a>
             ))}
           </div>
         </motion.div>
