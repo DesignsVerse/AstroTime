@@ -103,7 +103,7 @@ const AboutAstrologer = () => {
                       whileHover={{ scale: 1.05 }}
                       className="bg-[#8b1e1e] inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-3"
                     >
-                      <FaAward className="mr-1" /> EST. 1998
+                      <FaAward className="mr-1" /> EST. 1992
                     </motion.div>
                     <h1 className="text-2xl lg:text-3xl font-bold mt-3 font-['Playfair_Display'] tracking-wide">
                       Pandit Deepak Goutam
