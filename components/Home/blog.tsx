@@ -175,8 +175,8 @@ export default function Blog() {
             onTouchEnd={handleTouchEnd}
             ref={carouselRef}
           >
-            {/* Navigation Arrows - Mobile */}
-            <div className="flex justify-between w-full absolute top-1/2 -translate-y-1/2 z-10 sm:hidden px-2">
+            {/* Navigation Arrows - Always Visible */}
+            <div className="flex justify-between w-full absolute top-1/2 -translate-y-1/2 z-10 px-2">
               <button 
                 onClick={handlePrev}
                 aria-label="Previous articles"
@@ -204,7 +204,7 @@ export default function Blog() {
                 {blogData.map((post, idx) => (
                   <div
                     key={`${post.id}-${idx}`} // Use idx for uniqueness
-                    className="col-span-1"
+                    className="col-span-1 min-w-0"
                   >
                     <article 
                       className="group relative bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 h-full flex flex-col"
