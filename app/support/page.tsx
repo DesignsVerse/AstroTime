@@ -172,25 +172,22 @@ export default function SupportPage() {
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="text-white mt-1 mr-4" />
                 <div>
                   <h3 className="font-bold text-lg">Address</h3>
-                  <p>Astro Time Center<br />
-                  123 Cosmic Plaza, 5th Floor<br />
-                  New Delhi - 110001, India</p>
+                  <p>69/1, Near Harsiddhi Mandir, Yogipura, Jaisinghpura,<br />
+                  Ujjain, Madhya Pradesh 456006</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <FontAwesomeIcon icon={faPhoneAlt} className="text-white mt-1 mr-4" />
                 <div>
                   <h3 className="font-bold text-lg">Phone</h3>
-                  <p>+91 11 2345 6789 (Office)<br />
-                  +91 98765 43210 (Manager)</p>
+                  <p>+91-9153164444</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <FontAwesomeIcon icon={faEnvelope} className="text-white mt-1 mr-4" />
                 <div>
                   <h3 className="font-bold text-lg">Email</h3>
-                  <p>support@astrotime.com<br />
-                  corporate@astrotime.com</p>
+                  <p>astrodeepakgoutam@gmail.com</p>
                 </div>
               </div>
             </div>

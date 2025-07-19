@@ -11,13 +11,14 @@ import FAQ from '@/components/Home/FAQ';
 import NemurologySection from '@/components/Home/nemurology';
 import NumberSelector from '@/components/Home/NumerologyNo';
 import RamayanaBanner from '@/components/Home/ram-ravan';
+import PhysicalKundaliBanner from '@/components/Home/physicalkundali';
 
 export default function Home() {
   return (
-      <>
-      
+    <div className="bg-[#FCFAF8]">
       <Hero />
       <Services/>
+      <PhysicalKundaliBanner/>
       <RamayanaBanner/>
       <AboutAstrologer/>
       <Achievements/> 
@@ -27,6 +28,6 @@ export default function Home() {
       <Review/>
       <Blog/>
       <FAQ/>
-    </>
+    </div>
   );
 }

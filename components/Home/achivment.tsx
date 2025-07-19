@@ -16,10 +16,10 @@ import {
 const Achievements = () => {
   const [counters, setCounters] = useState([
     { value: 0, suffix: 'k', text: 'Kundli Analysis', target: 200, icon: <FaScroll />, color: 'text-[#800000]' },
-    { value: 0, suffix: '+', text: "Years of Wisdom", target: 50, icon: <FaHourglassHalf />, color: 'text-[#800000]' },
+    { value: 0, suffix: '+', text: "Years of Wisdom", target: 20, icon: <FaHourglassHalf />, color: 'text-[#800000]' },
     { value: 0, suffix: 'k+', text: 'Students Mentored', target: 50, icon: <FaUserGraduate />, color: 'text-[#800000]' },
     { value: 0, suffix: 'k+', text: 'Consultations', target: 100, icon: <FaComments />, color: 'text-[#800000]' },
-    { value: 0, suffix: '+', text: 'Global Languages', target: 5, icon: <FaGlobe />, color: 'text-[#800000]' },
+    { value: 0, suffix: '+', text: 'Global', target: 5, icon: <FaGlobe />, color: 'text-[#800000]' },
     { value: 0, suffix: '', text: 'Awards Won', target: 25, icon: <FaTrophy />, color: 'text-[#800000]' }
   ]);
 

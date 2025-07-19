@@ -38,7 +38,7 @@ const AboutAstrologer = () => {
         />
       </Head>
 
-      <div className="bg-white py-8 flex items-center justify-center min-h-[calc(100vh-4rem)]">
+      <div className="bg-[#FCFAF8] py-8 flex items-center justify-center min-h-[calc(100vh-4rem)]">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full">
           {/* Main Card */}
           <div className="bg-white rounded-lg shadow-md border border-[#e8e0d7] overflow-hidden">
@@ -55,7 +55,7 @@ const AboutAstrologer = () => {
                   <motion.img
                     src="/service/service-bg-1.png"
                     alt="Background"
-                    className="w-full h-full min-h-[200px] lg:min-h-[300px] object-cover object-center"
+                    className="w-full h-full min-h-[200px] lg:min-h-[300px] object-cover object-top"
                     loading="eager"
                     initial={{ opacity: 0.8 }}
                     animate={{ opacity: 1 }}
@@ -68,10 +68,10 @@ const AboutAstrologer = () => {
                     transition={{ delay: 0.5, duration: 1 }}
                   >
                     <motion.img
-                      src="/bg.webp" // astro background image 1
+                      src="/bg.webp"
                       alt="Pandit Holiya Zaikai"
-                      className="w-3/4 h-auto object-contain rounded-full border-4 border-[#8b1e1e] shadow-xl"
-                      style={{ maxHeight: '70%' }}
+                      className="w-3/2 h-auto object-contain rounded-full mt-16"
+                      style={{ maxHeight: '60%' }}
                       animate={{ rotate: 360 }}
                       transition={{ repeat: Infinity, duration: 60, ease: 'linear' }}
                     />
@@ -84,10 +84,10 @@ const AboutAstrologer = () => {
                     transition={{ delay: 0.5, duration: 1 }}
                   >
                     <img
-                      src="/name.jpg" // Replace with your astrologer image path
+                      src="/name.jpg"
                       alt="Pandit Holiya Zaikai"
-                      className="w-3/4 h-auto object-contain rounded-full border-4 border-[#8b1e1e] shadow-xl"
-                      style={{ maxHeight: '70%' }}
+                      className="w-3/2 h-auto object-contain rounded-full  mt-8"
+                      style={{ maxHeight: '60%' }}
                     />
                   </motion.div>
                  

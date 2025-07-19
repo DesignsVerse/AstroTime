@@ -39,10 +39,10 @@ const iconComponents: Record<string, JSX.Element> = {
   FaPrayingHands: <FaPrayingHands className="text-2xl sm:text-3xl text-[#5a0808]" />,
   
   // Astrology Specific Icons
-  FaChartLine: <FaChartLine className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Janm Patrika
+  FaChartLine: <FaChartLine className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Janm Patrika or Kundali
   FaHome: <FaHome className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Vastu
   FaQuestionCircle: <FaQuestionCircle className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Prashn Kundli
-  FaClock: <FaClock className="text-2xl sm:text-3xl text-[#5a0808]" />, // For KP Astrology
+  FaClock: <FaClock className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Muhurat
   FaFire: <FaFire className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Manglik Dosha (represents Mars)
   FaGlobeAsia: <FaGlobeAsia className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Kaalsarp Dosha (snake around globe)
   FaHashtag: <FaHashtag className="text-2xl sm:text-3xl text-[#5a0808]" />, // For Numerology

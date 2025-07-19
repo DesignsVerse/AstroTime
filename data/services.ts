@@ -26,7 +26,7 @@ export const services: Service[] = [
     slug: 'janm-patrika-analysis',
     description: 'Detailed birth chart analysis with 10+ year predictions.',
     longDescription: 'Get a comprehensive analysis of your birth chart (Janm Patrika) with predictions for career, health, love, and marriage. Our expert astrologers analyze planetary positions, dasas, and transits to provide accurate forecasts and remedies for the next decade.',
-    icon: 'FaChartLine',
+    icon: 'FaBook',
     benefits: [
       '10-year life forecast',
       'Career and financial guidance',
@@ -65,11 +65,11 @@ export const services: Service[] = [
   },
   {
     id: '1',
-    title: 'Physical Kundli',
-    slug: 'physical-kundli',
+    title: 'Kundli Ghar Tak – Apki Janmpatri, Seedhe Darwaze Tak',
+    slug: 'kundli-ghar-tak',
     description: 'Get your Janm Patrika as a beautifully printed, physical kundli delivered to your address.',
     longDescription: 'Receive a high-quality, printed copy of your Janm Patrika (birth chart) with detailed analysis and predictions for career, health, love, and marriage. Our expert astrologers prepare your kundli and send the hard copy to your doorstep via courier or post. Perfect for gifting or personal keepsake.',
-    icon: 'FaChartLine',
+    icon: 'FaPhoneAlt',
     benefits: [
       'Beautifully printed kundli delivered to your address',
       '10-year life forecast',
@@ -157,7 +157,7 @@ export const services: Service[] = [
     slug: 'gemstone-astrology',
     description: 'Personalized gemstone recommendations for planetary balance.',
     longDescription: 'Enhance your life\'s positivity with gemstones tailored to your birth chart. Our astrologers analyze your planetary positions to recommend gemstones that strengthen beneficial planets and mitigate negative influences.',
-    icon: 'FaGem',
+    icon: 'FaChartLine',
     benefits: [
       'Balance planetary energies',
       'Improve health and wealth',
@@ -612,6 +612,49 @@ export const services: Service[] = [
       {
         question: 'How do I use my lucky numbers?',
         answer: 'The report will guide you on incorporating lucky numbers into daily life for maximum benefit.'
+      }
+    ],
+    featured: true
+  },
+  {
+    id: '13',
+    title: 'Shubh Muhurat – Har Kaam Ka Sahi Samay',
+    slug: 'shubh-muhurat',
+    description: 'Find the most auspicious timing for your important events with expert muhurat selection.',
+    longDescription: 'Ensure success and positivity in all your important life events—weddings, housewarming, business openings, travel, and more—by choosing the most auspicious Shubh Muhurat. Our expert astrologers analyze planetary positions, tithi, nakshatra, and your personal details to recommend the best timing for your specific purpose.',
+    icon: 'FaClock',
+    benefits: [
+      'Success and prosperity in your chosen event',
+      'Avoid negative planetary influences',
+      'Personalized muhurat based on your details',
+      'Expert Vedic astrology guidance',
+      'Peace of mind for important occasions'
+    ],
+    features: [
+      'Personalized muhurat calculation',
+      'Covers all major events (marriage, griha pravesh, business, travel, etc.)',
+      'Detailed report with date, time, and do’s & don’ts',
+      'Remedy suggestions if ideal muhurat is not available',
+      'Consultation with astrologer (if needed)'
+    ],
+    price: 1999,
+    duration: 'Lifetime',
+    deliveryTime: '24 hours',
+    process: [
+      'Submit event details and personal information',
+      'Astrologer analyzes planetary positions and panchang',
+      'Selects the most auspicious muhurat',
+      'Prepares detailed report with instructions',
+      'Delivers report via email or WhatsApp'
+    ],
+    faqs: [
+      {
+        question: 'Which events can I get a Shubh Muhurat for?',
+        answer: 'We provide muhurat for all major events—marriage, griha pravesh, business, travel, naming ceremony, and more.'
+      },
+      {
+        question: 'What if no ideal muhurat is available in my timeframe?',
+        answer: 'We suggest the best possible option and remedies to minimize negative effects.'
       }
     ],
     featured: true

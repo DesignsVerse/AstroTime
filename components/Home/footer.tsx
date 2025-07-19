@@ -56,14 +56,14 @@ export default function Footer() {
             { 
               icon: faPhoneAlt, 
               label: "Phone", 
-              value: "+91 98765 43210", 
-              href: "tel:+919876543210" 
+              value: "+91-9153164444", 
+              href: "tel:+919153164444" 
             },
             { 
               icon: faEnvelope, 
               label: "Email", 
-              value: "info@astrotimelive.com", 
-              href: "mailto:info@astrotimelive.com" 
+              value: "astrodeepakgoutam@gmail.com", 
+              href: "mailto:astrodeepakgoutam@gmail.com" 
             }
           ].map((contact, index) => (
             <div key={index} className="flex items-center space-x-4">
@@ -189,8 +189,8 @@ export default function Footer() {
             {[
               { icon: faFacebookF, label: "facebook", href: "https://www.facebook.com/astrodeepakgoutamm/" },
               { icon: faInstagram, label: "instagram", href: "https://www.instagram.com/astrodeepakgoutam/" },
-              { icon: faYoutube, label: "youtube", href: "https://youtube.com/astrotimelive" },
-              { icon: faWhatsapp, label: "whatsapp", href: "https://wa.me/919876543210" }
+              { icon: faYoutube, label: "youtube", href: "https://www.youtube.com/@Astrodeepakgoutam" },
+              { icon: faWhatsapp, label: "whatsapp", href: "https://wa.me/919153164444?text=namaste%20pandit%20ji" }
             ].map((social, index) => (
               <motion.a
                 key={index}

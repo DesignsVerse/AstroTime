@@ -14,97 +14,25 @@ const FAQ = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // FAQ items generated from services.ts
   const faqItems: FAQItem[] = [
-    {
-      question: "What is AstroTime?",
-      answer: "AstroTime is a comprehensive platform that provides accurate astronomical calculations, celestial event predictions, and detailed information about celestial bodies. It helps both amateur astronomers and professionals track and understand various astronomical phenomena.",
-      category: "general"
-    },
-    {
-      question: "How accurate are the astronomical calculations?",
-      answer: "Our calculations are based on precise astronomical algorithms and NASA's JPL ephemeris data. We maintain high accuracy standards, typically within seconds for planetary positions and minutes for celestial events. Regular updates ensure our data remains current and reliable.",
-      category: "technical"
-    },
-    {
-      question: "Can I use AstroTime for astrophotography planning?",
-      answer: "Yes! AstroTime is an excellent tool for astrophotography planning. It provides information about moon phases, dark sky periods, and optimal viewing conditions for various celestial objects. You can plan your photography sessions based on precise astronomical data.",
-      category: "features"
-    },
-    {
-      question: "Does AstroTime provide real-time celestial data?",
-      answer: "Absolutely! AstroTime offers real-time tracking of celestial bodies including planets, stars, and satellites. Our live data feed updates every minute to give you the most current astronomical information.",
-      category: "technical"
-    },
-    {
-      question: "Is there a mobile app available?",
-      answer: "Currently, AstroTime is available as a web application optimized for mobile browsers. We're developing native iOS and Android apps which will be released later this year with additional features like AR sky mapping.",
-      category: "platform"
-    },
-    {
-      question: "What subscription plans are available?",
-      answer: "We offer a free tier with basic features and two premium tiers: Pro ($9.99/month) and Enterprise ($29.99/month). Premium plans include advanced calculations, historical data, and API access.",
-      category: "general"
-    },
-    {
-      question: "How does AstroTime handle data privacy?",
-      answer: "We take data privacy seriously. All personal data is encrypted, and we never share your information with third parties. Our privacy policy complies with GDPR and CCPA regulations.",
-      category: "legal"
-    },
-    {
-      question: "Can I integrate AstroTime with other applications?",
-      answer: "Yes, we provide a comprehensive API for developers. Our documentation includes code samples for JavaScript, Python, and Ruby to help you integrate astronomical data into your applications.",
-      category: "technical"
-    },
-    {
-      question: "What data sources does AstroTime use?",
-      answer: "AstroTime uses multiple authoritative sources including NASA's JPL ephemeris, the International Astronomical Union (IAU) databases, and real-time satellite tracking data. We also incorporate data from major observatories and space agencies worldwide.",
-      category: "technical"
-    },
-    {
-      question: "How do I create an account and get started?",
-      answer: "Creating an account is simple! Just click the 'Sign Up' button, provide your email and create a password. You can start using basic features immediately, and upgrade to premium plans anytime for advanced functionality.",
-      category: "general"
-    },
-    {
-      question: "Can I export astronomical data for my research?",
-      answer: "Yes, premium users can export data in various formats including CSV, JSON, and PDF. You can export planetary positions, celestial events, and custom calculations for research, education, or personal use.",
-      category: "features"
-    },
-    {
-      question: "What if I encounter technical issues?",
-      answer: "We provide comprehensive troubleshooting guides in our help center. For immediate assistance, you can contact our support team via email or live chat. Most issues are resolved within 24 hours.",
-      category: "support"
-    },
-    {
-      question: "Does AstroTime support multiple languages?",
-      answer: "Currently, AstroTime is available in English, Spanish, French, and German. We're continuously adding more languages based on user demand. All astronomical data and calculations remain consistent across languages.",
-      category: "platform"
-    },
-    {
-      question: "Can I use AstroTime offline?",
-      answer: "Basic features are available offline once you've loaded the data. However, real-time updates and live tracking require an internet connection. Premium users can download data for offline use.",
-      category: "features"
-    },
-    {
-      question: "How often is the astronomical data updated?",
-      answer: "Real-time data updates every minute, while planetary positions and celestial events are calculated using the latest ephemeris data. Historical data is updated quarterly, and we maintain data going back to 1900.",
-      category: "technical"
-    }
+    { question: 'What if my birth time is unknown?', answer: 'We can work with approximate times or help rectify your birth time for accurate results.', category: 'Janm Patrika Analysis' },
+    { question: 'How accurate are the predictions?', answer: 'Our predictions are based on Vedic astrology principles and are highly accurate when birth details are precise.', category: 'Janm Patrika Analysis' },
+    { question: 'How will I receive my physical kundli?', answer: 'Your printed kundli will be delivered to your provided address via courier or post.', category: 'Kundli Ghar Tak – Apki Janmpatri, Seedhe Darwaze Tak' },
+    { question: 'What should I ask during the consultation?', answer: 'Prepare specific questions about your life, career, or relationships for focused guidance.', category: 'Falit Jyotish Consultation' },
+    { question: 'Can I reschedule my session?', answer: 'Yes, rescheduling is possible with 24-hour notice, subject to availability.', category: 'Falit Jyotish Consultation' },
   ];
 
   const categories = [
     { id: 'all', name: 'All Questions' },
-    { id: 'general', name: 'General' },
-    { id: 'technical', name: 'Technical' },
-    { id: 'features', name: 'Features' },
-    { id: 'platform', name: 'Platform' },
-    { id: 'legal', name: 'Legal' },
-    { id: 'support', name: 'Support' }
+    { id: 'Janm Patrika Analysis', name: 'Janm Patrika Analysis' },
+    { id: 'Kundli Ghar Tak – Apki Janmpatri, Seedhe Darwaze Tak', name: 'Kundli Ghar Tak – Apki Janmpatri, Seedhe Darwaze Tak' },
+    { id: 'Falit Jyotish Consultation', name: 'Falit Jyotish Consultation' },
   ];
 
   const filteredItems = activeCategory === 'all' 
-    ? faqItems.slice(0, 5)
-    : faqItems.filter(item => item.category === activeCategory).slice(0, 5);
+    ? faqItems
+    : faqItems.filter(item => item.category === activeCategory);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -220,7 +148,7 @@ const FAQ = () => {
                     </h3>
                     {item.category && (
                       <span className="inline-block mt-1 px-2 py-0.5 text-xs font-medium text-[#800000] bg-[#800000]/10 rounded-full">
-                        {categories.find(c => c.id === item.category)?.name}
+                        {item.category}
                       </span>
                     )}
                   </div>

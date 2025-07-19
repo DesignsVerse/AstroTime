@@ -88,10 +88,6 @@ const NumbersPage = () => {
                     {data.name}
                   </h2>
                   
-                  {/* Subtle number in corner */}
-                  <span className="absolute bottom-1 right-2 text-xs text-[#8b1e1e] opacity-70">
-                    {number}
-                  </span>
                 </Link>
               ))}
             </div>
@@ -128,10 +124,6 @@ const NumbersPage = () => {
                     {data.name}
                   </h2>
                   
-                  {/* Subtle number in corner */}
-                  <span className="absolute bottom-2 right-4 text-xs text-[#8b1e1e] opacity-70">
-                    {number}
-                  </span>
                 </Link>
               ))}
             </div>

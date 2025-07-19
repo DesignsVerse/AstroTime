@@ -22,12 +22,11 @@ const montserrat = Montserrat({
 
 export default function Blog() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  // Removed intervalRef and isAutoScrolling
 
   // Responsive slides per view
   const getSlidesPerView = useCallback(() => {
@@ -50,23 +49,7 @@ export default function Blog() {
     return () => window.removeEventListener('resize', handleResize);
   }, [getSlidesPerView]);
 
-  // Auto-scroll functionality with proper cleanup
-  useEffect(() => {
-    // Only enable auto-scroll if not on mobile
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
-    if (isAutoScrolling && !isHovering && !isMobile) {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % blogData.length);
-      }, 5000);
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    };
-  }, [isAutoScrolling, isHovering]);
+  // Removed useEffect for auto-scroll functionality
 
   // Clamp currentIndex to valid range
   const clampIndex = useCallback((index: number) => {
@@ -76,30 +59,19 @@ export default function Blog() {
     return index;
   }, [slidesPerView]);
 
-  const stopAutoScroll = useCallback(() => {
-    setIsAutoScrolling(false);
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-    setTimeout(() => setIsAutoScrolling(true), 10000);
-  }, []);
-
+  // Removed stopAutoScroll and its usage from handlePrev, handleNext, handleTouchStart, and pagination dots
   const handlePrev = useCallback(() => {
-    stopAutoScroll();
     setCurrentIndex(prev => clampIndex(prev - 1));
-  }, [stopAutoScroll, clampIndex]);
+  }, [clampIndex]);
 
   const handleNext = useCallback(() => {
-    stopAutoScroll();
     setCurrentIndex(prev => clampIndex(prev + 1));
-  }, [stopAutoScroll, clampIndex]);
+  }, [clampIndex]);
 
   // Enhanced touch handling
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    stopAutoScroll();
     setTouchStartX(e.touches[0].clientX);
-  }, [stopAutoScroll]);
+  }, []);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
     setTouchEndX(e.touches[0].clientX);
@@ -260,7 +232,6 @@ export default function Blog() {
                   <button
                     key={index}
                     onClick={() => {
-                      stopAutoScroll();
                       setCurrentIndex(clampIndex(index * slidesPerView));
                     }}
                     className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
