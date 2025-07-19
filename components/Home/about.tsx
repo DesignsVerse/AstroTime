@@ -53,7 +53,7 @@ const AboutAstrologer = () => {
                 >
                   {/* Background Image */}
                   <motion.img
-                    src="/service/service-bg.jpg"
+                    src="/service/service-bg-1.png"
                     alt="Background"
                     className="w-full h-full min-h-[200px] lg:min-h-[300px] object-cover object-center"
                     loading="eager"

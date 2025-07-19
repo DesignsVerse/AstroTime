@@ -64,6 +64,51 @@ export const services: Service[] = [
     featured: true
   },
   {
+    id: '1',
+    title: 'Physical Kundli',
+    slug: 'physical-kundli',
+    description: 'Get your Janm Patrika as a beautifully printed, physical kundli delivered to your address.',
+    longDescription: 'Receive a high-quality, printed copy of your Janm Patrika (birth chart) with detailed analysis and predictions for career, health, love, and marriage. Our expert astrologers prepare your kundli and send the hard copy to your doorstep via courier or post. Perfect for gifting or personal keepsake.',
+    icon: 'FaChartLine',
+    benefits: [
+      'Beautifully printed kundli delivered to your address',
+      '10-year life forecast',
+      'Career and financial guidance',
+      'Marriage timing predictions',
+      'Health and wellness insights',
+      'Personalized remedies'
+    ],
+    features: [
+      '50+ page detailed printed report',
+      'Dasa and transit analysis',
+      'Yearly predictions',
+      'Gemstone recommendations',
+      'Vedic remedies',
+      'Courier/post delivery of hard copy'
+    ],
+    price: 2999,
+    duration: '10-year forecast',
+    deliveryTime: 'Printed copy delivered by courier/post in 5-7 working days',
+    process: [
+      'Submit birth details (date, time, place)',
+      'Astrologer creates your chart',
+      'Analyze planetary influences',
+      'Prepare detailed printed kundli',
+      'Deliver hard copy via courier/post'
+    ],
+    faqs: [
+      {
+        question: 'What if my birth time is unknown?',
+        answer: 'We can work with approximate times or help rectify your birth time for accurate results.'
+      },
+      {
+        question: 'How will I receive my physical kundli?',
+        answer: 'Your printed kundli will be delivered to your provided address via courier or post.'
+      }
+    ],
+    featured: true
+  },
+  {
     id: '2',
     title: 'Falit Jyotish Consultation',
     slug: 'falit-jyotish-consultation',

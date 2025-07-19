@@ -1,125 +1,150 @@
 "use client";
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function RamayanaBanner() {
-  const router = useRouter();
-
   return (
-    <section className="w-full min-h-[70vh] md:min-h-[55vh] flex items-center justify-center bg-[#56130D] py-8 md:py-6 px-4 md:px-3 relative overflow-hidden">
-      {/* Subtle decorative elements */}
-      <div className="absolute inset-0 opacity-15">
-        {[...Array(20)].map((_, i) => (
+    <section className="w-full min-h-[60vh] md:min-h-[50vh] flex items-center justify-center bg-[#56130D] py-8 md:py-12 px-4 relative overflow-hidden">
+      {/* Subtle decorative elements - optimized for performance */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        {[...Array(30)].map((_, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-white/25"
             style={{
-              width: `${1 + Math.random() * 2}px`,
-              height: `${1 + Math.random() * 2}px`,
+              width: `${1 + Math.random() * 3}px`,
+              height: `${1 + Math.random() * 3}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              animation: `twinkle ${3 + Math.random() * 5}s infinite alternate`,
             }}
           />
         ))}
       </div>
 
-      {/* Main content container - Stack vertically on mobile */}
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10 gap-6 md:gap-2">
+      {/* Main content container */}
+      <div className="container mx-auto flex flex-col items-center justify-center relative z-10 gap-6 md:gap-8 max-w-6xl">
 
-        {/* Ram Ji Section - Full width on mobile */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20, x: 0 }}
-          whileInView={{ opacity: 1, y: 0, x: 0 }}
+        {/* Title Section with improved typography */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="w-full md:w-2/5 flex justify-center md:justify-end relative order-2 md:order-none"
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-4 md:mb-6 w-full"
         >
-          <div className="relative md:mr-6 -translate-x-0 md:-translate-x-16 lg:-translate-x-32">
-            <img 
-              src="ram/ram.png"
-              alt="Lord Ram"
-              className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[320px] h-auto object-contain opacity-80 md:opacity-70 blur-[1px] md:blur-[1.5px] z-0 hover:opacity-90 transition-opacity duration-300 mx-auto md:mx-0"
-            />
-            
-            <motion.div 
-              whileHover={{ scale: 1.03 }}
-              className="absolute -right-2 sm:-right-4 md:-right-6 top-1/2  bg-white/95 p-1.5 sm:p-2 rounded-md shadow-lg w-[160px] sm:w-[200px] md:w-[260px] z-10 cursor-pointer transition-all duration-300 hover:shadow-xl"
-            >
-              <Link href="/kundli/ram">
-                <img 
-                  src="/ram/kundali.jpeg"
-                  alt="Ram Kundli"
-                  className="w-full h-auto border border-[#800000]/10 max-h-[160px] sm:max-h-[200px] md:max-h-[260px]"
-                />
-              </Link>
-            </motion.div>
-          </div>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif tracking-wide">
+            <span className="text-[#FFD700] bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Ramayana</span> Cosmic Numerology
+          </h1>
+          <p className="text-white/80 text-sm md:text-base mt-2 max-w-md mx-auto">
+            Discover the divine numerology behind the epic battle of Dharma
+          </p>
         </motion.div>
 
-        {/* Center Title Section - Smaller on mobile */}
-        <div className="w-full md:w-1/5 flex flex-col items-center justify-center px-2 my-2 md:my-0 order-1 md:order-none">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-center"
+        {/* Main content row - optimized for mobile */}
+        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-6 md:gap-8 lg:gap-12">
+
+          {/* Ram Ji Section - improved positioning */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="w-full md:w-1/3 flex justify-center md:justify-end relative"
           >
-            <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-1 sm:mb-2 font-serif">
-              <span className="text-[#FFD700] block text-2xl sm:text-3xl md:text-5xl italic">Ramayana</span>
-              <span className="block mt-1 sm:mt-2 text-sm sm:text-base">Cosmic</span>
-              <span className="text-[#FFD700] block text-xl sm:text-2xl md:text-4xl">Numerology</span>
-            </h1>
-            
-            <p className="text-white/80 italic font-light text-xs sm:text-sm md:text-base mt-2 sm:mt-4 max-w-[160px] sm:max-w-[200px] mx-auto">
-              "Discover the divine numbers"
-            </p>
+            <div className="relative group">
+              <img 
+                src="ram/ram.png"
+                alt="Lord Ram"
+                className="w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[320px] h-auto object-contain opacity-90 hover:opacity-100 transition-all duration-500 group-hover:blur-none blur-[0.5px] md:blur-[1px]"
+              />
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 bottom-[-60px] md:bottom-[-80px] bg-white/95 p-2 rounded-lg shadow-xl w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] z-10 cursor-pointer transition-all duration-300 hover:shadow-2xl border border-gold-200/20"
+              >
+                <Link href="/kundli/ram" className="block">
+                  <img 
+                    src="/ram/kundali.jpeg"
+                    alt="Ram Kundli"
+                    className="w-full h-auto border border-[#800000]/10 object-cover aspect-square"
+                  />
+                  <p className="text-center text-xs sm:text-sm font-medium text-[#56130D] mt-2">Ram's Kundali</p>
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
-          
+
+          {/* Center Image Section - enhanced */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="mt-4 sm:mt-6"
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="w-full md:w-1/3 flex justify-center order-first md:order-none my-4 md:my-0"
           >
-            <button className="bg-[#FFD700] hover:bg-[#FFC000] text-[#800000] px-4 sm:px-6 py-1 sm:py-2 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all hover:scale-105">
-              Explore Destiny
-            </button>
+            <div className="relative hover:scale-105 transition-transform duration-500">
+              <img 
+                src="/ram/bg.png"
+                alt="Cosmic Symbol"
+                className="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-[260px] h-auto object-contain mx-auto drop-shadow-lg"
+              />
+            </div>
+          </motion.div>
+
+          {/* Ravan Section - improved positioning */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="w-full md:w-1/3 flex justify-center md:justify-start relative"
+          >
+            <div className="relative group">
+              <img 
+                src="/ram/ravan.png"
+                alt="Ravan"
+                className="w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[320px] h-auto object-contain opacity-90 hover:opacity-100 transition-all duration-500 group-hover:blur-none blur-[0.5px] md:blur-[1px]"
+              />
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="absolute left-1/2 -translate-x-1/2 md:left-0 bottom-[-60px] md:bottom-[-80px] bg-white/95 p-2 rounded-lg shadow-xl w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] z-10 cursor-pointer transition-all duration-300 hover:shadow-2xl border border-gold-200/20"
+              >
+                <Link href="/kundli/ravan" className="block">
+                  <img 
+                    src="/ram/kundali.jpeg"
+                    alt="Ravan Kundli"
+                    className="w-full h-auto border border-[#800000]/10 object-cover aspect-square"
+                  />
+                  <p className="text-center text-xs sm:text-sm font-medium text-[#56130D] mt-2">Ravan's Kundali</p>
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Ravan Section - Full width on mobile */}
+        {/* Button Section - enhanced */}
         <motion.div 
-          initial={{ opacity: 0, y: 20, x: 0 }}
-          whileInView={{ opacity: 1, y: 0, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="w-full md:w-2/5 flex justify-center md:justify-start relative order-3 md:order-none"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-8 md:mt-12"
         >
-          <div className="relative md:ml-6 translate-x-0 md:translate-x-16 lg:translate-x-32">
-            <img 
-              src="/ram/ravan.png"
-              alt="Ravan"
-              className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[320px] h-auto object-contain opacity-80 md:opacity-70 blur-[1px] md:blur-[1.5px] z-0 hover:opacity-90 transition-opacity duration-300 mx-auto md:mx-0"
-            />
-            
-            <motion.div 
-              whileHover={{ scale: 1.03 }}
-              className="absolute -left-2 sm:-left-4 md:-left-6 top-1/2  bg-white/95 p-1.5 sm:p-2 rounded-md shadow-lg w-[160px] sm:w-[200px] md:w-[260px] z-10 cursor-pointer transition-all duration-300 hover:shadow-xl"
-            >
-              <Link href="/kundli/ravan">
-                <img 
-                  src="/ram/kundali.jpeg"
-                  alt="Ravan Kundli"
-                  className="w-full h-auto border border-[#800000]/10 max-h-[160px] sm:max-h-[200px] md:max-h-[260px]"
-                />
-              </Link>
-            </motion.div>
-          </div>
+          <Link href="/explore" className="block">
+            <button className="bg-gradient-to-r from-[#FFD700] to-[#FFC000] hover:from-[#FFC000] hover:to-[#FFA500] text-[#800000] px-6 py-2 rounded-full font-bold text-sm sm:text-base shadow-lg transition-all hover:scale-105 active:scale-95 transform-gpu">
+              Explore Divine Destiny
+            </button>
+          </Link>
         </motion.div>
       </div>
+
+      {/* CSS for twinkling animation */}
+      <style jsx>{`
+        @keyframes twinkle {
+          0% { opacity: 0.2; }
+          100% { opacity: 0.8; }
+        }
+      `}</style>
     </section>
   );
 }
