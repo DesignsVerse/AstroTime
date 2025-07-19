@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { zodiacSigns } from "@/data/rashi";
+import { motion } from "framer-motion";
 
 const Rashi: React.FC = () => {
   // Function to track zodiac sign clicks
@@ -30,19 +31,43 @@ const Rashi: React.FC = () => {
       className="bg-[#FCFAF8] text-[#1a1a1a] font-serif min-h-screen flex flex-col items-center justify-center w-full"
       style={{ fontFamily: '"Times New Roman", serif' }}
     >
-      <div className="text-center pt-12 mb-8">
-        <h2 className="text-3xl md:text-4xl font-light text-[#120B41] tracking-wide">
-          Explore Your <br />
-          <span className="text-5xl md:text-6xl font-bold text-[#800000]">
-            Zodiac Sign
-          </span>
-        </h2>
-      </div>
+      {/* Header section */}
+      <motion.div 
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <div className="flex flex-col items-center mb-4">
+          <div className="flex items-center justify-center mb-2">
+            <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+            <span className="text-[#8b1e1e] font-semibold text-sm tracking-wider">ZODIAC COLLECTION</span>
+            <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+          </div>
+        </div>
+        <motion.h2 
+          className="text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 tracking-tight font-serif"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          Your Daily Zodiac Horoscope
+        </motion.h2>
+        <motion.p 
+          className="text-xl text-black/90 max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          Select Your Zodiac Sign to Reveal Today's Insights
+        </motion.p>
+      </motion.div>
 
       <div className="w-full max-w-7xl px-4 sm:px-8 py-4 flex flex-col items-center">
-        <h3 className="text-3xl font-normal mb-12 text-gray-800 text-center">
-          Select Your Zodiac Sign
-        </h3>
+
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8 w-full">
           {zodiacSigns.map((sign: any) => (
             <div 

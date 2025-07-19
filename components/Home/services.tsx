@@ -1,4 +1,4 @@
-
+"use client"
 import { 
   FaBook, 
   FaPhoneAlt, 
@@ -51,6 +51,8 @@ const iconComponents: Record<string, JSX.Element> = {
 };
 import Head from 'next/head';
 import React from 'react';
+import { motion } from 'framer-motion';
+
 const Service = () => {
   // Remove the hardcoded services array
 
@@ -78,15 +80,39 @@ const Service = () => {
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#5a0808]/10 to-transparent -z-10"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a0808] font-serif mb-4">
-              Our <span className="text-[#8b1e1e]">Premium</span> Services
-            </h2>
-            <div className="w-20 sm:w-24 h-1 bg-[#8b1e1e] mx-auto mb-4 sm:mb-6"></div>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto font-sans leading-relaxed">
+          {/* Header section */}
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="flex flex-col items-center mb-4">
+              <div className="flex items-center justify-center mb-2">
+                <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+                <span className="text-[#8b1e1e] font-semibold text-sm tracking-wider">Premium Services</span>
+                <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+              </div>
+            </div>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 tracking-tight font-serif"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+          Elite Astrology Experience</motion.h2>
+            <motion.p 
+              className="text-xl text-black/90 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               Discover our expertly crafted astrology services, designed to bring clarity, balance, and transformation to your life.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           <div className="relative p-2 sm:p-6 md:p-8 rounded-xl sm:rounded-3xl"> {/* less padding on mobile */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6 md:gap-8 relative"> {/* less gap on mobile */}

@@ -81,8 +81,8 @@ const Header: FC = () => {
           isContactBarVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row justify-between items-center text-xs md:text-sm text-white">
-          <div className="flex items-center space-x-2 mb-2 sm:mb-0">
+        <div className="mx-auto max-w-7xl flex flex-row justify-center items-center gap-x-6 text-xs md:text-sm text-white">
+          <div className="flex items-center space-x-2">
             <span>Talk to Astrologer:</span>
             <Link
               href="tel:+000123456789"
@@ -91,13 +91,7 @@ const Header: FC = () => {
               +000 123 456789
             </Link>
           </div>
-          <div className="flex items-center space-x-3 sm:space-x-4">
-            <Link
-              href="mailto:info@example.com"
-              className="hover:text-[#800000] transition-colors whitespace-nowrap"
-            >
-              info@example.com
-            </Link>
+          <div className="flex items-center space-x-3">
             <span className="border-l border-white/30 h-4 hidden sm:block"></span>
             <span className="hidden sm:block">Follow us:</span>
             <div className="flex space-x-3">
@@ -131,7 +125,7 @@ const Header: FC = () => {
       {/* Main Navigation */}
       <nav
         className={`w-full transition-all duration-300 ${
-          isScrolled ? "py-2 bg-white shadow-md" : "py-3 bg-white"
+          isScrolled ? "py-2 bg-[#FCFAF8] shadow-md" : "py-3 bg-[#FCFAF8]"
         } ${!isContactBarVisible ? "mt-0" : "mt-[40px] sm:mt-8"}`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">

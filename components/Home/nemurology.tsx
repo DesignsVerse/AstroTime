@@ -93,7 +93,6 @@ export default function NumerologySection() {
           </motion.div>
         ))}
       </div>
-
       {/* Left Side - Content */}
       <motion.div 
         initial="hidden"
@@ -102,8 +101,15 @@ export default function NumerologySection() {
         viewport={{ once: true, margin: "-100px" }}
         className="flex-1 max-w-2xl relative z-10 order-2 md:order-1 mt-8 md:mt-0"
       >
+        <div className="flex flex-col items-center mb-4">
+          <div className="flex items-center justify-center mb-2">
+            <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+            <span className="text-[#8b1e1e] font-semibold text-sm tracking-wider">NUMEROLOGY</span>
+            <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+          </div>
+        </div>
         <motion.div variants={itemVariants}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 md:mb-6 font-serif text-center md:text-left relative">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 md:mb-6 font-serif text-center relative">
             <span className="text-[#8b1e1e]">Anko Ka Khel</span> - Decode Your Divine Numbers
             <svg className="absolute -bottom-2 left-0 w-full h-2 text-[#8b1e1e]" viewBox="0 0 200 20">
               <path 

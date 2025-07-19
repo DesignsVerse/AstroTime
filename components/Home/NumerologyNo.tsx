@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { numberData } from '@/data/numberData';
+import { motion } from 'framer-motion';
 
 const NumbersPage = () => {
   const numbersArray = Object.entries(numberData);
@@ -21,18 +22,42 @@ const NumbersPage = () => {
   ];
 
   return (
-    <div className="bg-[#FCFAF8] font-serif text-[#800000] pt-32 md:pt-20 pb-8 md:pb-16 px-4 min-h-screen flex items-center">
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Header with decorative elements */}
-        <div className="text-center mb-8 md:mb-16 relative">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-24 h-1 bg-[#8b1e1e] rounded-full"></div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Sacred Numbers <span className="text-[#8b1e1e]">Interpretation</span>
-          </h1>
-          <p className="text-lg md:text-xl text-black max-w-2xl mx-auto">
-            Discover the mystical meaning behind each sacred number
-          </p>
+    <div className="bg-[#FCFAF8] font-serif text-[#800000] pt-6 md:pt-10 pb-6 md:pb-10 px-4">
+      {/* Header section */}
+      <motion.div 
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <div className="flex flex-col items-center mb-4">
+          <div className="flex items-center justify-center mb-2">
+            <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+            <span className="text-[#8b1e1e] font-semibold text-sm tracking-wider">SACRED NUMBER</span>
+            <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+          </div>
         </div>
+        <motion.h2 
+          className="text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 tracking-tight font-serif"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          Your Premium Numerology Insights
+        </motion.h2>
+        <motion.p 
+          className="text-xl text-black/90 max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          Select Your Sacred Number to Reveal Its Hidden Meaning
+        </motion.p>
+      </motion.div>
+      <div className="max-w-6xl mx-auto w-full">
         
         {/* Mobile Grid Layout (3x3) */}
         <div className="block md:hidden">
@@ -78,7 +103,7 @@ const NumbersPage = () => {
           {desktopRows.map((row, rowIndex) => (
             <div 
               key={rowIndex}
-              className={`flex flex-wrap justify-center gap-8 mb-${rowIndex === 1 ? 8 : 6}`}
+              className={`flex flex-wrap justify-center gap-8 ${rowIndex === 1 ? 'mb-2' : 'mb-1'}`}
               style={{ 
                 animation: `fadeInUp 0.5s ease-out ${rowIndex * 0.1}s both`,
                 maxWidth: `${100 - rowIndex * 20}%`
@@ -114,7 +139,7 @@ const NumbersPage = () => {
         </div>
         
         {/* Decorative footer */}
-        <div className="mt-8 md:mt-16 text-center">
+        <div className="mt-2 md:mt-2 text-center">
           <p className=" italic">
             "Numbers are the universal language offered by the deities to humans as confirmation of truth."
           </p>

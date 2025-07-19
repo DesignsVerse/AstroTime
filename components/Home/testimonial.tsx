@@ -40,8 +40,8 @@ const Testimonial: React.FC = () => {
           spaceBetween: 20,
         }
       },
-      slidesOffsetBefore: 32, // Add left offset so first card is visible (matches px-8)
-      slidesOffsetAfter: 64, // Increased right offset to help last card be visible with loop
+      centeredSlides: true, // This helps with card alignment
+      slideActiveClass: 'active-slide', // For styling the active slide
       on: {
         slideChange: (swiper) => {
           setActiveIndex(swiper.realIndex);
@@ -102,16 +102,13 @@ const Testimonial: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.span 
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-[#8b1e1e] bg-[#FFEBEE] rounded-full mb-4"
-            initial={{ scale: 0.9 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <GiCrystalBall className="mr-2" />
-            {numerologyFacts.tagline}
-          </motion.span>
+          <div className="flex flex-col items-center mb-4">
+            <div className="flex items-center justify-center mb-2">
+              <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+              <span className="text-[#8b1e1e] font-semibold text-sm tracking-wider">CLIENT TESTIMONIALS</span>
+              <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+            </div>
+          </div>
           
           <motion.h2 
             className="text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 tracking-tight font-serif"
@@ -120,43 +117,38 @@ const Testimonial: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            {numerologyFacts.title}
+            Our Premium Client Experiences
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-[#5a0808]/90 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-black/90 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            {numerologyFacts.subtitle}
+            See What Our Clients Say About Their Sacred Number & Zodiac Journeys
           </motion.p>
           
-          <motion.div 
-            className="w-32 h-1.5 bg-gradient-to-r from-[#8b1e1e] via-[#A00000] to-[#8b1e1e] mx-auto mt-6 rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-          />
+    
         </motion.div>
 
         {/* Testimonial slider */}
-        <div className="relative">
+        <div className="relative px-8"> {/* Added padding to container */}
           <div className="swiper !overflow-visible" id="testimonial-slider">
             <div className="swiper-wrapper">
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={testimonial.id} 
-                  className="swiper-slide flex items-stretch"
+                  className="swiper-slide"
                   style={{
-                    height: '320px',
+                    height: 'auto', // Let content determine height
                   }}
                 >
                   <motion.div 
-                    className={`relative bg-white rounded-xl border border-[#e8e0d7] p-8 flex flex-col h-full shadow-sm transition-all duration-300 hover:shadow-lg items-stretch ${activeIndex === index ? 'scale-100' : 'scale-95'}`}
-                    style={{ height: '100%' }}
+                    className={`relative bg-white rounded-xl border border-[#e8e0d7] p-8 flex flex-col h-full min-h-[320px] shadow-sm transition-all duration-300 hover:shadow-lg ${
+                      activeIndex === index ? 'scale-100 opacity-100' : 'scale-95 opacity-90'
+                    }`}
                     whileHover={{ 
                       scale: 1.02,
                       boxShadow: '0 20px 25px -5px rgba(139, 30, 30, 0.1), 0 10px 10px -5px rgba(139, 30, 30, 0.04)'

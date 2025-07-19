@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { blogData } from '@/data/blogData';
 import { FiChevronLeft, FiChevronRight, FiClock, FiArrowRight } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 const merriweather = Merriweather({
   weight: ['400', '700'],
@@ -25,7 +26,7 @@ export default function Blog() {
   const [isHovering, setIsHovering] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Responsive slides per view
@@ -37,15 +38,11 @@ export default function Blog() {
   }, []);
 
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView());
-  const [slidesToScroll, setSlidesToScroll] = useState(1);
 
   // Handle resize for responsive layout
   useEffect(() => {
     const handleResize = () => {
-      const newSlidesPerView = getSlidesPerView();
-      setSlidesPerView(newSlidesPerView);
-      setSlidesToScroll(1);
-      setCurrentIndex(prev => Math.min(prev, Math.ceil(blogData.length / newSlidesPerView) - 1));
+      setSlidesPerView(getSlidesPerView());
     };
 
     handleResize();
@@ -55,12 +52,11 @@ export default function Blog() {
 
   // Auto-scroll functionality with proper cleanup
   useEffect(() => {
-    if (isAutoScrolling && !isHovering) {
+    // Only enable auto-scroll if not on mobile
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    if (isAutoScrolling && !isHovering && !isMobile) {
       intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => {
-          const maxIndex = Math.ceil(blogData.length / slidesPerView) - 1;
-          return prev >= maxIndex ? 0 : prev + slidesToScroll;
-        });
+        setCurrentIndex(prev => (prev + 1) % blogData.length);
       }, 5000);
     }
 
@@ -70,7 +66,15 @@ export default function Blog() {
         intervalRef.current = null;
       }
     };
-  }, [isAutoScrolling, isHovering, slidesPerView, slidesToScroll]);
+  }, [isAutoScrolling, isHovering]);
+
+  // Clamp currentIndex to valid range
+  const clampIndex = useCallback((index: number) => {
+    const maxIndex = Math.max(0, blogData.length - slidesPerView);
+    if (index < 0) return maxIndex;
+    if (index > maxIndex) return 0;
+    return index;
+  }, [slidesPerView]);
 
   const stopAutoScroll = useCallback(() => {
     setIsAutoScrolling(false);
@@ -83,19 +87,13 @@ export default function Blog() {
 
   const handlePrev = useCallback(() => {
     stopAutoScroll();
-    setCurrentIndex(prev => {
-      const maxIndex = Math.ceil(blogData.length / slidesPerView) - 1;
-      return prev <= 0 ? maxIndex : prev - slidesToScroll;
-    });
-  }, [slidesPerView, slidesToScroll, stopAutoScroll]);
+    setCurrentIndex(prev => clampIndex(prev - 1));
+  }, [stopAutoScroll, clampIndex]);
 
   const handleNext = useCallback(() => {
     stopAutoScroll();
-    setCurrentIndex(prev => {
-      const maxIndex = Math.ceil(blogData.length / slidesPerView) - 1;
-      return prev >= maxIndex ? 0 : prev + slidesToScroll;
-    });
-  }, [slidesPerView, slidesToScroll, stopAutoScroll]);
+    setCurrentIndex(prev => clampIndex(prev + 1));
+  }, [stopAutoScroll, clampIndex]);
 
   // Enhanced touch handling
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -108,6 +106,7 @@ export default function Blog() {
   }, []);
 
   const handleTouchEnd = useCallback(() => {
+    if (touchStartX === 0 || touchEndX === 0) return;
     const swipeDistance = touchStartX - touchEndX;
     if (Math.abs(swipeDistance) > 50) {
       if (swipeDistance > 0) {
@@ -120,13 +119,6 @@ export default function Blog() {
     setTouchEndX(0);
   }, [touchStartX, touchEndX, handleNext, handlePrev]);
 
-  // Calculate visible items
-  const startIndex = currentIndex * slidesToScroll;
-  const visibleItems = blogData.slice(startIndex, startIndex + slidesPerView);
-  if (visibleItems.length < slidesPerView) {
-    visibleItems.push(...blogData.slice(0, slidesPerView - visibleItems.length));
-  }
-
   return (
     <>
       <Head>
@@ -138,26 +130,40 @@ export default function Blog() {
 
       <div className="bg-[#FCFAF8]">
         <section className={`${merriweather.className} relative text-[#1a2238] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24`}>
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#800000]/5 rounded-full filter blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#800000]/5 rounded-full filter blur-3xl"></div>
-          </div>
-
-          {/* Section Header */}
-          <div className="flex flex-col items-center mb-12 md:mb-20">
-            <div className="flex justify-center items-center space-x-4 mb-6 md:mb-8">
-              <div className="w-12 md:w-16 h-[2px] bg-[#800000]"></div>
-              <div className="text-[#800000] text-2xl md:text-3xl select-none">✻</div>
-              <div className="w-12 md:w-16 h-[2px] bg-[#800000]"></div>
+          {/* Header section */}
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="flex flex-col items-center mb-4">
+              <div className="flex items-center justify-center mb-2">
+                <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+                <span className="text-[#8b1e1e] font-semibold text-sm tracking-wider">ASTRO BLOG</span>
+                <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+              </div>
             </div>
-            <h2 className={`${montserrat.className} text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 tracking-tight`}>
-              Astrology <span className="text-[#800000]">Blog & Articles</span>
-            </h2>
-            <p className={`${montserrat.className} text-[#6b6b7b] max-w-2xl text-center text-base md:text-lg leading-relaxed`}>
-              Dive into our collection of insightful articles and cosmic wisdom from our master astrologers
-            </p>
-          </div>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 tracking-tight font-serif"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Premium Astrology Articles & Insights
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-black/90 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              Explore exclusive articles and cosmic wisdom from our master astrologers
+            </motion.p>
+          </motion.div>
 
           {/* Carousel Container */}
           <div 
@@ -169,34 +175,35 @@ export default function Blog() {
             onTouchEnd={handleTouchEnd}
             ref={carouselRef}
           >
-            {/* Navigation Arrows */}
-            <button 
-              onClick={handlePrev}
-              aria-label="Previous articles"
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hidden sm:flex"
-            >
-              <FiChevronLeft className="text-base sm:text-lg lg:text-xl" />
-            </button>
-            
-            <button 
-              onClick={handleNext}
-              aria-label="Next articles"
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-6 z-10 bg-white/90 hover:bg-white text-[#800000] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hidden sm:flex"
-            >
-              <FiChevronRight className="text-base sm:text-lg lg:text-xl" />
-            </button>
+            {/* Navigation Arrows - Mobile */}
+            <div className="flex justify-between w-full absolute top-1/2 -translate-y-1/2 z-10 sm:hidden px-2">
+              <button 
+                onClick={handlePrev}
+                aria-label="Previous articles"
+                className="bg-white/90 hover:bg-white text-[#800000] w-8 h-8 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <FiChevronLeft className="text-base" />
+              </button>
+              <button 
+                onClick={handleNext}
+                aria-label="Next articles"
+                className="bg-white/90 hover:bg-white text-[#800000] w-8 h-8 rounded-full shadow-md flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <FiChevronRight className="text-base" />
+              </button>
+            </div>
 
             {/* Blog Grid */}
-            <div className="overflow-hidden relative w-full px-4 sm:px-8 lg:px-12">
+            <div className="overflow-hidden relative w-full px-2 sm:px-8 lg:px-12">
               <div
-                className="grid grid-flow-col auto-cols-[minmax(0,100%)] sm:auto-cols-[minmax(0,calc(50%-12px))] lg:auto-cols-[minmax(0,calc(33.333%-16px))] gap-4 sm:gap-6 lg:gap-8 transition-transform duration-500 ease-in-out"
+                className="grid grid-flow-col auto-cols-[100%] sm:auto-cols-[50%] lg:auto-cols-[33.333%] gap-4 sm:gap-6 lg:gap-8 transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: `translateX(-${(currentIndex * 100) / slidesPerView}%)`,
+                  transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)`,
                 }}
               >
-                {visibleItems.map((post) => (
+                {blogData.map((post, idx) => (
                   <div
-                    key={post.id}
+                    key={`${post.id}-${idx}`} // Use idx for uniqueness
                     className="col-span-1"
                   >
                     <article 
@@ -246,18 +253,18 @@ export default function Blog() {
               </div>
             </div>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center mt-8 md:mt-12">
+            {/* Pagination Dots - Mobile */}
+            <div className="flex justify-center mt-6 sm:mt-8 md:mt-12">
               <div className="flex space-x-2 md:space-x-3">
-                {blogData.map((_, index) => (
+                {Array.from({ length: Math.ceil(blogData.length / slidesPerView) }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => {
                       stopAutoScroll();
-                      setCurrentIndex(index);
+                      setCurrentIndex(clampIndex(index * slidesPerView));
                     }}
                     className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                      index === currentIndex 
+                      Math.floor(currentIndex / slidesPerView) === index
                         ? 'bg-[#800000] scale-125' 
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}

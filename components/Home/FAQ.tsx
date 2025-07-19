@@ -129,39 +129,38 @@ const FAQ = () => {
   return (
     <section className="py-24 bg-[#FCFAF8] px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
+        {/* Header section */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.span 
-            className="inline-block px-4 py-1.5 text-sm font-semibold text-[#800000] bg-[#800000]/10 rounded-full mb-4"
-            initial={{ scale: 0.9 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Help Center
-          </motion.span>
+          <div className="flex flex-col items-center mb-4">
+            <div className="flex items-center justify-center mb-2">
+              <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+              <span className="text-[#8b1e1e] font-semibold text-sm tracking-wider">ASTRO FAQ</span>
+              <img src="/designe.png" alt="" className="h-6 w-auto mx-2" />
+            </div>
+          </div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#5a0808] mb-4 tracking-tight font-serif"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Frequently Asked Questions
+            Premium Astrology FAQs
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-black/90 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Find answers to common questions about AstroTime and its features
+            Find answers to your most important questions about astrology, numerology, and our premium features
           </motion.p>
         </motion.div>
 
