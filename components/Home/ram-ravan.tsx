@@ -46,32 +46,44 @@ export default function RamayanaBanner() {
           Interactive Ramayana experience. Click left or right for more!
         </motion.p>
       </motion.div>
+      {/* Desktop image */}
       <img 
         src="/ram/ram-1.png" 
-        alt="Ramayana Banner" 
-        className="max-w-full h-auto object-contain rounded-lg shadow-lg"
+        alt="Ramayana Banner Desktop" 
+        className="hidden sm:block max-w-full h-auto object-contain rounded-lg shadow-lg"
       />
-      {/* Left clickable overlay */}
+      {/* Mobile image */}
+      <img 
+        src="/ram/ram-2.png" 
+        alt="Ramayana Banner Mobile" 
+        className="block sm:hidden max-w-full h-auto object-contain rounded-lg shadow-lg"
+      />
+      {/* Left clickable overlay (Desktop) / Top clickable overlay (Mobile) */}
       <button
         onClick={() => handleClick('https://left-link.com')}
         onMouseEnter={() => setHovered('left')}
         onMouseLeave={() => setHovered(null)}
-        className="absolute left-0 top-0 h-full cursor-pointer"
-        style={{ width: '50%', background: 'transparent', border: 'none', outline: 'none' }}
+        className="absolute sm:left-0 sm:top-0 sm:h-full sm:w-1/2 left-0 top-0 w-full h-1/2 bg-transparent border-none outline-none cursor-pointer hidden sm:block"
         aria-label="Left Link"
       />
-      {/* Right clickable overlay */}
+      {/* Right clickable overlay (Desktop) / Bottom clickable overlay (Mobile) */}
       <button
         onClick={() => handleClick('https://right-link.com')}
         onMouseEnter={() => setHovered('right')}
         onMouseLeave={() => setHovered(null)}
-        className="absolute right-0 top-0 h-full cursor-pointer"
-        style={{ width: '50%', background: 'transparent', border: 'none', outline: 'none' }}
+        className="absolute sm:right-0 sm:top-0 sm:h-full sm:w-1/2 left-0 bottom-0 w-full h-1/2 bg-transparent border-none outline-none cursor-pointer hidden sm:block"
         aria-label="Right Link"
       />
-      {/* Popup message on hover */}
+      {/* Mobile only: Info line below image */}
+      <div className="block sm:hidden w-full text-center mt-4">
+        <span className="text-red-600 font-semibold">Click on Kundali to view more information</span>
+      </div>
+      {/* Popup message on hover (desktop only) */}
       {hovered && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-80 text-white px-6 py-3 rounded-lg shadow-lg z-50 text-lg animate-fade-in">
+        <div
+          className={`hidden sm:block absolute z-50 text-lg animate-fade-in px-6 py-3 rounded-lg shadow-lg bg-black bg-opacity-80 text-white
+            sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2`}
+        >
           {hovered === 'left' ? 'Click to open left side link!' : 'Click to open right side link!'}
         </div>
       )}
