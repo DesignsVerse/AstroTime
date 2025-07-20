@@ -90,6 +90,12 @@ const Header: FC = () => {
             >
               +919153164444
             </Link>
+            <Link
+              href="tel:+917067771773"
+              className="font-medium hover:text-[#800000] transition-colors whitespace-nowrap"
+            >
+              +917067771773
+            </Link>
           </div>
           <div className="flex items-center space-x-3">
             <span className="border-l border-white/30 h-4 hidden sm:block"></span>

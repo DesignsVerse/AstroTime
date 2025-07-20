@@ -10,7 +10,7 @@ const PhysicalKundaliBanner = () => {
         <div className="relative w-[280px] h-[320px] sm:w-[340px] sm:h-[380px] md:w-[380px] md:h-[420px] overflow-hidden rounded-xl">
           <Image
             src="/physicalkundali.png"
-            alt="Physical Kundali Services at Home"
+            alt="Astro Deepak Goutam Personal Kundali Delivery in Ujjain"
             fill
             className="object-contain"
             priority
@@ -22,18 +22,52 @@ const PhysicalKundaliBanner = () => {
       {/* Text Content Section */}
       <div className="flex-1 text-center lg:text-left">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#800000] mb-4 font-serif leading-tight">
-          Get Physical Kundali<br />
-          Services at Your Home
+          Personal Kundali Delivery<br />
+          by Astro Deepak Goutam
         </h2>
         <p className="text-gray-700 text-base md:text-lg mb-6 max-w-2xl mx-auto lg:mx-0">
-          Experience authentic Vedic astrology services in the comfort of your home. Our expert astrologers provide physical kundali analysis, horoscope reading, and personalized consultations at your doorstep. Get detailed insights about your life, career, relationships, and future through traditional kundali services.
+          Experience the expertise of Astro Deepak Goutam, Ujjain’s trusted Vedic astrologer, who personally delivers physical Kundali services to your doorstep. Get detailed horoscope analysis, personalized astrology consultations, and insights into your career, relationships, and future, all crafted with authentic Vedic wisdom.
         </p>
         <Link href="/services/kundli-ghar-tak">
           <button className="bg-[#800000] hover:bg-[#600000] text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#800000] focus:ring-opacity-50">
-            Book Home Service
+            Book Personal Kundali Service
           </button>
         </Link>
       </div>
+
+      {/* Schema Markup for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Personal Physical Kundali Delivery",
+            "provider": {
+              "@type": "Person",
+              "name": "Astro Deepak Goutam",
+              "description": "Ujjain’s renowned Vedic astrologer, personally delivering physical Kundali and astrology consultations to your home.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ujjain",
+                "addressRegion": "Madhya Pradesh",
+                "addressCountry": "India"
+              },
+              "url": "http://astroank.com"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Ujjain"
+            },
+            "description": "Astro Deepak Goutam personally delivers physical Kundali services and Vedic astrology consultations at your doorstep in Ujjain, offering insights into career, relationships, and life.",
+            "offers": {
+              "@type": "Offer",
+              "url": "http://astroank.com/services/kundli-ghar-tak",
+              "name": "Personal Kundali Delivery at Home"
+            }
+          })
+        }}
+      />
     </div>
   );
 };

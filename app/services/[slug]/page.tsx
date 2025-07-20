@@ -25,6 +25,7 @@ import {
   FaGlobeAsia,
   FaHashtag
 } from 'react-icons/fa';
+import { Metadata } from 'next';
 
 const iconComponents: Record<string, JSX.Element> = {
   FaBook: <FaBook className="text-4xl" />,
@@ -46,6 +47,96 @@ const iconComponents: Record<string, JSX.Element> = {
   FaGlobeAsia: <FaGlobeAsia className="text-4xl" />,
   FaHashtag: <FaHashtag className="text-4xl" />
 };
+
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    slug: service.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const service = services.find(s => s.slug === params.slug);
+  
+  if (!service) {
+    return {
+      title: 'Service Not Found - Astroank',
+      description: 'The requested astrology or numerology service does not exist.',
+    };
+  }
+
+  const title = `${service.title} - Astroank | Best Astrologer in Ujjain`;
+  const description = `${service.description} Consult Astrologer Deepak Goutam at Astroank in Ujjain for personalized Vedic astrology and numerology insights.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      'Best Astrologer in Ujjain',
+      'Top Rated Astrologer in Ujjain',
+      'Best Astrologer in India',
+      'Astroank',
+      'AstroTime',
+      'Astrologer Deepak Goutam',
+      'Ujjain Numerology',
+      'Future Prediction Astrologer Ujjain',
+      'Accurate Kundli Analysis Ujjain',
+      'Ujjain Astrologer for Love and Relationships',
+      'Fortune Telling Astrologer Ujjain',
+      'Best Numerologist in Ujjain',
+      'Top Astrologer in Ujjain',
+      'Online Astrology Services',
+      'Astroank Astrology Services',
+      'AstroTime Astrology Services',
+      'Vedic Astrology Ujjain',
+      'Horoscope Reading Ujjain',
+      'Astrology Consultation India',
+      'Marriage Compatibility Ujjain',
+      'Vastu Consultation Ujjain',
+      'Career Astrology Ujjain',
+      'Jyotish Services Ujjain',
+      'Online Kundli Ujjain',
+      'Astrology Experts Ujjain',
+      `${service.title} Ujjain`,
+      `${service.title} Astrology`,
+      `${service.title} Numerology`,
+      'Personalized Astrology Remedies Ujjain',
+      'Kundali Milan Ujjain',
+      'Numerology Consultation Ujjain',
+      'Vedic Chart Analysis Ujjain',
+      'Astrology for Success Ujjain',
+    ],
+    authors: [{ name: 'Astroank', url: 'http://astroank.com' }],
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1.0',
+    openGraph: {
+      title,
+      description,
+      url: `http://astroank.com/services/${params.slug}`,
+      type: 'website',
+      images: [
+        {
+          url: service.image || 'http://astroank.com/images/astroank-services.jpg', // Use service-specific image if available, else fallback
+          width: 1200,
+          height: 630,
+          alt: `${service.title} - Astroank`,
+        },
+      ],
+      siteName: 'Astroank',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [service.image || 'http://astroank.com/images/astroank-services.jpg'], // Use service-specific image if available, else fallback
+    },
+    alternates: {
+      canonical: `http://astroank.com/services/${params.slug}`,
+      languages: {
+        'en-US': `http://astroank.com/services/${params.slug}`,
+      },
+    },
+  };
+}
 
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
   const service = services.find(s => s.slug === params.slug);
@@ -104,7 +195,8 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                   </h3>
                   <ol className="space-y-3 pl-5 list-decimal">
                     {service.process.map((step, index) => (
-                      <li key={index} className="text-gray-700">
+                      <li key={index} className="text-gray-7
+System: 00">
                         {step}
                       </li>
                     ))}
@@ -262,39 +354,4 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       </div>
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  return services.map((service) => ({
-    slug: service.slug,
-  }));
-}
-
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const service = services.find(s => s.slug === params.slug);
-  
-  if (!service) {
-    return {
-      title: 'Service Not Found',
-      description: 'The requested service does not exist.',
-    };
-  }
-
-  return {
-    title: `${service.title} | AstroTime Services`,
-    description: service.description,
-    openGraph: {
-      title: `${service.title} | AstroTime Services`,
-      description: service.description,
-      url: `https://yourdomain.com/services/${service.slug}`,
-      images: [
-        {
-          url: '/service-og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: service.title,
-        },
-      ],
-    },
-  };
 }

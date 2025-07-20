@@ -1,14 +1,102 @@
-// src/app/ram-ravan/[character]/page.tsx
+
 import { ramRavanData } from '@/data/kundliData';
 import { notFound } from 'next/navigation';
 import { FaBirthdayCake, FaMapMarkerAlt, FaStar, FaShieldAlt, FaHeart, FaExclamationTriangle, FaBrain } from 'react-icons/fa';
 import { GiMeditation } from 'react-icons/gi';
+import { Metadata } from 'next';
 
-// Add generateStaticParams function for static export
+// Generate static params for static export
 export async function generateStaticParams() {
   return Object.keys(ramRavanData).map((character) => ({
     character,
   }));
+}
+
+// Dynamic metadata for SEO
+export async function generateMetadata({ params }: { params: { character: string } }): Promise<Metadata> {
+  const characterData = ramRavanData[params.character as keyof typeof ramRavanData];
+  const isRam = params.character === 'ram';
+  
+  if (!characterData) {
+    return {
+      title: 'Page Not Found - Astroank',
+      description: 'The requested astrological profile was not found.',
+    };
+  }
+
+  const title = `${characterData.title} Kundali Analysis - Astroank | Best Astrologer in Ujjain`;
+  const description = isRam
+    ? `Explore Lord Ram's kundali analysis with Astroank, led by Astrologer Deepak Goutam in Ujjain. Discover Vedic astrology insights, zodiac signs, and personality traits.`
+    : `Discover Ravan's astrological profile with Astroank, led by Astrologer Deepak Goutam in Ujjain. Uncover Vedic astrology insights, planetary positions, and strengths.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      'Best Astrologer in Ujjain',
+      'Top Rated Astrologer in Ujjain',
+      'Best Astrologer in India',
+      'Astroank',
+      'AstroTime',
+      'Astrologer Deepak Goutam',
+      'Ujjain Numerology',
+      'Future Prediction Astrologer Ujjain',
+      'Accurate Kundli Analysis Ujjain',
+      'Ujjain Astrologer for Love and Relationships',
+      'Fortune Telling Astrologer Ujjain',
+      'Best Numerologist in Ujjain',
+      'Top Astrologer in Ujjain',
+      'Online Astrology Services',
+      'Astroank Astrology Services',
+      'AstroTime Astrology Services',
+      'Vedic Astrology Ujjain',
+      'Horoscope Reading Ujjain',
+      'Astrology Consultation India',
+      'Marriage Compatibility Ujjain',
+      'Vastu Consultation Ujjain',
+      'Career Astrology Ujjain',
+      'Jyotish Services Ujjain',
+      'Online Kundli Ujjain',
+      'Astrology Experts Ujjain',
+      isRam ? 'Lord Ram Kundali' : 'Ravan Kundali',
+      isRam ? 'Ram Astrology Analysis' : 'Ravan Astrology Analysis',
+      'Vedic Kundali Ujjain',
+      'Planetary Positions Astrology',
+      'Zodiac Sign Analysis Ujjain',
+      'Astrological Personality Analysis',
+      'Ram Ravan Astrology Comparison',
+    ],
+    authors: [{ name: 'Astroank', url: 'http://astroank.com' }],
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1.0',
+    openGraph: {
+      title,
+      description,
+      url: `http://astroank.com/ram-ravan/${params.character}`,
+      type: 'website',
+      images: [
+        {
+          url: characterData.image, // Use character-specific image
+          width: 1200,
+          height: 630,
+          alt: `${characterData.title} Kundali - Astroank`,
+        },
+      ],
+      siteName: 'Astroank',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [characterData.image], // Use character-specific image
+    },
+    alternates: {
+      canonical: `http://astroank.com/ram-ravan/${params.character}`,
+      languages: {
+        'en-US': `http://astroank.com/ram-ravan/${params.character}`,
+      },
+    },
+  };
 }
 
 export default function KundaliPage({ params }: { params: { character: string } }) {
@@ -138,7 +226,7 @@ export default function KundaliPage({ params }: { params: { character: string } 
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-gray-800">Strengths</h3>
                   <ul className="space-y-2">
-                    {characterData.details.strengths.map((strength, index) => (
+                    {characterData.details.strengths.map((strength: string, index: number) => (
                       <li key={index} className="flex items-start">
                         <span className="inline-block mt-1 mr-2 text-[#8b1e1e]">✓</span>
                         <span className="text-gray-800">{strength}</span>
@@ -154,7 +242,7 @@ export default function KundaliPage({ params }: { params: { character: string } 
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-gray-800">Weaknesses</h3>
                   <ul className="space-y-2">
-                    {characterData.details.weaknesses.map((weakness, index) => (
+                    {characterData.details.weaknesses.map((weakness: string, index: number) => (
                       <li key={index} className="flex items-start">
                         <span className="inline-block mt-1 mr-2 text-[#5a0808]">✗</span>
                         <span className="text-gray-800">{weakness}</span>

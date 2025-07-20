@@ -1,4 +1,3 @@
-// Service type definition
 export interface Service {
   id: string;
   title: string;
@@ -16,646 +15,782 @@ export interface Service {
     question: string;
     answer: string;
   }[];
+  metaKeywords: string[];
   featured?: boolean;
+  image?: string; // Optional image property for service-specific images
 }
 
 export const services: Service[] = [
   {
     id: '1',
     title: 'Janm Patrika Analysis',
-    slug: 'janm-patrika-analysis',
-    description: 'Detailed birth chart analysis with 10+ year predictions.',
-    longDescription: 'Get a comprehensive analysis of your birth chart (Janm Patrika) with predictions for career, health, love, and marriage. Our expert astrologers analyze planetary positions, dasas, and transits to provide accurate forecasts and remedies for the next decade.',
+    slug: 'janm-patrika-ujjain',
+    description: 'Detailed Janm Patrika analysis by Astro Deepak Goutam in Ujjain with 10+ year predictions for life success.',
+    longDescription: 'Experience a comprehensive Janm Patrika (birth chart) analysis by Astro Deepak Goutam, the best astrologer in Ujjain. AstroAnk’s premium astrology services in Ujjain provide accurate predictions for career, health, love, and marriage for the next decade. Our Vedic astrology expertise, combined with numerology insights, ensures personalized remedies tailored to your unique chart. Available through AstroAnk and Astro Time, this service is crafted to bring clarity and prosperity to your life journey.',
     icon: 'FaBook',
     benefits: [
-      '10-year life forecast',
-      'Career and financial guidance',
-      'Marriage timing predictions',
+      '10+ year life forecast by Astro Deepak Goutam',
+      'Career and financial guidance in Ujjain',
+      'Marriage and love predictions',
       'Health and wellness insights',
-      'Personalized remedies'
+      'Personalized Vedic and numerology remedies'
     ],
     features: [
       '50+ page detailed report',
-      'Dasa and transit analysis',
-      'Yearly predictions',
-      'Gemstone recommendations',
-      'Vedic remedies'
+      'Vimshottari Dasa and transit analysis',
+      'Yearly predictions by AstroAnk',
+      'Gemstone and mantra recommendations',
+      'Exclusive Ujjain-based Vedic remedies'
     ],
     price: 2999,
     duration: '10-year forecast',
     deliveryTime: '5 working days',
     process: [
       'Submit birth details (date, time, place)',
-      'Astrologer creates your chart',
-      'Analyze planetary influences',
-      'Prepare detailed predictions',
+      'Astro Deepak Goutam creates your chart',
+      'Analyze planetary and numerology influences',
+      'Prepare detailed predictions for Ujjain clients',
       'Deliver PDF report via email'
     ],
     faqs: [
       {
-        question: 'What if my birth time is unknown?',
-        answer: 'We can work with approximate times or help rectify your birth time for accurate results.'
+        question: 'What if my birth time is unknown for Janm Patrika in Ujjain?',
+        answer: 'Astro Deepak Goutam in Ujjain can work with approximate times or rectify your birth time for accurate Vedic astrology results.'
       },
       {
-        question: 'How accurate are the predictions?',
-        answer: 'Our predictions are based on Vedic astrology principles and are highly accurate when birth details are precise.'
+        question: 'How accurate is AstroAnk’s Janm Patrika analysis?',
+        answer: 'With precise birth details, Astro Deepak Goutam’s Vedic astrology and numerology expertise ensures highly accurate predictions.'
       }
     ],
-    featured: true
-  },
-  {
-    id: '1',
-    title: 'Kundli Ghar Tak – Apki Janmpatri, Seedhe Darwaze Tak',
-    slug: 'kundli-ghar-tak',
-    description: 'Get your Janm Patrika as a beautifully printed, physical kundli delivered to your address.',
-    longDescription: 'Receive a high-quality, printed copy of your Janm Patrika (birth chart) with detailed analysis and predictions for career, health, love, and marriage. Our expert astrologers prepare your kundli and send the hard copy to your doorstep via courier or post. Perfect for gifting or personal keepsake.',
-    icon: 'FaPhoneAlt',
-    benefits: [
-      'Beautifully printed kundli delivered to your address',
-      '10-year life forecast',
-      'Career and financial guidance',
-      'Marriage timing predictions',
-      'Health and wellness insights',
-      'Personalized remedies'
-    ],
-    features: [
-      '50+ page detailed printed report',
-      'Dasa and transit analysis',
-      'Yearly predictions',
-      'Gemstone recommendations',
-      'Vedic remedies',
-      'Courier/post delivery of hard copy'
-    ],
-    price: 2999,
-    duration: '10-year forecast',
-    deliveryTime: 'Printed copy delivered by courier/post in 5-7 working days',
-    process: [
-      'Submit birth details (date, time, place)',
-      'Astrologer creates your chart',
-      'Analyze planetary influences',
-      'Prepare detailed printed kundli',
-      'Deliver hard copy via courier/post'
-    ],
-    faqs: [
-      {
-        question: 'What if my birth time is unknown?',
-        answer: 'We can work with approximate times or help rectify your birth time for accurate results.'
-      },
-      {
-        question: 'How will I receive my physical kundli?',
-        answer: 'Your printed kundli will be delivered to your provided address via courier or post.'
-      }
+    metaKeywords: [
+      'Janm Patrika Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Vedic Astrology Ujjain',
+      'Numerology Ujjain'
     ],
     featured: true
   },
   {
     id: '2',
-    title: 'Falit Jyotish Consultation',
-    slug: 'falit-jyotish-consultation',
-    description: 'Predictive astrology guidance for life\'s challenges.',
-    longDescription: 'Receive expert guidance through Falit Jyotish (predictive astrology) to navigate life\'s uncertainties. Our astrologers interpret your birth chart and current transits to provide insights into future events and practical remedies.',
-    icon: 'FaStar',
+    title: 'Kundli Ghar Tak',
+    slug: 'kundli-ghar-tak-ujjain',
+    description: 'Premium printed Janm Patrika delivered to your doorstep by Astro Deepak Goutam in Ujjain.',
+    longDescription: 'Receive a beautifully printed Janm Patrika (birth chart) with Astro Deepak Goutam’s expert analysis, delivered to your doorstep from Ujjain. AstroAnk’s premium astrology services, also available through Astro Time, provide a detailed 10-year forecast for career, health, love, and marriage. This keepsake, crafted by the best astrologer in Ujjain, includes Vedic and numerology-based remedies, making it perfect for personal use or gifting.',
+    icon: 'FaBook',
     benefits: [
-      'Accurate future predictions',
-      'Career and financial advice',
-      'Relationship insights',
-      'Remedies for challenges',
-      'Personalized forecasts'
+      'Premium printed kundli delivered from Ujjain',
+      '10-year life forecast by Astro Deepak Goutam',
+      'Career and financial insights',
+      'Marriage and health predictions',
+      'Personalized Vedic remedies'
     ],
     features: [
-      '30/60 minute consultation',
-      'Hindi/English sessions',
-      'Video or audio call',
-      'Follow-up email summary',
-      '7-day priority support'
+      '50+ page printed report',
+      'Dasa and transit analysis',
+      'Yearly predictions by AstroAnk',
+      'Gemstone and mantra recommendations',
+      'Courier delivery from Ujjain'
     ],
-    price: 1499,
-    duration: '30/60 minutes',
-    deliveryTime: 'Instant booking available',
+    price: 3499,
+    duration: '10-year forecast',
+    deliveryTime: '5-7 working days via courier',
     process: [
-      'Choose an astrologer',
-      'Select date/time slot',
-      'Confirm booking with payment',
-      'Receive Zoom link',
-      'Join session'
+      'Submit birth details (date, time, place)',
+      'Astro Deepak Goutam creates your chart',
+      'Analyze planetary influences in Ujjain',
+      'Prepare premium printed kundli',
+      'Deliver hard copy via courier'
     ],
     faqs: [
       {
-        question: 'What should I ask during the consultation?',
-        answer: 'Prepare specific questions about your life, career, or relationships for focused guidance.'
+        question: 'How is the printed kundli delivered in Ujjain?',
+        answer: 'AstroAnk delivers your premium Janm Patrika to your address via courier or post from Ujjain.'
       },
       {
-        question: 'Can I reschedule my session?',
-        answer: 'Yes, rescheduling is possible with 24-hour notice, subject to availability.'
+        question: 'Can I gift this kundli from Astro Deepak Goutam?',
+        answer: 'Yes, Astro Deepak Goutam’s printed kundli is a perfect keepsake for gifting, crafted with care in Ujjain.'
       }
+    ],
+    metaKeywords: [
+      'Kundli Ghar Tak Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Printed Janm Patrika Ujjain',
+      'Best Astrologer in Ujjain'
     ],
     featured: true
   },
   {
     id: '3',
-    title: 'Gemstone Astrology',
-    slug: 'gemstone-astrology',
-    description: 'Personalized gemstone recommendations for planetary balance.',
-    longDescription: 'Enhance your life\'s positivity with gemstones tailored to your birth chart. Our astrologers analyze your planetary positions to recommend gemstones that strengthen beneficial planets and mitigate negative influences.',
-    icon: 'FaChartLine',
+    title: 'Falit Jyotish Consultation',
+    slug: 'falit-jyotish-ujjain',
+    description: 'Expert predictive astrology by Astro Deepak Goutam in Ujjain for life’s challenges.',
+    longDescription: 'Navigate life’s uncertainties with Astro Deepak Goutam’s Falit Jyotish consultation in Ujjain. AstroAnk’s premium Vedic astrology services, also accessible via Astro Time, offer precise predictions for career, relationships, and more. Our best astrologer in Ujjain combines Vedic astrology and numerology for personalized guidance and remedies.',
+    icon: 'FaStar',
     benefits: [
-      'Balance planetary energies',
-      'Improve health and wealth',
-      'Enhance mental clarity',
-      'Attract positive opportunities',
-      'Personalized gemstone advice'
+      'Accurate predictions by Astro Deepak Goutam',
+      'Career and financial advice in Ujjain',
+      'Relationship and health insights',
+      'Personalized Vedic remedies',
+      'Numerology-based solutions'
     ],
     features: [
-      'Detailed gemstone report',
-      'Planetary analysis',
-      'Wearing instructions',
-      'Authenticity guidance',
-      '15-page report'
+      '30/60 minute consultation in Hindi/English',
+      'Video or audio call with AstroAnk',
+      'Follow-up email summary',
+      'Priority support for Ujjain clients',
+      'Customized remedy suggestions'
     ],
     price: 1999,
-    duration: 'Lifetime guidance',
-    deliveryTime: '48 hours',
+    duration: '30/60 minutes',
+    deliveryTime: 'Instant booking available',
     process: [
-      'Provide birth details',
-      'Astrologer analyzes chart',
-      'Recommend suitable gemstones',
-      'Prepare detailed report',
-      'Deliver PDF via email'
+      'Book with Astro Deepak Goutam',
+      'Select date/time slot',
+      'Confirm booking with payment',
+      'Receive Zoom link for consultation',
+      'Join session with AstroAnk'
     ],
     faqs: [
       {
-        question: 'How do I know if a gemstone is authentic?',
-        answer: 'We provide certification and testing methods to verify gemstone authenticity.'
+        question: 'What should I ask Astro Deepak Goutam during consultation?',
+        answer: 'Prepare specific questions about career, relationships, or health for focused guidance from Ujjain’s best astrologer.'
       },
       {
-        question: 'How long until I see results?',
-        answer: 'Most clients report positive changes within 2-3 weeks of proper gemstone usage.'
+        question: 'Can I reschedule my AstroAnk consultation?',
+        answer: 'Yes, AstroAnk allows rescheduling with 24-hour notice, subject to availability.'
       }
-    ]
-  },
-  {
-    id: '4',
-    title: 'Dosha and Yoga Analysis',
-    slug: 'dosha-yoga-analysis',
-    description: 'Identify and remedy doshas and yogas in your chart.',
-    longDescription: 'Understand the doshas (e.g., Manglik, Kaalsarp) and yogas (e.g., Raj Yoga) in your birth chart. Our detailed analysis provides remedies to mitigate negative doshas and enhance positive yogas for a balanced life.',
-    icon: 'FaBalanceScale',
-    benefits: [
-      'Identify key doshas',
-      'Enhance beneficial yogas',
-      'Improve life outcomes',
-      'Personalized remedies',
-      'Long-term guidance'
     ],
-    features: [
-      '20-page detailed report',
-      'Dosha-specific remedies',
-      'Yoga enhancement tips',
-      'Planetary analysis',
-      'Mantra recommendations'
-    ],
-    price: 2499,
-    duration: 'Lifetime validity',
-    deliveryTime: '72 hours',
-    process: [
-      'Submit birth details',
-      'Complete chart analysis',
-      'Identify doshas/yogas',
-      'Prepare remedies',
-      'Deliver comprehensive report'
-    ],
-    faqs: [
-      {
-        question: 'What if I have multiple doshas?',
-        answer: 'We provide combined remedies that address all doshas in your chart holistically.'
-      },
-      {
-        question: 'Can doshas be completely removed?',
-        answer: 'While doshas cannot be removed, their negative effects can be significantly reduced.'
-      }
+    metaKeywords: [
+      'Falit Jyotish Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Vedic Astrology Consultation'
     ],
     featured: true
   },
   {
-    id: '5',
-    title: 'Vastu',
-    slug: 'vastu',
-    description: 'Optimize your space and destiny with Vastu and palmistry.',
-    longDescription: 'Combine the power of Vastu Shastra and palmistry to align your living space and understand your destiny. Our experts provide Vastu recommendations for your home and palmistry insights based on your hand lines.',
-    icon: 'FaHome',
+    id: '4',
+    title: 'Gemstone Astrology',
+    slug: 'gemstone-astrology-ujjain',
+    description: 'Personalized gemstone recommendations by Astro Deepak Goutam in Ujjain for planetary balance.',
+    longDescription: 'Enhance your life with Astro Deepak Goutam’s gemstone astrology services in Ujjain. AstroAnk, also available through Astro Time, analyzes your birth chart to recommend gemstones that balance planetary energies and attract prosperity. As the best astrologer in Ujjain, Astro Deepak Goutam provides tailored guidance for health, wealth, and success.',
+    icon: 'FaGem',
     benefits: [
-      'Harmonize living spaces',
-      'Understand life path',
-      'Improve prosperity',
-      'Enhance relationships',
-      'Personalized advice'
+      'Balance planetary energies in Ujjain',
+      'Improve health and prosperity',
+      'Enhance mental clarity with AstroAnk',
+      'Attract opportunities with gemstones',
+      'Personalized advice by Astro Deepak Goutam'
     ],
     features: [
-      'Vastu layout suggestions',
-      'Palmistry report',
-      '30-minute consultation',
-      'Follow-up support',
-      'Detailed PDF report'
+      'Detailed gemstone report',
+      'Planetary and numerology analysis',
+      'Wearing instructions by AstroAnk',
+      'Authenticity guidance for gemstones',
+      '20-page premium report'
     ],
-    price: 2999,
+    price: 2499,
     duration: 'Lifetime guidance',
-    deliveryTime: '5 working days',
+    deliveryTime: '48 hours',
     process: [
-      'Submit property details/hand photos',
-      'Expert analysis',
-      'Prepare recommendations',
-      'Video consultation',
-      'Deliver final report'
+      'Submit birth details to AstroAnk',
+      'Astro Deepak Goutam analyzes chart',
+      'Recommend suitable gemstones',
+      'Prepare detailed report in Ujjain',
+      'Deliver PDF via email'
     ],
     faqs: [
       {
-        question: 'Can Vastu changes be made in rented homes?',
-        answer: 'Yes, we provide non-invasive Vastu solutions perfect for rented spaces.'
+        question: 'How do I verify gemstone authenticity in Ujjain?',
+        answer: 'Astro Deepak Goutam provides certification guidance and testing methods for authentic gemstones.'
       },
       {
-        question: 'Which hand should I send for palmistry?',
-        answer: 'For men - right hand, for women - left hand (both if possible).'
+        question: 'How soon will I see results with AstroAnk’s gemstones?',
+        answer: 'Most clients notice positive changes within 2-3 weeks with Astro Deepak Goutam’s recommendations.'
       }
+    ],
+    metaKeywords: [
+      'Gemstone Astrology Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Vedic Gemstone Recommendations'
     ]
   },
   {
     id: '5',
-    title: 'Palmistry',
-    slug: 'vastu',
-    description: 'Optimize your space and destiny with Vastu and palmistry.',
-    longDescription: 'Combine the power of Vastu Shastra and palmistry to align your living space and understand your destiny. Our experts provide Vastu recommendations for your home and palmistry insights based on your hand lines.',
-    icon: 'FaHome',
+    title: 'Dosha and Yoga Analysis',
+    slug: 'dosha-yoga-ujjain',
+    description: 'Identify and remedy doshas with Astro Deepak Goutam’s expertise in Ujjain.',
+    longDescription: 'Understand doshas (Manglik, Kaalsarp) and yogas (Raj Yoga) with Astro Deepak Goutam’s premium analysis in Ujjain. AstroAnk’s Vedic astrology services, also via Astro Time, offer remedies to mitigate negative doshas and enhance positive yogas for a prosperous life. Trust the best astrologer in Ujjain for transformative insights.',
+    icon: 'FaBalanceScale',
     benefits: [
-      'Harmonize living spaces',
-      'Understand life path',
-      'Improve prosperity',
-      'Enhance relationships',
-      'Personalized advice'
+      'Identify key doshas with AstroAnk',
+      'Enhance beneficial yogas in Ujjain',
+      'Personalized remedies by Astro Deepak Goutam',
+      'Improve life outcomes',
+      'Long-term Vedic guidance'
     ],
     features: [
-      'Vastu layout suggestions',
-      'Palmistry report',
-      '30-minute consultation',
-      'Follow-up support',
-      'Detailed PDF report'
+      '25-page detailed report',
+      'Dosha-specific remedies by AstroAnk',
+      'Yoga enhancement tips',
+      'Planetary and numerology analysis',
+      'Mantra recommendations from Ujjain'
     ],
     price: 2999,
-    duration: 'Lifetime guidance',
-    deliveryTime: '5 working days',
+    duration: 'Lifetime validity',
+    deliveryTime: '72 hours',
     process: [
-      'Submit property details/hand photos',
-      'Expert analysis',
-      'Prepare recommendations',
-      'Video consultation',
-      'Deliver final report'
+      'Submit birth details to AstroAnk',
+      'Astro Deepak Goutam analyzes chart',
+      'Identify doshas and yogas',
+      'Prepare remedies in Ujjain',
+      'Deliver comprehensive report'
     ],
     faqs: [
       {
-        question: 'Can Vastu changes be made in rented homes?',
-        answer: 'Yes, we provide non-invasive Vastu solutions perfect for rented spaces.'
+        question: 'Can Astro Deepak Goutam address multiple doshas?',
+        answer: 'Yes, AstroAnk provides holistic remedies for all doshas identified in your chart.'
       },
       {
-        question: 'Which hand should I send for palmistry?',
-        answer: 'For men - right hand, for women - left hand (both if possible).'
+        question: 'Are doshas removable with AstroAnk’s services?',
+        answer: 'Astro Deepak Goutam’s remedies significantly reduce dosha effects for a balanced life.'
       }
-    ]
+    ],
+    metaKeywords: [
+      'Dosha Yoga Analysis Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Vedic Astrology Ujjain'
+    ],
+    featured: true
   },
   {
     id: '6',
-    title: 'Prashn Kundli',
-    slug: 'prashn-kundli',
-    description: 'Instant answers to specific questions via Prashn Kundli.',
-    longDescription: 'Get immediate insights into specific questions without a birth chart using Prashn Kundli (horary astrology). Our astrologers cast a chart based on the moment of your question to provide accurate answers.',
-    icon: 'FaQuestionCircle',
+    title: 'Vastu Consultation',
+    slug: 'vastu-ujjain',
+    description: 'Optimize your space with Astro Deepak Goutam’s Vastu expertise in Ujjain.',
+    longDescription: 'Align your living or working space with Astro Deepak Goutam’s premium Vastu consultation in Ujjain. AstroAnk, also accessible via Astro Time, provides expert Vastu Shastra recommendations to enhance prosperity, health, and harmony. Trust the best astrologer in Ujjain for transformative Vastu solutions.',
+    icon: 'FaHome',
     benefits: [
-      'Quick answers to queries',
-      'No birth details needed',
-      'Career and love insights',
-      'Decision-making support',
-      'Remedies for challenges'
+      'Harmonize spaces in Ujjain',
+      'Improve prosperity with AstroAnk',
+      'Enhance relationships and health',
+      'Personalized Vastu advice',
+      'Guidance by Astro Deepak Goutam'
     ],
     features: [
-      'Instant chart casting',
-      'Detailed answer report',
-      'Remedy suggestions',
-      '10-page report',
-      'Email delivery'
+      'Custom Vastu layout suggestions',
+      '30-minute consultation with AstroAnk',
+      'Detailed PDF report from Ujjain',
+      'Follow-up support',
+      'Non-invasive solutions for rentals'
     ],
-    price: 999,
+    price: 3499,
+    duration: 'Lifetime guidance',
+    deliveryTime: '5 working days',
+    process: [
+      'Submit property details to AstroAnk',
+      'Astro Deepak Goutam analyzes layout',
+      'Prepare Vastu recommendations',
+      'Conduct video consultation',
+      'Deliver detailed report'
+    ],
+    faqs: [
+      {
+        question: 'Can Astro Deepak Goutam provide Vastu for rented homes?',
+        answer: 'Yes, AstroAnk offers non-invasive Vastu solutions perfect for rented spaces in Ujjain.'
+      },
+      {
+        question: 'How soon will I see Vastu results with AstroAnk?',
+        answer: 'Most clients notice positive changes within 3-4 weeks with Astro Deepak Goutam’s guidance.'
+      }
+    ],
+    metaKeywords: [
+      'Vastu Consultation Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Vastu Consultant Ujjain',
+      'Vedic Vastu Ujjain'
+    ]
+  },
+  {
+    id: '7',
+    title: 'Palmistry Analysis',
+    slug: 'palmistry-ujjain',
+    description: 'Unlock destiny insights with Astro Deepak Goutam’s palmistry in Ujjain.',
+    longDescription: 'Discover your life’s path with Astro Deepak Goutam’s expert palmistry analysis in Ujjain. AstroAnk’s premium services, also via Astro Time, interpret your hand lines to provide insights into career, relationships, and destiny. Trust the best astrologer in Ujjain for personalized palmistry guidance.',
+    icon: 'FaHandHoldingHeart',
+    benefits: [
+      'Understand your destiny in Ujjain',
+      'Career and relationship insights',
+      'Personalized palmistry advice',
+      'Enhance life decisions with AstroAnk',
+      'Guidance by Astro Deepak Goutam'
+    ],
+    features: [
+      'Detailed palmistry report',
+      '30-minute consultation with AstroAnk',
+      'Line-by-line analysis',
+      'Follow-up support from Ujjain',
+      '15-page PDF report'
+    ],
+    price: 2499,
+    duration: 'Lifetime guidance',
+    deliveryTime: '5 working days',
+    process: [
+      'Submit clear hand photos to AstroAnk',
+      'Astro Deepak Goutam analyzes lines',
+      'Prepare detailed palmistry report',
+      'Conduct video consultation',
+      'Deliver report via email'
+    ],
+    faqs: [
+      {
+        question: 'Which hand should I send for AstroAnk’s palmistry?',
+        answer: 'Astro Deepak Goutam recommends right hand for men, left for women, or both for best results.'
+      },
+      {
+        question: 'How accurate is palmistry by Astro Deepak Goutam?',
+        answer: 'With clear hand photos, AstroAnk’s palmistry analysis in Ujjain is highly accurate.'
+      }
+    ],
+    metaKeywords: [
+      'Palmistry Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Palmistry Analysis Ujjain'
+    ]
+  },
+  {
+    id: '8',
+    title: 'Prashn Kundli',
+    slug: 'prashn-kundli-ujjain',
+    description: 'Instant answers with Astro Deepak Goutam’s Prashn Kundli in Ujjain.',
+    longDescription: 'Get immediate answers to your questions with Astro Deepak Goutam’s Prashn Kundli (horary astrology) in Ujjain. AstroAnk’s premium astrology services, also via Astro Time, cast a chart based on your question’s timing for precise insights. Perfect for career, love, or decision-making queries.',
+    icon: 'FaQuestionCircle',
+    benefits: [
+      'Quick answers without birth details',
+      'Career and love insights by AstroAnk',
+      'Decision-making support in Ujjain',
+      'Personalized remedies',
+      'Guidance by Astro Deepak Goutam'
+    ],
+    features: [
+      'Instant chart casting by AstroAnk',
+      '10-page detailed answer report',
+      'Remedy suggestions from Ujjain',
+      'Email delivery within 24 hours',
+      'Follow-up support'
+    ],
+    price: 1499,
     duration: 'Instant access',
     deliveryTime: '24 hours',
     process: [
-      'Submit your question',
-      'Astrologer casts Prashn Kundli',
+      'Submit your question to AstroAnk',
+      'Astro Deepak Goutam casts Prashn Kundli',
       'Analyze planetary positions',
       'Prepare answer with remedies',
       'Deliver report via email'
     ],
     faqs: [
       {
-        question: 'How specific should my question be?',
-        answer: 'The more specific your question, the more precise the answer will be.'
+        question: 'How specific should my question be for AstroAnk’s Prashn Kundli?',
+        answer: 'Astro Deepak Goutam recommends specific questions for the most accurate answers in Ujjain.'
       },
       {
-        question: 'Can I ask multiple questions?',
-        answer: 'Each report covers one primary question for maximum accuracy.'
+        question: 'Can I ask multiple questions with AstroAnk?',
+        answer: 'Each Prashn Kundli by Astro Deepak Goutam focuses on one primary question for maximum clarity.'
       }
+    ],
+    metaKeywords: [
+      'Prashn Kundli Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Horary Astrology Ujjain'
     ]
   },
   {
-    id: '7',
-    title: 'Kundli Milan / Matchmaking',
-    slug: 'kundli-milan',
-    description: 'Ensure marital harmony with precise Kundali matching.',
-    longDescription: 'Our detailed Kundali Milan analysis examines 36 gunas for compatibility, helping you understand emotional, intellectual, and spiritual alignment between partners. Includes remedies for Manglik, Bhakoot, or Nadi dosha.',
+    id: '9',
+    title: 'Kundli Milan',
+    slug: 'kundli-milan-ujjain',
+    description: 'Ensure marital harmony with Astro Deepak Goutam’s Kundli Milan in Ujjain.',
+    longDescription: 'Astro Deepak Goutam’s premium Kundli Milan service in Ujjain, offered by AstroAnk and Astro Time, analyzes 36 gunas for marital compatibility. Ensure emotional, intellectual, and spiritual harmony with remedies for Manglik, Bhakoot, or Nadi dosha. Trust the best astrologer in Ujjain for a successful marriage.',
     icon: 'FaHandHoldingHeart',
     benefits: [
-      'Comprehensive 36-guna analysis',
-      'Manglik dosha check & remedies',
-      'Emotional & sexual compatibility',
-      'Financial harmony assessment',
-      'Long-term marriage prospects'
+      '36-guna compatibility analysis by AstroAnk',
+      'Manglik dosha remedies in Ujjain',
+      'Emotional and financial harmony',
+      'Personalized marriage advice',
+      'Guidance by Astro Deepak Goutam'
     ],
     features: [
       'Detailed point-by-point matching',
-      'Remedies for any doshas found',
-      'Compatibility beyond just gunas',
-      'Individualized marriage advice',
-      '25+ page detailed report'
+      'Remedies for doshas by AstroAnk',
+      'Compatibility beyond gunas',
+      '25+ page report from Ujjain',
+      'Follow-up consultation'
     ],
-    price: 2499,
+    price: 2999,
     duration: 'Lifetime validity',
-    deliveryTime: '2 days after receiving details',
+    deliveryTime: '2 days',
     process: [
-      'Provide birth details of both partners',
-      'Astrologer analyzes compatibility',
+      'Submit birth details of both partners',
+      'Astro Deepak Goutam analyzes compatibility',
       'Identify strengths and challenges',
       'Prepare detailed report with remedies',
       'Deliver PDF via email'
     ],
     faqs: [
       {
-        question: 'What if we have low guna matching?',
-        answer: 'Low guna matching doesn\'t mean incompatibility. We provide specific remedies to strengthen weak areas.'
+        question: 'What if we have low guna matching in Ujjain?',
+        answer: 'Astro Deepak Goutam provides remedies to strengthen weak areas for marital harmony.'
       },
       {
-        question: 'Can this be done for same-sex couples?',
-        answer: 'Yes, astrological compatibility is universal across genders.'
+        question: 'Is AstroAnk’s Kundli Milan suitable for same-sex couples?',
+        answer: 'Yes, Astro Deepak Goutam’s compatibility analysis is universal across genders.'
       }
+    ],
+    metaKeywords: [
+      'Kundli Milan Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Marriage Compatibility Ujjain'
     ],
     featured: true
   },
   {
-    id: '8',
-    title: 'Krishnamurti Paddhati (K.P.)',
-    slug: 'kp-astrology',
-    description: 'Precise predictions using K.P. astrology system.',
-    longDescription: 'Experience the precision of Krishnamurti Paddhati (K.P.) astrology, which uses stellar and sub-lord techniques for accurate predictions. Ideal for specific questions about career, or marriage timing.',
+    id: '10',
+    title: 'Krishnamurti Paddhati',
+    slug: 'kp-astrology-ujjain',
+    description: 'Precise predictions with Astro Deepak Goutam’s KP astrology in Ujjain.',
+    longDescription: 'Experience Astro Deepak Goutam’s Krishnamurti Paddhati (KP) astrology in Ujjain for precise event timing. AstroAnk’s premium services, also via Astro Time, use stellar and sub-lord techniques for accurate predictions on career, marriage, and more. Trust the best astrologer in Ujjain for transformative insights.',
     icon: 'FaClock',
     benefits: [
-      'Highly accurate predictions',
-      'Timing of key life events',
-      'Career and financial guidance',
-      'Relationship insights',
-      'Remedial solutions'
+      'Accurate event timing by AstroAnk',
+      'Career and marriage predictions',
+      'Personalized remedies in Ujjain',
+      'Numerology-based insights',
+      'Guidance by Astro Deepak Goutam'
     ],
     features: [
-      'Sub-lord analysis',
-      'Event timing predictions',
+      'Sub-lord and cusp analysis',
       '20-page detailed report',
-      'Remedy suggestions',
-      'Personalized consultation option'
+      'Remedy suggestions by AstroAnk',
+      'Event timing predictions',
+      'Consultation option in Ujjain'
     ],
-    price: 2499,
+    price: 2999,
     duration: '3-month forecast',
     deliveryTime: '72 hours',
     process: [
       'Submit birth details and questions',
-      'Astrologer prepares KP chart',
+      'Astro Deepak Goutam prepares KP chart',
       'Analyze sub-lords and cusps',
       'Prepare detailed predictions',
       'Deliver comprehensive report'
     ],
     faqs: [
       {
-        question: 'How is KP different from Vedic astrology?',
-        answer: 'KP uses stellar subdivisions for more precise timing of events compared to traditional Vedic methods.'
+        question: 'How is KP astrology different at AstroAnk?',
+        answer: 'Astro Deepak Goutam’s KP astrology in Ujjain uses stellar subdivisions for precise event timing.'
       },
       {
-        question: 'Can KP predict exact dates?',
-        answer: 'KP can predict time periods (within weeks/months) when events are likely to occur.'
+        question: 'Can AstroAnk predict exact dates with KP?',
+        answer: 'Astro Deepak Goutam’s KP analysis predicts time periods within weeks/months for key events.'
       }
+    ],
+    metaKeywords: [
+      'KP Astrology Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Krishnamurti Paddhati Ujjain'
     ]
   },
   {
-    id: '9',
+    id: '11',
     title: 'Sadesati Report',
-    slug: 'sadesati-report',
-    description: 'Understand and mitigate Saturn\'s Sadesati effects.',
-    longDescription: 'Analyze the impact of Saturn\'s 7.5-year Sadesati cycle on your life. Our report explains the three phases of Sadesati and provides remedies to reduce its challenges and harness its benefits.',
+    slug: 'sadesati-ujjain',
+    description: 'Mitigate Saturn’s Sadesati with Astro Deepak Goutam in Ujjain.',
+    longDescription: 'Understand Saturn’s 7.5-year Sadesati cycle with Astro Deepak Goutam’s expert analysis in Ujjain. AstroAnk’s premium astrology services, also via Astro Time, provide a detailed report on Sadesati phases and remedies to reduce challenges and enhance benefits. Trust the best astrologer in Ujjain.',
     icon: 'FaMoon',
     benefits: [
-      'Understand Sadesati phases',
-      'Reduce negative impacts',
+      'Understand Sadesati phases with AstroAnk',
+      'Reduce negative impacts in Ujjain',
       'Enhance positive outcomes',
-      'Personalized remedies',
-      'Long-term guidance'
+      'Personalized remedies by Astro Deepak Goutam',
+      'Long-term Vedic guidance'
     ],
     features: [
-      'Detailed phase report',
+      'Detailed phase report by AstroAnk',
       'Mantra and charity remedies',
-      '15-page analysis',
+      '15-page analysis from Ujjain',
       'Gemstone suggestions',
       'Follow-up support'
     ],
-    price: 1499,
+    price: 1999,
     duration: 'Lifetime',
     deliveryTime: '48 hours',
     process: [
-      'Submit birth details',
-      'Analyze Saturn\'s position',
+      'Submit birth details to AstroAnk',
+      'Astro Deepak Goutam analyzes Saturn’s position',
       'Identify current phase',
       'Prepare phase-specific remedies',
       'Deliver detailed report'
     ],
     faqs: [
       {
-        question: 'Is Sadesati always bad?',
-        answer: 'No, each phase has different effects - some challenging, some beneficial. We help you navigate all.'
+        question: 'Is Sadesati always negative with AstroAnk?',
+        answer: 'Astro Deepak Goutam’s analysis in Ujjain shows each phase’s effects, with remedies to balance challenges.'
       },
       {
-        question: 'What if I am not in Sadesati?',
-        answer: 'The report will confirm this and analyze Saturn\'s general influence in your chart.'
+        question: 'What if I’m not in Sadesati per AstroAnk?',
+        answer: 'Astro Deepak Goutam will analyze Saturn’s general influence in your chart for comprehensive guidance.'
       }
+    ],
+    metaKeywords: [
+      'Sadesati Report Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Saturn Sadesati Ujjain'
     ]
   },
   {
-    id: '10',
+    id: '12',
     title: 'Manglik Dosha Report',
-    slug: 'manglik-dosha',
-    description: 'Identify and remedy Manglik dosha for marital harmony.',
-    longDescription: 'Our Manglik dosha report analyzes your chart for Mars-related doshas affecting marriage. We provide specific remedies to neutralize its effects and ensure a successful marital life.',
+    slug: 'manglik-dosha-ujjain',
+    description: 'Neutralize Manglik dosha with Astro Deepak Goutam in Ujjain.',
+    longDescription: 'Astro Deepak Goutam’s Manglik dosha analysis in Ujjain, offered by AstroAnk and Astro Time, examines Mars-related doshas affecting marriage. Our premium report provides specific remedies to ensure marital harmony. Trust the best astrologer in Ujjain for expert guidance.',
     icon: 'FaFire',
     benefits: [
-      'Identify Manglik dosha',
-      'Marital harmony solutions',
-      'Personalized remedies',
+      'Identify Manglik dosha with AstroAnk',
+      'Marital harmony solutions in Ujjain',
+      'Personalized remedies by Astro Deepak Goutam',
       'Compatibility guidance',
       'Long-term benefits'
     ],
     features: [
       'Detailed dosha analysis',
-      'Remedy recommendations',
-      '10-page report',
-      'Mantra suggestions',
+      'Remedy recommendations by AstroAnk',
+      '10-page report from Ujjain',
+      'Mantra and puja suggestions',
       'Consultation option'
     ],
-    price: 999,
+    price: 1499,
     duration: 'Lifetime',
     deliveryTime: '24 hours',
     process: [
-      'Submit birth details',
-      'Analyze Mars position',
+      'Submit birth details to AstroAnk',
+      'Astro Deepak Goutam analyzes Mars position',
       'Determine dosha severity',
       'Prepare customized remedies',
       'Deliver comprehensive report'
     ],
     faqs: [
       {
-        question: 'Can Manglik dosha be cancelled?',
-        answer: 'Yes, through proper remedies and by matching with another Manglik partner.'
+        question: 'Can Astro Deepak Goutam cancel Manglik dosha?',
+        answer: 'AstroAnk’s remedies by Astro Deepak Goutam in Ujjain significantly reduce Manglik dosha effects.'
       },
       {
-        question: 'What if only one partner is Manglik?',
-        answer: 'We provide specific remedies to balance the energies between partners.'
+        question: 'What if only one partner is Manglik per AstroAnk?',
+        answer: 'Astro Deepak Goutam provides remedies to balance energies for harmonious relationships.'
       }
+    ],
+    metaKeywords: [
+      'Manglik Dosha Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Manglik Remedies Ujjain'
     ]
   },
   {
-    id: '11',
+    id: '13',
     title: 'Kaalsarp Dosha Analysis',
-    slug: 'kaalsarp-dosha',
-    description: 'Mitigate Kaalsarp dosha for life success.',
-    longDescription: 'Understand the effects of Kaalsarp dosha in your chart and receive remedies to reduce its obstacles. Our report identifies the type of Kaalsarp dosha and tailored solutions for success.',
+    slug: 'kaalsarp-dosha-ujjain',
+    description: 'Overcome Kaalsarp dosha with Astro Deepak Goutam in Ujjain.',
+    longDescription: 'Astro Deepak Goutam’s Kaalsarp dosha analysis in Ujjain, offered by AstroAnk and Astro Time, identifies the type of Kaalsarp dosha in your chart and provides remedies to overcome obstacles. As the best astrologer in Ujjain, Astro Deepak Goutam ensures spiritual and material success.',
     icon: 'FaGlobeAsia',
     benefits: [
-      'Identify Kaalsarp dosha',
-      'Overcome life obstacles',
-      'Personalized remedies',
-      'Improve prosperity',
-      'Spiritual growth'
+      'Identify Kaalsarp dosha with AstroAnk',
+      'Overcome obstacles in Ujjain',
+      'Personalized remedies by Astro Deepak Goutam',
+      'Enhance prosperity and spirituality',
+      'Long-term Vedic guidance'
     ],
     features: [
-      'Detailed dosha report',
+      'Detailed dosha report by AstroAnk',
       'Puja and mantra remedies',
-      '15-page analysis',
+      '15-page analysis from Ujjain',
       'Follow-up guidance',
       'Consultation option'
     ],
-    price: 1999,
+    price: 2499,
     duration: 'Lifetime',
     deliveryTime: '48 hours',
     process: [
-      'Submit birth details',
-      'Analyze planetary positions',
+      'Submit birth details to AstroAnk',
+      'Astro Deepak Goutam analyzes planets',
       'Identify Kaalsarp type',
       'Prepare specific remedies',
       'Deliver detailed report'
     ],
     faqs: [
       {
-        question: 'How severe is my Kaalsarp dosha?',
-        answer: 'The report will analyze the specific type and strength of your dosha.'
+        question: 'How severe is my Kaalsarp dosha per AstroAnk?',
+        answer: 'Astro Deepak Goutam’s analysis in Ujjain details the type and strength of your dosha.'
       },
       {
-        question: 'Can Kaalsarp dosha be removed?',
-        answer: 'While the dosha remains, its negative effects can be significantly reduced with proper remedies.'
+        question: 'Can AstroAnk remove Kaalsarp dosha?',
+        answer: 'Astro Deepak Goutam’s remedies significantly reduce Kaalsarp dosha’s effects for success.'
       }
+    ],
+    metaKeywords: [
+      'Kaalsarp Dosha Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Kaalsarp Remedies Ujjain'
     ]
   },
   {
-    id: '12',
+    id: '14',
     title: 'Numerology Analysis',
-    slug: 'numerology-analysis',
-    description: 'Unlock insights with personalized numerology report.',
-    longDescription: 'Discover how numbers shape your life with a detailed numerology report. Learn your life path, destiny number, and how to use numerology for success in relationships, career, and personal growth.',
+    slug: 'numerology-ujjain',
+    description: 'Unlock your destiny with Astro Deepak Goutam’s numerology in Ujjain.',
+    longDescription: 'Discover how numbers shape your life with Astro Deepak Goutam’s premium numerology analysis in Ujjain. AstroAnk, also via Astro Time, provides insights into your life path, destiny number, and success strategies. Trust the best astrologer in Ujjain for transformative numerology guidance.',
     icon: 'FaHashtag',
     benefits: [
-      'Understand core numbers',
-      'Improve decision-making',
+      'Understand core numbers with AstroAnk',
+      'Improve decision-making in Ujjain',
       'Choose auspicious numbers',
-      'Enhance relationships',
-      'Career guidance'
+      'Enhance relationships and career',
+      'Guidance by Astro Deepak Goutam'
     ],
     features: [
-      '20-page report',
-      'Life path analysis',
-      'Destiny number insights',
-      'Name correction advice',
-      'Personalized tips'
+      '20-page numerology report',
+      'Life path and destiny number analysis',
+      'Name correction advice by AstroAnk',
+      'Personalized tips from Ujjain',
+      'Follow-up consultation'
     ],
-    price: 1999,
+    price: 2999,
     duration: 'Lifetime',
     deliveryTime: '24 hours',
     process: [
-      'Submit full name and birthdate',
-      'Numerologist calculates core numbers',
+      'Submit full name and birthdate to AstroAnk',
+      'Astro Deepak Goutam calculates core numbers',
       'Analyze number influences',
-      'Prepare recommendations',
+      'Prepare recommendations in Ujjain',
       'Deliver detailed report'
     ],
     faqs: [
       {
-        question: 'Should I change my name based on numerology?',
-        answer: 'We provide balanced advice - sometimes minor adjustments are sufficient rather than full name changes.'
+        question: 'Should I change my name per AstroAnk’s numerology?',
+        answer: 'Astro Deepak Goutam provides balanced advice for name corrections in Ujjain.'
       },
       {
-        question: 'How do I use my lucky numbers?',
-        answer: 'The report will guide you on incorporating lucky numbers into daily life for maximum benefit.'
+        question: 'How do I use lucky numbers with AstroAnk?',
+        answer: 'Astro Deepak Goutam’s report guides you on incorporating lucky numbers for success.'
       }
+    ],
+    metaKeywords: [
+      'Numerology Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Numerology Analysis Ujjain'
     ],
     featured: true
   },
   {
-    id: '13',
-    title: 'Shubh Muhurat – Har Kaam Ka Sahi Samay',
-    slug: 'shubh-muhurat',
-    description: 'Find the most auspicious timing for your important events with expert muhurat selection.',
-    longDescription: 'Ensure success and positivity in all your important life events—weddings, housewarming, business openings, travel, and more—by choosing the most auspicious Shubh Muhurat. Our expert astrologers analyze planetary positions, tithi, nakshatra, and your personal details to recommend the best timing for your specific purpose.',
+    id: '15',
+    title: 'Shubh Muhurat',
+    slug: 'shubh-muhurat-ujjain',
+    description: 'Find auspicious timings with Astro Deepak Goutam in Ujjain.',
+    longDescription: 'Ensure success for weddings, business openings, or other events with Astro Deepak Goutam’s Shubh Muhurat service in Ujjain. AstroAnk’s premium astrology services, also via Astro Time, analyze planetary positions for the perfect timing. Trust the best astrologer in Ujjain for auspicious results.',
     icon: 'FaClock',
     benefits: [
-      'Success and prosperity in your chosen event',
-      'Avoid negative planetary influences',
-      'Personalized muhurat based on your details',
-      'Expert Vedic astrology guidance',
-      'Peace of mind for important occasions'
+      'Success in events with AstroAnk',
+      'Avoid negative influences in Ujjain',
+      'Personalized muhurat by Astro Deepak Goutam',
+      'Vedic astrology expertise',
+      'Peace of mind for occasions'
     ],
     features: [
       'Personalized muhurat calculation',
-      'Covers all major events (marriage, griha pravesh, business, travel, etc.)',
-      'Detailed report with date, time, and do’s & don’ts',
-      'Remedy suggestions if ideal muhurat is not available',
-      'Consultation with astrologer (if needed)'
+      'Covers marriage, griha pravesh, and more',
+      'Detailed report with do’s & don’ts',
+      'Remedy suggestions by AstroAnk',
+      'Consultation option in Ujjain'
     ],
-    price: 1999,
+    price: 2499,
     duration: 'Lifetime',
     deliveryTime: '24 hours',
     process: [
-      'Submit event details and personal information',
-      'Astrologer analyzes planetary positions and panchang',
-      'Selects the most auspicious muhurat',
-      'Prepares detailed report with instructions',
-      'Delivers report via email or WhatsApp'
+      'Submit event details to AstroAnk',
+      'Astro Deepak Goutam analyzes panchang',
+      'Select auspicious muhurat',
+      'Prepare detailed report in Ujjain',
+      'Deliver via email or WhatsApp'
     ],
     faqs: [
       {
-        question: 'Which events can I get a Shubh Muhurat for?',
-        answer: 'We provide muhurat for all major events—marriage, griha pravesh, business, travel, naming ceremony, and more.'
+        question: 'Which events does AstroAnk cover for Shubh Muhurat?',
+        answer: 'Astro Deepak Goutam provides muhurat for marriage, griha pravesh, business, and more in Ujjain.'
       },
       {
-        question: 'What if no ideal muhurat is available in my timeframe?',
-        answer: 'We suggest the best possible option and remedies to minimize negative effects.'
+        question: 'What if no ideal muhurat is available per AstroAnk?',
+        answer: 'Astro Deepak Goutam suggests the best option with remedies to minimize negative effects.'
       }
+    ],
+    metaKeywords: [
+      'Shubh Muhurat Ujjain',
+      'Astro Deepak Goutam',
+      'Astrology Ujjain',
+      'AstroAnk',
+      'Astro Time',
+      'Best Astrologer in Ujjain',
+      'Auspicious Timing Ujjain'
     ],
     featured: true
   }
