@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="overflow-hidden  lg:pb-12.5 xl:pb-15 pt-20 sm:pt-45 lg:pt-30 xl:pt-30 bg-[#FFFAF5]">
+    <section className="overflow-hidden lg:pb-12.5 xl:pb-15 pt-20 sm:pt-45 lg:pt-30 xl:pt-30 bg-[#FFFAF5] relative">
       <div className="max-w-[1170px] w-full mx-auto px-0 sm:px-8 xl:px-0">
         <div className="flex flex-wrap gap-5">
           <div className="w-full">
@@ -17,7 +17,7 @@ const Hero = () => {
       </div>
       <div className="marquee-container">
         <div className="marquee flex items-center">
-          <span className="mr-3" aria-label="announcement" role="img">��</span>
+          <span className="mr-3" aria-label="announcement" role="img">🔔</span>
           <div className="marquee-track">
             <span className="marquee-text">
               Get exclusive early access! Sign up now for launch updates. &nbsp;|&nbsp; Special offers await our first Indian customers!
@@ -77,13 +77,11 @@ const Hero = () => {
           }
           @media (max-width: 767px) {
             .marquee-container {
-              /* display: none;  Remove this line to show marquee on mobile */
               position: relative;
               left: 0;
               bottom: auto;
               z-index: 20;
               width: 100%;
-              margin-top: 36px;
             }
           }
         `}</style>
@@ -93,7 +91,6 @@ const Hero = () => {
 };
 
 const HeroCarousel = () => {
-  // Image sources for desktop and mobile
   const desktopSlides = [
     { src: "/hero/1.jpg", link: "/nemerology-anck" },
     { src: "/hero/2.jpg", link: "/services" },
@@ -112,7 +109,6 @@ const HeroCarousel = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile view
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -122,16 +118,14 @@ const HeroCarousel = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto-scroll effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % desktopSlides.length);
+      setActiveIndex((prev) => (prev + 1) % (isMobile ? mobileSlides.length : desktopSlides.length));
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [desktopSlides.length]);
+  }, [isMobile, desktopSlides.length, mobileSlides.length]);
 
-  // Scroll to active slide
   useEffect(() => {
     if (carouselRef.current) {
       const slideWidth = carouselRef.current.offsetWidth;
@@ -139,41 +133,37 @@ const HeroCarousel = () => {
     }
   }, [activeIndex, isMobile]);
 
-  // Handle dot click
   const handleDotClick = (index: number) => {
     setActiveIndex(index);
   };
 
-  // Select slides based on device
   const slides = isMobile ? mobileSlides : desktopSlides;
 
   return (
-    <div
-      className={`hero-carousel w-full ${
-        isMobile ? "h-[700px]" : "h-[500px]"
-      } relative overflow-hidden`}
-    >
+    <div className="hero-carousel w-full relative overflow-hidden">
       <style jsx>{`
         .carousel-inner {
           display: flex;
           height: 100%;
           transition: transform 0.5s ease;
+          width: 100%;
         }
         .carousel-slide {
           flex: 0 0 100%;
+          min-width: 100%;
           height: 100%;
+          position: relative;
         }
         .banner-image-container {
-          /* Remove all margin and padding for mobile */
+          width: 100%;
+          height: 100%;
+          position: relative;
           margin: 0;
           padding: 0;
-          /* #ccc; More visible border, adjust color as needed */
-          overflow: visible;
-          position: relative;
         }
         .pagination {
           position: absolute;
-          bottom: 10px;
+          bottom: 20px;
           left: 50%;
           transform: translateX(-50%);
           display: flex;
@@ -187,45 +177,58 @@ const HeroCarousel = () => {
           background: white;
           opacity: 0.7;
           cursor: pointer;
+          transition: all 0.3s ease;
         }
         .dot.active {
           opacity: 1;
           background: #800000;
         }
         @media (max-width: 767px) {
-          .banner-image-container {
-            margin: 0 !important;
-            padding: 0 !important;
+          .hero-carousel {
+            height: 90vh;
+            min-height: 600px;
+            max-height: 700px;
           }
           .carousel-slide img {
             object-fit: cover;
+            object-position: center center;
+          }
+          .pagination {
+            bottom: 25px;
+          }
+        }
+        @media (min-width: 768px) {
+          .hero-carousel {
+            height: 600px;
           }
         }
       `}</style>
       <div className="carousel-inner" ref={carouselRef}>
         {slides.map((slide, index) => (
           <div key={index} className="carousel-slide">
-            <div className="relative w-full h-full banner-image-container">
+            <div className="banner-image-container">
               {isMobile ? (
                 <Image
                   src={slide.src}
-                  alt={`headphone-${index + 1}`}
+                  alt={`banner-${index + 1}`}
                   fill
                   className="object-cover"
                   priority={index === 0}
-                  sizes={isMobile ? "100vw" : "100vw"}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                  quality={100}
                   onError={() => console.error(`Failed to load image ${slide.src}`)}
                 />
               ) : (
                 <Link href={slide.link} legacyBehavior>
-                  <a>
+                  <a className="block w-full h-full">
                     <Image
                       src={slide.src}
-                      alt={`headphone-${index + 1}`}
+                      alt={`banner-${index + 1}`}
                       fill
                       className="object-cover"
                       priority={index === 0}
-                      sizes={isMobile ? "100vw" : "100vw"}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                      quality={100}
                       onError={() => console.error(`Failed to load image ${slide.src}`)}
                     />
                   </a>
