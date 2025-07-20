@@ -45,7 +45,7 @@ export default function Footer() {
             </motion.div>
             <div>
               <h1 className="font-sans text-white text-3xl font-bold tracking-wide">
-                Astro Time
+                AstroAnk
               </h1>
               <p className="text-white/70 text-sm mt-1">Your trusted guide to cosmic wisdom</p>
             </div>
@@ -56,7 +56,7 @@ export default function Footer() {
             { 
               icon: faPhoneAlt, 
               label: "Phone", 
-              value: "+91-9153164444", 
+              value: "+919153164444, +918546822456", 
               href: "tel:+919153164444" 
             },
             { 
@@ -97,7 +97,7 @@ export default function Footer() {
         >
           {/* About */}
           <div className="space-y-4">
-            <h3 className="font-sans text-white text-xl font-bold">About Astro Time</h3>
+            <h3 className="font-sans text-white text-xl font-bold">About AstroAnk</h3>
             <p className="text-white/70 leading-relaxed">
               We provide authentic Vedic astrology services including Janm Patrika analysis, gemstone recommendations, dosha remedies, and personalized consultations to guide your life's journey.
             </p>

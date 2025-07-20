@@ -95,9 +95,7 @@ export default function AboutSection() {
               transition={{ duration: 0.6 }}
               className="bg-white p-8 rounded-xl shadow-sm border-l-4 border-[#800000] relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 bg-[#800000] text-white px-4 py-1 text-xs font-medium rounded-br-lg">
-                Founder's Message
-              </div>
+             
               <div className="flex flex-col sm:flex-row gap-6 mt-6">
                 <div className="flex-shrink-0">
                   <div className="w-20 h-20 bg-[#800000] rounded-lg flex items-center justify-center text-white text-2xl font-bold shadow-md">
@@ -111,6 +109,33 @@ export default function AboutSection() {
                     <FontAwesomeIcon icon={faQuoteLeft} className="text-[#800000]/20 text-4xl absolute -top-2 -left-2" />
                     <p className="text-gray-700 relative z-10 italic pl-6">
                       "At Astro Time, we don't just predict futures - we empower souls to navigate their karmic journey with celestial precision and practical wisdom for modern life."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Second Founder Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white p-8 rounded-xl shadow-sm border-l-4 border-[#800000] relative overflow-hidden"
+            >
+              
+              <div className="flex flex-col sm:flex-row gap-6 mt-6">
+                <div className="flex-shrink-0">
+                  <div className="w-20 h-20 bg-[#800000] rounded-lg flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                    AS
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-black mb-1">Pt. Amit Sharma</h4>
+                  <p className="text-[#800000] text-sm font-medium mb-4">Jyotish Acharya, Co-Founder</p>
+                  <div className="relative">
+                    <FontAwesomeIcon icon={faQuoteLeft} className="text-[#800000]/20 text-4xl absolute -top-2 -left-2" />
+                    <p className="text-gray-700 relative z-10 italic pl-6">
+                      "Our mission is to bridge the ancient wisdom of Vedic astrology with contemporary life challenges, providing practical solutions that resonate with today's seekers."
                     </p>
                   </div>
                 </div>

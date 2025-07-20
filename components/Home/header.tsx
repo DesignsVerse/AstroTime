@@ -144,7 +144,7 @@ const Header: FC = () => {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <span className="text-2xl font-bold text-black hover:text-[#800000] transition-colors">
-                  Astro<span className="text-[#800000]">Anck</span>
+                  Astro<span className="text-[#800000]">Ank</span>
                 </span>
               </Link>
             </div>
