@@ -71,7 +71,7 @@ const Service = () => {
         />
       </Head>
 
-      <div className="relative min-h-screen py-12 sm:py-16 overflow-hidden">
+      <div className="relative min-h-screen pt-20 sm:pt-28 pb-12 sm:pb-16 overflow-hidden">
         {/* Main background image */}
         <div className="absolute inset-0 bg-[url('/service/service-bg-2.png')] bg-cover bg-top bg-no-repeat opacity-20"></div>
         
