@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="overflow-hidden lg:pb-12.5 xl:pb-15 pt-20 sm:pt-45 lg:pt-30 xl:pt-30 bg-[#FFFAF5] relative">
+    <section className="hero-section overflow-hidden lg:pb-12.5 xl:pb-15 pt-12 sm:pt- lg:pt-30 xl:pt-30 bg-[#FFFAF5] relative">
       <div className="max-w-[1170px] w-full mx-auto px-0 sm:px-8 xl:px-0">
         <div className="flex flex-wrap gap-5">
           <div className="w-full">
@@ -82,6 +82,9 @@ const Hero = () => {
               bottom: auto;
               z-index: 20;
               width: 100%;
+            }
+            .hero-section {
+              padding-top: 0 !important;
             }
           }
         `}</style>
@@ -185,8 +188,8 @@ const HeroCarousel = () => {
         }
         @media (max-width: 767px) {
           .hero-carousel {
-            height: 90vh;
-            min-height: 600px;
+            height: 80vh;
+            min-height: 550px;
             max-height: 700px;
           }
           .carousel-slide img {
@@ -199,7 +202,7 @@ const HeroCarousel = () => {
         }
         @media (min-width: 768px) {
           .hero-carousel {
-            height: 600px;
+            height: 550px;
           }
         }
       `}</style>
