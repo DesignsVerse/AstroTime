@@ -5,11 +5,11 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="hero-section overflow-hidden lg:pb-12.5 xl:pb-15 pt-12 sm:pt- lg:pt-30 xl:pt-30 bg-[#FFFAF5] relative">
-      <div className="max-w-[1170px] w-full mx-auto px-0 sm:px-8 xl:px-0">
+    <section className="hero-section overflow-hidden lg:pb-12.5 xl:pb-15 pt-12 sm:pt-16 lg:pt-10 xl:pt-20 xl:pb-14 bg-[#FFFAF5] relative">
+      <div className="max-w-[1270px] w-full mx-auto px-0 sm:px-8 xl:px-0">
         <div className="flex flex-wrap gap-5">
           <div className="w-full">
-            <div className="relative z-1 rounded-[10px] bg-white overflow-hidden">
+            <div className="relative z-1 rounded-none sm:rounded-[10px] bg-white overflow-hidden">
               <HeroCarousel />
             </div>
           </div>
@@ -158,6 +158,7 @@ const HeroCarousel = () => {
           position: relative;
         }
         .banner-image-container {
+          
           width: 100%;
           height: 100%;
           position: relative;
