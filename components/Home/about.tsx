@@ -123,7 +123,7 @@ const AboutAstrologer = () => {
                   </h2>
                   <div className="h-1 w-16 bg-[#8b1e1e] mb-5"></div>
                   <p className="text-gray-700 text-base lg:text-lg font-['Poppins'] font-light leading-relaxed">
-                    Pandit Deepak Goutam, with 25+ years of experience, offers precise Vedic astrology insights from his <strong className="font-bold">Indore</strong> lineage, guiding clients globally with clarity and purpose. His profound knowledge of planetary movements and ancient scriptures provides transformative guidance for life's challenges.
+                    Pandit Deepak Goutam, with 25+ years of experience, offers precise Vedic astrology insights from his <strong className="font-bold">Ujjain</strong> lineage, guiding clients globally with clarity and purpose. His profound knowledge of planetary movements and ancient scriptures provides transformative guidance for life's challenges.
                   </p>
                 </div>
 
