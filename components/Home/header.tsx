@@ -47,7 +47,7 @@ const Header: FC = () => {
   // Navigation items
   const navItems = [
     { name: "Call Consultation", href: "/call-consultation", highlight: true },
-    { name: "Pancahng", href: "/panchnag" },
+    { name: "Pancahng", href: "/panchang " },
     { name: "Nemerology", href: "/nemerology-anck" },
     { name: "Services", href: "/services" },
     { name: "Online Puja", href: "https://www.ujjainkalsarp.com/" },

@@ -1,9 +1,9 @@
-import PanchangNumerologyPage from '@/components/panchnag/panchnag'
+import PanchangNumerologyPage from '@/components/Panchang/Panchang'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>
+    <div className='pt-14'>
       <PanchangNumerologyPage/>
     </div>
   )
