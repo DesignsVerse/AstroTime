@@ -56,7 +56,7 @@ export default function Footer() {
             { 
               icon: faPhoneAlt, 
               label: "Phone", 
-              value: "+919153164444, +918546822456", 
+              value: "+919153164444, +919876543210", 
               href: "tel:+919153164444" 
             },
             { 
