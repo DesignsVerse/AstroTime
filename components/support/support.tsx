@@ -235,7 +235,7 @@ export default function SupportPage() {
                 <div>
                   <h3 className="font-bold text-lg">Phone</h3>
                   <p>+91-9153164444</p>
-                  <p>+917067771773</p>
+                  <p>+91-7067771773</p>
                 </div>
               </div>
               <div className="flex items-start">
