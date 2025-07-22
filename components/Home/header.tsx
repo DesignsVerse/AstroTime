@@ -60,7 +60,6 @@ const Header: FC = () => {
 
   return (
     <header
-    
       ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "shadow-md" : ""
@@ -93,65 +92,59 @@ const Header: FC = () => {
         } ${!isContactBarVisible ? "mt-0" : "mt-8"}`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-  <div className="flex items-center justify-between h-16">
-    {/* Enhanced Logo */}
-    <div className="flex-shrink-0">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0">
   <Link href="/" className="flex items-center">
     <span className="text-3xl font-black text-black hover:text-[#800000] transition-colors
-          [text-shadow:_2px_2px_0_#00000030]">
-      <span className="relative">
-        ASTRO
-        <span className="absolute inset-0 -z-10 text-transparent 
-              [text-shadow:_2px_2px_0_#800000,_-2px_-2px_0_#800000]">
-          ASTRO
-        </span>
-      </span>
-      <span className="text-[#800000] [text-shadow:_2px_2px_0_#00000020]">ANK</span>
+          [text-shadow:_1px_1px_0_#00000020] tracking-tighter" 
+          style={{fontFamily: "'Poppins', sans-serif", fontWeight: 800}}>
+      Astro<span className="text-[#800000]">Ank</span>
     </span>
   </Link>
 </div>
 
-    {/* Desktop Navigation */}
-    <div className="hidden md:block">
-      <div className="ml-4 flex items-center space-x-1">
-        {navItems.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className={`px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-              item.highlight 
-                ? "bg-[#800000] text-white hover:bg-[#600000]" 
-                : "text-gray-700 hover:text-[#800000] hover:bg-gray-50"
-            }`}
-          >
-            {item.name}
-          </Link>
-        ))}
-      </div>
-    </div>
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-4 flex items-center space-x-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                      item.highlight 
+                        ? "bg-[#800000] text-white hover:bg-[#600000]" 
+                        : "text-gray-700 hover:text-[#800000] hover:bg-gray-50"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-    {/* Mobile menu button */}
-    <div className="md:hidden flex items-center">
-      <button
-        onClick={toggleMobileMenu}
-        className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-[#800000] focus:outline-none"
-        aria-expanded={isMobileMenuOpen}
-        aria-label="Toggle menu"
-      >
-        <span className="sr-only">Open main menu</span>
-        {!isMobileMenuOpen ? (
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        ) : (
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        )}
-      </button>
-    </div>
-  </div>
-</div>
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={toggleMobileMenu}
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-[#800000] focus:outline-none"
+                aria-expanded={isMobileMenuOpen}
+                aria-label="Toggle menu"
+              >
+                <span className="sr-only">Open main menu</span>
+                {!isMobileMenuOpen ? (
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                ) : (
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* Mobile Menu */}
         <div
