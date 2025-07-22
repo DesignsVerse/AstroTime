@@ -9,7 +9,6 @@ interface PanchangItem {
 }
 
 interface PanchangData {
-  date: string;
   vaara: string;
   nakshatra: PanchangItem[];
   tithi: PanchangItem[];
@@ -48,18 +47,19 @@ const Panchang = () => {
     }
 
     try {
-      const datetime = selectedDate.toISOString(); // full ISO format with time
+      const datetime = selectedDate.toISOString();
       const response = await fetch(
         `/api/panchang?datetime=${encodeURIComponent(datetime)}&coordinates=28.6139,77.2090`
       );
+      if (!response.ok) throw new Error("Failed to fetch Panchang data");
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch Panchang data");
+      const raw = await response.json();
+      const data = raw?.data;
+
+      if (data) {
+        setPanchangData(data);
+        localStorage.setItem(cacheKey, JSON.stringify(data));
       }
-
-      const data = await response.json();
-      setPanchangData(data);
-      localStorage.setItem(cacheKey, JSON.stringify(data));
     } catch (error) {
       console.error("Error fetching Panchang:", error);
     } finally {
@@ -85,7 +85,7 @@ const Panchang = () => {
         >
           {/* Basic Info */}
           <div className="bg-white p-4 rounded-xl shadow">
-            <h2 className="text-xl font-semibold mb-2">📌 Date: {panchangData.date}</h2>
+            <h2 className="text-xl font-semibold mb-2">📌 Today's Info</h2>
             <p className="text-gray-700">🕉️ Vaara (Weekday): {panchangData.vaara}</p>
             <p className="text-gray-700">🌄 Sunrise: {formatTime(panchangData.sunrise)}</p>
             <p className="text-gray-700">🌇 Sunset: {formatTime(panchangData.sunset)}</p>
@@ -96,9 +96,9 @@ const Panchang = () => {
           {/* Tithi */}
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-xl font-semibold mb-2">📿 Tithi</h2>
-            {panchangData.tithi?.map((item, index) => (
-              <div key={index} className="mb-1">
-                <p className="text-gray-800">{item.name}</p>
+            {panchangData.tithi.map((item, i) => (
+              <div key={i} className="mb-1">
+                <p className="text-gray-800 font-medium">{item.name}</p>
                 <p className="text-sm text-gray-600">
                   {formatTime(item.start)} ➡ {formatTime(item.end)}
                 </p>
@@ -109,9 +109,9 @@ const Panchang = () => {
           {/* Nakshatra */}
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-xl font-semibold mb-2">🌌 Nakshatra</h2>
-            {panchangData.nakshatra?.map((item, index) => (
-              <div key={index} className="mb-1">
-                <p className="text-gray-800">{item.name}</p>
+            {panchangData.nakshatra.map((item, i) => (
+              <div key={i} className="mb-1">
+                <p className="text-gray-800 font-medium">{item.name}</p>
                 <p className="text-sm text-gray-600">
                   {formatTime(item.start)} ➡ {formatTime(item.end)}
                 </p>
@@ -122,9 +122,9 @@ const Panchang = () => {
           {/* Yoga */}
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-xl font-semibold mb-2">🧘 Yoga</h2>
-            {panchangData.yoga?.map((item, index) => (
-              <div key={index} className="mb-1">
-                <p className="text-gray-800">{item.name}</p>
+            {panchangData.yoga.map((item, i) => (
+              <div key={i} className="mb-1">
+                <p className="text-gray-800 font-medium">{item.name}</p>
                 <p className="text-sm text-gray-600">
                   {formatTime(item.start)} ➡ {formatTime(item.end)}
                 </p>
@@ -135,9 +135,9 @@ const Panchang = () => {
           {/* Karana */}
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-xl font-semibold mb-2">📍 Karana</h2>
-            {panchangData.karana?.map((item, index) => (
-              <div key={index} className="mb-1">
-                <p className="text-gray-800">{item.name}</p>
+            {panchangData.karana.map((item, i) => (
+              <div key={i} className="mb-1">
+                <p className="text-gray-800 font-medium">{item.name}</p>
                 <p className="text-sm text-gray-600">
                   {formatTime(item.start)} ➡ {formatTime(item.end)}
                 </p>
