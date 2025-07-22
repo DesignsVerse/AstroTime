@@ -1,22 +1,5 @@
-// // app/api/prokerala/token/route.ts
-// import { NextResponse } from 'next/server';
+export const dynamic = 'force-dynamic'; // ⬅️ This line fixes the prerender error
 
-// export async function GET() {
-//   const client_id = process.env.PROKERALA_CLIENT_ID!;
-//   const client_secret = process.env.PROKERALA_CLIENT_SECRET!;
-//   const tokenUrl = 'https://api.prokerala.com/token';
-
-//   const res = await fetch(tokenUrl, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-//     body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`
-//   });
-
-//   const data = await res.json();
-//   return NextResponse.json(data);
-// }
-// pages/api/panchang.ts
-// app/api/panchang/route.ts
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
@@ -27,7 +10,6 @@ export async function GET(req: Request) {
   const ayanamsa = searchParams.get('ayanamsa') ?? '1';
 
   try {
-    // Step 1: Get token
     const tokenResponse = await fetch('https://api.prokerala.com/token', {
       method: 'POST',
       headers: {
@@ -43,7 +25,6 @@ export async function GET(req: Request) {
     const tokenData = await tokenResponse.json();
     const token = tokenData.access_token;
 
-    // Step 2: Call Panchang API
     const apiUrl = `https://api.prokerala.com/v2/astrology/panchang?datetime=${encodeURIComponent(
       datetime
     )}&timezone=${timezone}&ayanamsa=${ayanamsa}&coordinates=${coordinates}`;
