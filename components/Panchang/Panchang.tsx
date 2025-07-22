@@ -747,17 +747,6 @@ interface PanchangData {
   night_duration: string;
 }
 
-const formatTime = (dateString: string) => {
-  if (!dateString) return 'N/A';
-  const date = new Date(dateString);
-  const roundedDate = new Date(Math.round(date.getTime() / 60000) * 60000);
-  return roundedDate.toLocaleTimeString('en-IN', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true,
-  }).toUpperCase();
-};
-
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-IN', {
     weekday: 'long',
@@ -767,7 +756,7 @@ const formatDate = (date: Date) => {
   });
 };
 
-const mapProkeralaToLocalFormat = (data: any) => {
+const mapProkeralaToLocalFormat = (data: any): PanchangData => {
   return {
     date: formatDate(new Date(data.date)),
     vaara: data.weekday,
@@ -799,7 +788,7 @@ const mapProkeralaToLocalFormat = (data: any) => {
 };
 
 const getAccessToken = async () => {
-  const res = await fetch('/api/');
+  const res = await fetch('https://astro-time-2-git-backend-akshat-sharmadvs-projects.vercel.app/api/prokerala/token');
   const data = await res.json();
   return data.access_token;
 };
@@ -851,17 +840,17 @@ const PanchangPage = () => {
     <div className="min-h-screen p-6">
       <h1 className="text-3xl font-bold mb-4">Panchang for {panchangData.date}</h1>
       <p>Ritu: {panchangData.ritu}</p>
-      <p>Sunrise: {formatTime(panchangData.sunrise)}</p>
-      <p>Sunset: {formatTime(panchangData.sunset)}</p>
-      {/* <p>Moonrise: {formatTime(panchangData.moonrise)}</p>
-      <p>Moonset: {formatTime(panchangData.moonset)}</p> */}
+      <p>Sunrise: {panchangData.sunrise}</p>
+      <p>Sunset: {panchangData.sunset}</p>
+      <p>Moonrise: {panchangData.moonrise}</p>
+      <p>Moonset: {panchangData.moonset}</p>
 
       <h2 className="text-xl mt-6 font-semibold">Nakshatra</h2>
       {panchangData.nakshatra.map((item, index) => (
         <div key={index} className="mb-2">
           <p>Name: {item.name}</p>
           <p>Lord: {item.lord?.vedic_name}</p>
-          <p>Time: {formatTime(item.start)} - {formatTime(item.end)}</p>
+          <p>Time: {item.start} - {item.end}</p>
         </div>
       ))}
 
@@ -870,7 +859,7 @@ const PanchangPage = () => {
         <div key={index} className="mb-2">
           <p>Name: {item.name}</p>
           <p>Paksha: {item.paksha}</p>
-          <p>Time: {formatTime(item.start)} - {formatTime(item.end)}</p>
+          <p>Time: {item.start} - {item.end}</p>
         </div>
       ))}
     </div>
