@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PanchangFetcher = () => {
   const [data, setData] = useState<any>(null);
@@ -8,12 +8,13 @@ const PanchangFetcher = () => {
   useEffect(() => {
     const fetchPanchang = async () => {
       try {
-        const response = await fetch('/api/'); // Defaults to today's date & Delhi
-        const json = await response.json();
-        console.log('Panchang Data:', json);
+        const datetime = new Date().toISOString(); // or your selected date/time
+        const res = await fetch(`/api/panchang?datetime=${encodeURIComponent(datetime)}&coordinates=28.6139,77.2090`);
+        const json = await res.json();
+        console.log('Panchang response:', json);
         setData(json);
-      } catch (error) {
-        console.error('Error fetching Panchang:', error);
+      } catch (err) {
+        console.error('Error:', err);
       }
     };
 
@@ -22,7 +23,7 @@ const PanchangFetcher = () => {
 
   return (
     <div>
-      <h2>Panchang API Raw Data</h2>
+      <h1>Panchang Data</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
