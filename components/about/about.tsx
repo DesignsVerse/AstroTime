@@ -213,7 +213,7 @@ export default function AboutPage() {
                   </div>
                   <div className="flex justify-end mt-4">
                     <a
-                      href="tel:+919876543210"
+                      href="tel:+917067771773"
                       className="inline-flex items-center gap-2 bg-[#800000] text-white font-semibold px-4 py-2 rounded-full text-sm shadow-md hover:bg-black transition-colors"
                     >
                       <FontAwesomeIcon icon={faPhone} />
