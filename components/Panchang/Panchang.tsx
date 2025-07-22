@@ -119,15 +119,15 @@ const PanchangPage = () => {
   //       }
   //     );
 
-      const raw = await response.json();
-      const formatted = mapProkeralaToLocalFormat(raw.data);
-      setPanchangData(formatted);
-    } catch (err) {
-      console.error("Failed to fetch Panchang data:", err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  //     const raw = await response.json();
+  //     const formatted = mapProkeralaToLocalFormat(raw.data);
+  //     setPanchangData(formatted);
+  //   } catch (err) {
+  //     console.error("Failed to fetch Panchang data:", err);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   useEffect(() => {
     fetchPanchangData();
