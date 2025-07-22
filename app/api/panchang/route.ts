@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'; // ⬅️ This line fixes the prerender error
+export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
 
