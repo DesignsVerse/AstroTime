@@ -788,7 +788,7 @@ const mapProkeralaToLocalFormat = (data: any): PanchangData => {
 };
 
 const getAccessToken = async () => {
-  const res = await fetch('https://astro-time-2-git-backend-akshat-sharmadvs-projects.vercel.app/api/prokerala/token');
+  const res = await fetch('/api/');
   const data = await res.json();
   return data.access_token;
 };
