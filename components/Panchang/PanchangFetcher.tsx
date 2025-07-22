@@ -8,7 +8,7 @@ const PanchangFetcher = () => {
   useEffect(() => {
     const fetchPanchang = async () => {
       try {
-        const response = await fetch('/api/panchang'); // Defaults to today's date & Delhi
+        const response = await fetch('/api/'); // Defaults to today's date & Delhi
         const json = await response.json();
         console.log('Panchang Data:', json);
         setData(json);
