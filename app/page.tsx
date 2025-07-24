@@ -10,6 +10,7 @@ import NemurologySection from '@/components/Home/nemurology';
 import NumberSelector from '@/components/Home/NumerologyNo';
 import RamayanaBanner from '@/components/Home/ram-ravan';
 import PhysicalKundaliBanner from '@/components/Home/physicalkundali';
+import ChatBoard from '@/components/Home/ChatBoard';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -99,6 +100,7 @@ export default function Home() {
       <Review />
       <Blog />
       <FAQ />
+      <ChatBoard />
     </div>
   );
 }
