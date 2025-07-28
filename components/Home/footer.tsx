@@ -52,12 +52,13 @@ export default function Footer() {
           </div>
           
           {/* Contact Info */}
+          // Replace your contact info map with this
           {[
             { 
               icon: faPhoneAlt, 
               label: "Phone", 
               value: "+919153164444, +917067771773", 
-              href: "tel:+919153164444" 
+              hrefs: ["tel:+919153164444", "tel:+917067771773"]
             },
             { 
               icon: faEnvelope, 
@@ -75,12 +76,24 @@ export default function Footer() {
               </motion.div>
               <div>
                 <p className="text-white/70 text-sm uppercase tracking-wider mb-1">{contact.label}</p>
-                <motion.p 
-                  whileHover={{ x: 5 }}
-                  className="font-sans text-white text-2xl font-bold hover:text-white/80 transition-colors duration-300"
-                >
-                  <a href={contact.href}>{contact.value}</a>
-                </motion.p>
+                {contact.hrefs ? (
+                  // For multiple phone numbers
+                  <div className="flex flex-col space-y-1">
+                    {contact.hrefs.map((href, i) => (
+                      <a key={i} href={href} className="font-sans text-white text-2xl font-bold hover:text-white/80 transition-colors duration-300">
+                        {contact.value.split(', ')[i]}
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  // For email
+                  <motion.p 
+                    whileHover={{ x: 5 }}
+                    className="font-sans text-white text-2xl font-bold hover:text-white/80 transition-colors duration-300"
+                  >
+                    <a href={contact.href}>{contact.value}</a>
+                  </motion.p>
+                )}
               </div>
             </div>
           ))}
