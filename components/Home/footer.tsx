@@ -52,7 +52,6 @@ export default function Footer() {
           </div>
           
           {/* Contact Info */}
-          // Replace your contact info map with this
           {[
             { 
               icon: faPhoneAlt, 
