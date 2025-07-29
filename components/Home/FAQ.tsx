@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiPlus, FiMinus, FiMail, FiMessageSquare } from 'react-icons/fi';
+import Link from 'next/link';
 
 interface FAQItem {
   question: string;
@@ -224,16 +225,22 @@ const FAQ = () => {
             Our support team is ready to help you with any additional questions you might have.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/support">
             <button className="px-6 py-3 bg-[#800000] text-white font-medium rounded-lg hover:bg-[#800000]/90 transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
               <FiMail className="w-5 h-5" />
               Email Support
             </button>
+            </Link>
+            <Link href="https://www.youtube.com/@AstroDeepakGoutam">
             <button className="px-6 py-3 bg-white text-[#800000] font-medium rounded-lg hover:bg-[#800000]/10 transition-colors duration-300 shadow-sm border border-[#800000] hover:border-[#800000]/80 flex items-center justify-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.018 15.622 5 12c.018-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"/>
               </svg>
+             
               Video Tutorials
+              
             </button>
+            </Link>
           </div>
         </motion.div>
       </div>

@@ -99,7 +99,7 @@ const supportOptions = [
     icon: faCalendarCheck,
     details: '30/60/90 mins sessions available',
     cta: 'Book Now',
-    ctaLink: '/book-now',
+    ctaLink: 'https://wa.me/919153164444?text=Namste%20Pandit%20Deepak%20Goutam%20Mujko%20Appointment%20Booking%20Karani%20Hai%20',
   },
   {
     title: '24/7 Digital Support',
@@ -107,16 +107,11 @@ const supportOptions = [
     icon: faComments,
     details: 'Response within 2-4 hours',
     cta: 'Contact Now',
-    ctaLink: '#',
+    ctaLink: 'mailto:astrodeepakgoutam@gmail.com',
   },
 ];
 
-const rates = [
-  { service: 'Basic Consultation', price: '₹2999', duration: '30 mins' },
-  { service: 'Premium Life Path Reading', price: '₹5999', duration: '1 hour' },
-  { service: 'Yearly Destiny Forecast', price: '₹9999', duration: '1.5 hours' },
-  { service: 'Name Correction Analysis', price: '₹4999', duration: '45 mins' },
-];
+
 
 export default function SupportPage() {
   return (

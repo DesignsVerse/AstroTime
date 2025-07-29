@@ -275,18 +275,7 @@ export default function KundaliPage({ params }: { params: { character: string } 
           </div>
         </div>
         
-        {/* Back button with animation */}
-        <div className="text-center mt-16 animate-bounce-horizontal">
-          <a 
-            href="/ram-ravan" 
-            className="inline-flex items-center px-8 py-4 rounded-full font-medium shadow-lg transition-all bg-gradient-to-r from-[#5a0808] to-[#8b1e1e] hover:from-[#8b1e1e] hover:to-[#5a0808] text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            Back to Comparison
-          </a>
-        </div>
+        
       </div>
     </div>
   );

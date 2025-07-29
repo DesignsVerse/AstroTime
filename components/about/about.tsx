@@ -15,6 +15,7 @@ import {
   faPhone 
 } from '@fortawesome/free-solid-svg-icons';
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Best Astrologer in Ujjain - Astroank & Astro Time Services',
@@ -178,7 +179,7 @@ export default function AboutPage() {
                   </div>
                   <div className="flex justify-end mt-4">
                     <a
-                      href="tel:+919153164444,"
+                      href="tel:+919153164444"
                       className="inline-flex items-center gap-2 bg-[#800000] text-white font-semibold px-4 py-2 rounded-full text-sm shadow-md hover:bg-black transition-colors"
                     >
                       <FontAwesomeIcon icon={faPhone} />
@@ -379,9 +380,11 @@ export default function AboutPage() {
                 <p className="text-gray-700 mb-6">
                   Let Astro Deepak Goutam and Rahul Pathak guide you with celestial wisdom and personalized solutions.
                 </p>
+                <Link href="https://wa.me/919153164444?text=Namste%20Pandit%20Deepak%20Goutam%20Mujko%20Consultation%20Chahiye%20Hai%20">
                 <button className="w-full bg-[#800000] hover:bg-black text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg mb-4">
                   Book Premium Consultation
                 </button>
+                </Link>
                 <div className="text-center text-sm text-gray-600">
                   <p>Available via:</p>
                   <div className="flex justify-center space-x-4 mt-2">

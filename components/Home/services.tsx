@@ -187,7 +187,9 @@ const Service = () => {
               Need guidance choosing the right service?
             </h3>
             <button className="bg-[#5a0808] hover:bg-[#8b1e1e] text-white font-semibold py-2 px-6 sm:py-3 sm:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-sm sm:text-base">
+              <a href="/support">
               Contact Our Astrologers
+              </a>
             </button>
           </div>
         </div>

@@ -28,7 +28,7 @@ const PhysicalKundaliBanner = () => {
         <p className="text-gray-700 text-base md:text-lg mb-6 max-w-2xl mx-auto lg:mx-0">
           Experience the expertise of Astro Deepak Goutam, Ujjain’s trusted Vedic astrologer, who personally delivers physical Kundali services to your doorstep. Get detailed horoscope analysis, personalized astrology consultations, and insights into your career, relationships, and future, all crafted with authentic Vedic wisdom.
         </p>
-        <Link href="/services/kundli-ghar-tak">
+        <Link href="/services/kundli-ghar-tak-ujjain">
           <button className="bg-[#800000] hover:bg-[#600000] text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#800000] focus:ring-opacity-50">
             Book Personal Kundali Service
           </button>
