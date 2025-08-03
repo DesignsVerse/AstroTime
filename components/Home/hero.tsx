@@ -100,12 +100,15 @@ const HeroCarousel = () => {
     { src: "/hero/3.jpg", link: "/services" },
     { src: "/hero/4.jpg", link: "/services" },
     { src: "/hero/5.jpg", link: "/services" },
+    
   ];
   const mobileSlides = [
     { src: "/hero/mobile/2.png", link: "/services" },
     { src: "/hero/mobile/3.png", link: "/services" },
     { src: "/hero/mobile/4.png", link: "/services" },
     { src: "/hero/mobile/5.png", link: "/services" },
+    { src: "/hero/mobile/6.png", link: "/services" },
+    { src: "/hero/mobile/7.png", link: "/services" },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);

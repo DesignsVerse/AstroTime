@@ -163,7 +163,7 @@ export default function ServicesPage() {
             {/* Right Image */}
             <div className="rounded-2xl overflow-hidden w-[24rem] h-[20rem] sm:w-[28rem] sm:h-[26rem] md:w-[36rem] md:h-[30rem] relative mx-auto">
               <Image 
-                src="/service/service-banner.png" 
+                src="/services.png" 
                 alt="Astroank Astrology Services"
                 fill
                 className="object-contain object-center rounded-2xl"
