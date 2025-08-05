@@ -225,25 +225,7 @@ export default function Blog() {
               </div>
             </div>
 
-            {/* Pagination Dots - Mobile */}
-            <div className="flex justify-center mt-6 sm:mt-8 md:mt-12">
-              <div className="flex space-x-2 md:space-x-3">
-                {Array.from({ length: Math.ceil(blogData.length / slidesPerView) }).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setCurrentIndex(clampIndex(index * slidesPerView));
-                    }}
-                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                      Math.floor(currentIndex / slidesPerView) === index
-                        ? 'bg-[#800000] scale-125' 
-                        : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
-                    aria-label={`Go to blog ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
+           
           </div>
 
           {/* View All Button */}
