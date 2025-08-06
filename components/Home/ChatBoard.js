@@ -46,15 +46,7 @@ export default function ChatBoard() {
 
   // Categorized quick questions
   const quickQuestionCategories = [
-    {
-      icon: <FaStar className="text-yellow-500" />,
-      title: "Astrology",
-      questions: [
-        "Today's horoscope?",
-        "Kundli analysis?",
-        "Planetary transits?"
-      ]
-    },
+    
     {
       icon: <FaPrayingHands className="text-blue-500" />,
       title: "Puja",
@@ -62,24 +54,6 @@ export default function ChatBoard() {
         "Best puja for success?",
         "Muhurat for puja?",
         "Remedies for problems?"
-      ]
-    },
-    {
-      icon: <GiCash className="text-green-500" />,
-      title: "Offers",
-      questions: [
-        "Special discounts?",
-        "Yearly package?",
-        "Free consultation?"
-      ]
-    },
-    {
-      icon: <FaUserAlt className="text-purple-500" />,
-      title: "Astro Deepak",
-      questions: [
-        "Experience?",
-        "Consultation fees?",
-        "Success stories?"
       ]
     }
   ];
