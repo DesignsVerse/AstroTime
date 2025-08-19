@@ -199,7 +199,7 @@ export default function Footer() {
           
           <div className="flex items-center space-x-4">
             {[
-              { icon: faFacebookF, label: "facebook", href: "https://www.facebook.com/astrodeepakgoutamm/" },
+              { icon: faFacebookF, label: "facebook", href: "https://www.facebook.com/share/1F9DqvHepM/" },
               { icon: faInstagram, label: "instagram", href: "https://www.instagram.com/astrodeepakgoutam/" },
               { icon: faYoutube, label: "youtube", href: "https://www.youtube.com/@Astrodeepakgoutam" },
               { icon: faWhatsapp, label: "whatsapp", href: "https://wa.me/919153164444?text=namaste%20pandit%20ji" }
