@@ -27,7 +27,7 @@ const Header: FC = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        mobileMenuRef.current && 
+        mobileMenuRef.current &&
         !mobileMenuRef.current.contains(event.target as Node) &&
         isMobileMenuOpen &&
         !(event.target as HTMLElement).closest('button[aria-label="Toggle menu"]')
@@ -95,14 +95,21 @@ const Header: FC = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-  <Link href="/" className="flex items-center">
-    <span className="text-3xl font-black text-black hover:text-[#800000] transition-colors
-          [text-shadow:_1px_1px_0_#00000020] tracking-tighter" 
-          style={{fontFamily: "'Poppins', sans-serif", fontWeight: 800}}>
-      Astro<span className="text-[#800000]">Ank</span>
-    </span>
-  </Link>
-</div>
+              <Link href="/" className="flex flex-col items-start">  {/* Changed to flex-col for vertical stacking */}
+                <span
+                  className="text-3xl font-black text-black hover:text-[#800000] transition-colors [text-shadow:_1px_1px_0_#00000020] tracking-tighter"
+                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800 }}
+                >
+                  Astro<span className="text-[#800000]">Ank</span>
+                </span>
+                <span
+                  className="text-lg italic text-gray-600 hover:text-[#800000] transition-colors "  
+                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400 }}
+                >
+                  Astro Deepak Goutam
+                </span>
+              </Link>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:block">
@@ -112,8 +119,8 @@ const Header: FC = () => {
                     key={item.name}
                     href={item.href}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-                      item.highlight 
-                        ? "bg-[#800000] text-white hover:bg-[#600000]" 
+                      item.highlight
+                        ? "bg-[#800000] text-white hover:bg-[#600000]"
                         : "text-gray-700 hover:text-[#800000] hover:bg-gray-50"
                     }`}
                   >
@@ -155,13 +162,13 @@ const Header: FC = () => {
           style={{ pointerEvents: isMobileMenuOpen ? 'auto' : 'none' }}
         >
           {/* Overlay */}
-          <div 
+          <div
             className={`absolute inset-0 bg-black transition-opacity duration-300 ${
               isMobileMenuOpen ? "opacity-50" : "opacity-0"
             }`}
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          
+
           {/* Side Drawer */}
           <div
             className={`absolute top-0 right-0 h-full w-80 max-w-full bg-white shadow-xl transform transition-transform duration-300 ${
@@ -172,10 +179,18 @@ const Header: FC = () => {
               <div className="flex justify-between items-center px-5 py-4 border-b">
                 <Link
                   href="/"
-                  className="text-xl font-bold text-black"
+                  className="flex flex-col items-start"  
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Astro<span className="text-[#800000]">Ank</span>
+                  <span className="text-xl font-bold text-black">
+                    Astro<span className="text-[#800000]">Ank</span>
+                  </span>
+                  <span
+                    className="text-md italic text-gray-600 hover:text-[#800000] transition-colors mt-1"  
+                    style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400 }}
+                  >
+                    Astro Deepak Goutam
+                  </span>
                 </Link>
                 <button
                   onClick={toggleMobileMenu}
@@ -186,7 +201,7 @@ const Header: FC = () => {
                   </svg>
                 </button>
               </div>
-              
+
               <div className="flex-1 overflow-y-auto py-4">
                 <nav className="px-2 space-y-2">
                   {navItems.map((item) => (
@@ -194,8 +209,8 @@ const Header: FC = () => {
                       key={item.name}
                       href={item.href}
                       className={`block px-4 py-3 rounded-md text-base font-medium mx-2 transition-colors ${
-                        item.highlight 
-                          ? "bg-[#800000] text-white hover:bg-[#600000]" 
+                        item.highlight
+                          ? "bg-[#800000] text-white hover:bg-[#600000]"
                           : "text-gray-700 hover:bg-gray-100 hover:text-[#800000]"
                       }`}
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -205,7 +220,7 @@ const Header: FC = () => {
                   ))}
                 </nav>
               </div>
-              
+
               {/* Mobile Footer - Simplified */}
               <div className="px-5 py-3 border-t bg-gray-50">
                 <div className="flex flex-col space-y-3">
