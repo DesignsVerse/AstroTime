@@ -103,8 +103,8 @@ const Header: FC = () => {
                   Astro<span className="text-[#800000]">Ank</span>
                 </span>
                 <span
-                  className="text-lg italic text-gray-600 hover:text-[#800000] transition-colors "  
-                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400 }}
+                  className="text-lg text-gray-600 hover:text-[#800000] transition-colors "  
+                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800 }}
                 >
                   Astro Deepak Goutam
                 </span>
